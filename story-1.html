@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="components.js"></script>
+
+</head>
+
+<body>
+
+    <main-header></main-header>
+    <section class="hero">
+
+        <div class="hero-text">
+            <h1>Read, Learn & Explore</h1>
+
+            <p>
+                Discover interactive stories, listen to narration,
+                translate content, and improve your reading skills.
+            </p>
+
+            <button class="btn" onclick="startReading()">
+                Start Reading
+            </button>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=1200" alt="Story">
+
+    </section>
+
+    <h2 class="section-title">Featured Stories</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=1200">
+            <div class="card-content">
+                <h3>The Whispering Forest</h3>
+                <p>Join Ellie on a magical adventure.</p>
+                <button class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200">
+            <div class="card-content">
+                <h3>The Blue River</h3>
+                <p>Discover mysteries beside the river.</p>
+                <button class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200">
+            <div class="card-content">
+                <h3>Mountain Journey</h3>
+                <p>Adventure above the clouds.</p>
+                <button class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="stats">
+
+        <div class="stat">
+            <h2 id="stories">120</h2>
+            <p>Stories</p>
+        </div>
+
+        <div class="stat">
+            <h2 id="students">5000+</h2>
+            <p>Students</p>
+        </div>
+
+        <div class="stat">
+            <h2 id="languages">15</h2>
+            <p>Languages</p>
+        </div>
+
+    </section>
+
+    <main-footer></main-footer>
+    <script>
+
+        function startReading() {
+        }
+
+        const buttons = document.querySelectorAll(".read-btn");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                alert("Opening Story Reader...");
+                window.location.href = "thewisperingforrest.html"
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

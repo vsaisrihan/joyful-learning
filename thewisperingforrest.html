@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <main-header></main-header>
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- LEFT IMAGE -->
+            <div class="story-image-card">
+
+                <div class="tag">Nature Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=1200">
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div>
+
+
+                <div class="progress">
+                </div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Whispering Forest</h1>
+
+                    <p id="story">
+                        Ellie the Elephant stepped softly onto the carpet
+                        of moss. She had never seen flowers that glowed
+                        like stars before. A tiny butterfly fluttered down
+                        and landed right on the tip of her trunk.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+                </div>
+
+                <div class="navigation">
+
+
+                    <div class="dots">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <main-footer></main-footer>
+    <script>
+
+        const stories = [
+
+            {
+                title: "The Whispering Forest",
+                text: "Ellie the Elephant stepped softly onto the carpet of moss. She had never seen flowers that glowed like stars before. A tiny butterfly fluttered down and landed right on the tip of her trunk.",
+                image: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=1200"
+            },
+
+            {
+                title: "The Blue River",
+                text: "The river sparkled under the morning sun. Fish leaped from the water while colorful birds danced through the trees nearby.",
+                image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200"
+            },
+
+            {
+                title: "The Mountain Journey",
+                text: "The young explorer climbed higher and higher. From the top, she could see forests, rivers, and clouds stretching endlessly.",
+                image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200"
+            },
+
+            {
+                title: "The Golden Beach",
+                text: "Waves rolled gently onto the shore. Children built castles while seagulls glided across the bright blue sky.",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200"
+            }
+
+        ];
+
+        let current = 0;
+
+        function updateStory() {
+
+            document.getElementById("title").innerText =
+                stories[current].title;
+
+            document.getElementById("story").innerText =
+                stories[current].text;
+
+            document.getElementById("storyImage").src =
+                stories[current].image;
+
+            let percentage =
+                ((current + 1) / stories.length) * 100;
+
+            document.getElementById("pageText").innerText =
+                `Page ${current + 1} of ${stories.length}`;
+
+            document.getElementById("percent").innerText =
+                `${Math.round(percentage)}% Complete`;
+
+            document.getElementById("progressBar").style.width =
+                percentage + "%";
+
+            const dots =
+                document.querySelectorAll(".dot");
+
+            dots.forEach(dot => dot.classList.remove("active"));
+
+            dots[current].classList.add("active");
+        }
+
+        function nextStory() {
+
+            current++;
+
+            if (current >= stories.length) {
+                current = 0;
+            }
+
+            updateStory();
+        }
+
+        function prevStory() {
+
+            current--;
+
+            if (current < 0) {
+                current = stories.length - 1;
+            }
+
+            updateStory();
+        }
+
+        function readStory() {
+
+            let text =
+                document.getElementById("story").innerText;
+
+            let speech =
+                new SpeechSynthesisUtterance(text);
+
+            speech.lang = "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        let translated = false;
+
+        function translateStory() {
+
+            const story =
+                document.getElementById("story");
+
+            if (!translated) {
+
+                story.innerHTML =
+                    "ఎల్లి అనే ఏనుగు నెమ్మదిగా అడవిలో నడిచింది. ప్రకాశించే పువ్వులను చూసి ఆశ్చర్యపోయింది. ఒక చిన్న సీతాకోకచిలుక వచ్చి ఆమె తొండంపై వాలింది.";
+
+                translated = true;
+
+            } else {
+
+                story.innerHTML =
+                    stories[current].text;
+
+                translated = false;
+            }
+        }
+
+        updateStory();
+
+    </script>
+
+</body>
+
+</html>
