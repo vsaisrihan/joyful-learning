@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- LEFT IMAGE -->
+            <div class="story-image-card">
+
+                <div class="tag">Mountain Adventure</div>
+
+                <!-- FREE COPYRIGHT-FREE IMAGE -->
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1465189684280-6a8fa9b19a7a?q=80&w=1200"
+                    alt="Mountain Journey">
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">Mountain Journey</h1>
+
+                    <p id="story">
+                        One bright morning, Emma and her brother Leo set out on a journey to a tall mountain.
+                        They packed water, snacks, and warm jackets. Their goal was to reach the top before sunset.
+
+                        As they climbed, they saw colorful flowers, tall trees, and friendly birds. They stopped to rest
+                        and enjoyed the fresh mountain air. Along the way, they helped a small turtle cross the path
+                        safely.
+
+                        The trail became steeper, but Emma and Leo did not give up. They encouraged each other with
+                        smiles
+                        and kind words. Step by step, they climbed higher.
+
+                        At last, they reached the top of the mountain. They looked down at the green valleys, shining
+                        rivers,
+                        and tiny houses below. The view was amazing, and they felt proud of their hard work.
+
+                        As they walked back home, they remembered that every big journey begins with one small step.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = `One bright morning, Emma and her brother Leo set out on a journey to a tall mountain. They packed water, snacks, and warm jackets. Their goal was to reach the top before sunset.
+
+As they climbed, they saw colorful flowers, tall trees, and friendly birds. They stopped to rest and enjoyed the fresh mountain air. Along the way, they helped a small turtle cross the path safely.
+
+The trail became steeper, but Emma and Leo did not give up. They encouraged each other with smiles and kind words. Step by step, they climbed higher.
+
+At last, they reached the top of the mountain. They looked down at the green valleys, shining rivers, and tiny houses below. The view was amazing, and they felt proud of their hard work.
+
+As they walked back home, they remembered that every big journey begins with one small step.`;
+
+        const teluguStory = `ఒక ప్రకాశవంతమైన ఉదయం, ఎమ్మా మరియు ఆమె అన్న లియో ఒక ఎత్తైన పర్వత ప్రయాణానికి బయలుదేరారు. వారు నీరు, తినుబండారాలు మరియు వెచ్చని జాకెట్లు తీసుకున్నారు. వారి లక్ష్యం సూర్యాస్తమయం ముందు శిఖరాన్ని చేరుకోవడం.
+
+ఎక్కుతూ వారు రంగురంగుల పూలు, ఎత్తైన చెట్లు మరియు స్నేహపూర్వక పక్షులను చూశారు. వారు విశ్రాంతి తీసుకుని చల్లని గాలి ఆస్వాదించారు. దారిలో ఒక చిన్న తాబేలును సురక్షితంగా దాటించారు.
+
+దారి క్రమంగా కఠినమైంది, కానీ ఎమ్మా మరియు లియో వెనక్కి తగ్గలేదు. వారు ఒకరినొకరు ప్రోత్సహించుకున్నారు. అడుగు అడుగుగా పైకి ఎక్కారు.
+
+చివరికి వారు పర్వత శిఖరాన్ని చేరుకున్నారు. కింద పచ్చని లోయలు, మెరిసే నదులు మరియు చిన్న ఇళ్లు కనిపించాయి. దృశ్యం అద్భుతంగా ఉండి వారు గర్వంగా అనిపించారు.
+
+తిరిగి వెళ్తూ వారు గుర్తు పెట్టుకున్నారు — ప్రతి పెద్ద ప్రయాణం ఒక చిన్న అడుగుతో ప్రారంభమవుతుంది.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
