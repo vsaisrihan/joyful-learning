@@ -6,7 +6,7 @@ class MainHeader extends HTMLElement {
         <div class="logo">📚 Joyful Learn</div>
 
         <div class="nav-links">
-            <a href="#">Home</a>
+            <a href="./index.html">Home</a>
             <a href="#">Stories</a>
             <a href="#">Progress</a>
             <a href="#">Achievements</a>
