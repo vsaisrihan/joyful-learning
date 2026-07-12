@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+    <main-header></main-header>
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- LEFT IMAGE -->
+            <div class="story-image-card">
+
+                <div class="tag">Nature Adventure</div>
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200" alt="Magic Lake">
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div>
+
+
+                <div class="progress">
+                </div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Magic Lake</h1>
+
+                    <p id="story">
+
+                        Lily found a beautiful lake hidden in a green forest.
+                        The water sparkled like tiny diamonds in the sunlight.
+                        A little golden fish jumped out and smiled at her.
+                        "Welcome to the Magic Lake," said the fish.
+                        Lily gently touched the water with her hand.
+                        Suddenly, colorful flowers bloomed all around the lake.
+                        Bright butterflies danced in the warm breeze.
+                        Friendly ducks swam happily across the clear water.
+                        A rainbow appeared above the lake.
+                        The fish gave Lily a shiny blue pebble as a gift.
+                        "Always be kind, and the magic will stay with you," the fish said.
+                        Lily thanked the fish with a big smile.
+                        She carefully kept the pebble in her pocket.
+                        When she reached home, she shared her wonderful story with her family.
+                        Everyone smiled and listened with excitement.
+                        Lily never forgot the magical day at the lake.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+                </div>
+
+                <div class="navigation">
+
+
+                    <div class="dots">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <main-footer></main-footer>
+    <script>
+
+        const stories = [
+
+            {
+                title: "The Whispering Forest",
+                text: "Ellie the Elephant stepped softly onto the carpet of moss. She had never seen flowers that glowed like stars before. A tiny butterfly fluttered down and landed right on the tip of her trunk.",
+                image: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=1200"
+            },
+
+            {
+                title: "The Blue River",
+                text: "The river sparkled under the morning sun. Fish leaped from the water while colorful birds danced through the trees nearby.",
+                image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200"
+            },
+
+            {
+                title: "The Mountain Journey",
+                text: "The young explorer climbed higher and higher. From the top, she could see forests, rivers, and clouds stretching endlessly.",
+                image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200"
+            },
+
+            {
+                title: "The Golden Beach",
+                text: "Waves rolled gently onto the shore. Children built castles while seagulls glided across the bright blue sky.",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200"
+            }
+
+            {
+                title: "The Whispering Forest",
+                text: "Ellie the Elephant stepped softly onto the carpet of moss. She had never seen flowers that glowed like stars before. A tiny butterfly fluttered down and landed right on the tip of her trunk.",
+                image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200"
+            },
+
+        ];
+
+        let current = 0;
+
+        function updateStory() {
+
+            document.getElementById("title").innerText =
+                stories[current].title;
+
+            document.getElementById("story").innerText =
+                stories[current].text;
+
+            document.getElementById("storyImage").src =
+                stories[current].image;
+
+            let percentage =
+                ((current + 1) / stories.length) * 100;
+
+            document.getElementById("pageText").innerText =
+                `Page ${current + 1} of ${stories.length}`;
+
+            document.getElementById("percent").innerText =
+                `${Math.round(percentage)}% Complete`;
+
+            document.getElementById("progressBar").style.width =
+                percentage + "%";
+
+            const dots =
+                document.querySelectorAll(".dot");
+
+            dots.forEach(dot => dot.classList.remove("active"));
+
+            dots[current].classList.add("active");
+        }
+
+        function nextStory() {
+
+            current++;
+
+            if (current >= stories.length) {
+                current = 0;
+            }
+
+            updateStory();
+        }
+
+        function prevStory() {
+
+            current--;
+
+            if (current < 0) {
+                current = stories.length - 1;
+            }
+
+            updateStory();
+        }
+
+        function readStory() {
+
+            let text =
+                document.getElementById("story").innerText;
+
+            let speech =
+                new SpeechSynthesisUtterance(text);
+
+            speech.lang = "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        let translated = false;
+
+        function translateStory() {
+
+            const story =
+                document.getElementById("story");
+
+            if (!translated) {
+
+                story.innerHTML = `
+మాయా సరస్సు
+
+లిల్లీ ఒక పచ్చని అడవిలో దాగి ఉన్న అందమైన సరస్సును కనుగొంది.<br><br>
+
+సూర్యకాంతిలో ఆ సరస్సు నీరు చిన్న వజ్రాల్లా మెరిసింది.<br><br>
+
+ఒక చిన్న బంగారు చేప నీటిలో నుంచి పైకి ఎగిరి ఆమెకు చిరునవ్వు ఇచ్చింది.<br><br>
+
+"మాయా సరస్సుకు స్వాగతం," అని ఆ చేప చెప్పింది.<br><br>
+
+లిల్లీ మెల్లగా తన చేతితో నీటిని తాకింది.<br><br>
+
+వెంటనే సరస్సు చుట్టూ రంగురంగుల పూలు వికసించాయి.<br><br>
+
+అందమైన సీతాకోకచిలుకలు గాలిలో ఆనందంగా ఎగిరాయి.<br><br>
+
+స్నేహపూర్వక బాతులు స్వచ్ఛమైన నీటిలో ఈదుతూ ఆడుకున్నాయి.<br><br>
+
+సరస్సు పైన అందమైన ఇంద్రధనస్సు కనిపించింది.<br><br>
+
+ఆ చేప లిల్లీకి మెరిసే నీలిరంగు గులకరాయిని బహుమతిగా ఇచ్చింది.<br><br>
+
+"ఎప్పుడూ దయగా ఉండు, అప్పుడు ఈ మాయ నీతోనే ఉంటుంది," అని చేప చెప్పింది.<br><br>
+
+లిల్లీ ఆనందంగా చేపకు ధన్యవాదాలు చెప్పింది.<br><br>
+
+ఆమె ఆ గులకరాయిని జాగ్రత్తగా తన జేబులో పెట్టుకుంది.<br><br>
+
+ఇంటికి వెళ్లిన తర్వాత తన కుటుంబానికి ఆ అద్భుతమైన కథను చెప్పింది.<br><br>
+
+అందరూ సంతోషంగా విని చిరునవ్వు చిందించారు.<br><br>
+
+ఆ మాయా సరస్సులో గడిపిన రోజును లిల్లీ ఎప్పటికీ మరచిపోలేదు.<br><br>
+
+<b>నీతి:</b> దయ మరియు మంచితనం మన జీవితంలో ఆనందాన్ని, మాయాజాలాన్ని తీసుకువస్తాయి.
+`;
+                translated = true;
+
+            } else {
+
+                story.innerHTML =
+                    stories[current].text;
+
+                translated = false;
+            }
+        }
+
+        updateStory();
+
+    </script>
+
+</body>
+
+</html>

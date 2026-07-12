@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Space Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1200"
+                    alt="Deep Space Galaxy Drive">
+
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">Deep Space Drive</h1>
+
+                    <p id="story">
+                        A small astronaut named Max lived on a space station.
+                        He loved looking at the stars every night.
+                        One day, he got a special spaceship called “Deep Space Drive.”
+                        The spaceship could travel faster than light.
+                        Max’s mission was to explore unknown planets.
+                        He waved goodbye and flew into deep space.
+                        He passed shining stars and colorful galaxies.
+                        Soon, he saw a blue planet with floating islands.
+                        Friendly alien creatures greeted him with smiles.
+                        They showed him glowing plants and crystal rivers.
+                        Max shared stories about Earth with them.
+                        He learned that friendship exists everywhere in the universe.
+                        After his mission, it was time to return home.
+                        He flew back safely through the starry sky.
+                        Max felt happy and proud of his journey.
+                        He promised to explore more space adventures in the future..
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` A small astronaut named Max lived on a space station.
+He loved looking at the stars every night.
+One day, he got a special spaceship called “Deep Space Drive.”
+The spaceship could travel faster than light.
+Max’s mission was to explore unknown planets.
+He waved goodbye and flew into deep space.
+He passed shining stars and colorful galaxies.
+Soon, he saw a blue planet with floating islands.
+Friendly alien creatures greeted him with smiles.
+They showed him glowing plants and crystal rivers.
+Max shared stories about Earth with them.
+He learned that friendship exists everywhere in the universe.
+After his mission, it was time to return home.
+He flew back safely through the starry sky.
+Max felt happy and proud of his journey.
+He promised to explore more space adventures in the future..`;
+
+        const teluguStory = `మ్యాక్స్ అనే చిన్న వ్యోమగామి ఒక అంతరిక్ష కేంద్రంలో నివసించేవాడు.
+అతను ప్రతి రాత్రి నక్షత్రాలను చూడటం చాలా ఇష్టపడేవాడు.
+ఒక రోజు అతనికి “డీప్ స్పేస్ డ్రైవ్” అనే ప్రత్యేక అంతరిక్ష నౌక లభించింది.
+ఆ నౌక కాంతి వేగం కంటే వేగంగా ప్రయాణించగలిగేది.
+మ్యాక్స్ పని తెలియని గ్రహాలను అన్వేషించడం.
+అతను వీడ్కోలు చెప్పి అంతరిక్షంలోకి ప్రయాణించాడు.
+అతను మెరిసే నక్షత్రాలు మరియు రంగురంగుల గెలాక్సీలను దాటాడు.
+త్వరలో అతను తేలియాడే దీవులతో నీలిరంగు గ్రహాన్ని చూశాడు.
+స్నేహపూర్వకమైన విదేశీ జీవులు అతనికి చిరునవ్వుతో స్వాగతం చెప్పారు.
+వారు అతనికి ప్రకాశించే మొక్కలు మరియు స్ఫటిక నదులను చూపించారు.
+మ్యాక్స్ భూమి గురించి తన కథలను వారితో పంచుకున్నాడు.
+విశ్వంలో ఎక్కడైనా స్నేహం ఉంటుందని అతను నేర్చుకున్నాడు.
+తన మిషన్ ముగిసిన తర్వాత ఇంటికి తిరిగి వెళ్లాల్సిన సమయం వచ్చింది.
+అతను నక్షత్రాల మధ్యగా సురక్షితంగా తిరిగి ప్రయాణించాడు.
+మ్యాక్స్ తన ప్రయాణం గురించి చాలా సంతోషంగా మరియు గర్వంగా అనిపించింది.
+అతను భవిష్యత్తులో మరిన్ని అంతరిక్ష సాహసాలు చేయాలని ప్రతిజ్ఞ చేశాడు.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

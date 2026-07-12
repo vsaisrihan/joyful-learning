@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- LEFT IMAGE -->
+            <div class="story-image-card">
+
+                <div class="tag">Desert Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1200"
+                    alt="Desert Adventure">
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div>
+
+                <div class="progress"></div>
+
+                <div class="story-card">
+
+                    <h1 id="title">Desert Adventure</h1>
+
+                    <p id="story">
+                        One sunny morning, Leo and his father visited a big desert.
+                        The golden sand stretched as far as they could see.
+                        Leo wore a wide hat and carried a bottle of water.
+                        They walked carefully across the warm sand.
+                        Soon, they saw a tiny lizard running quickly.
+                        A tall camel walked slowly nearby.
+                        Leo was excited to ride the gentle camel.
+                        They found a green oasis with cool water and shady trees.
+                        Colorful birds flew around the oasis.
+                        Leo rested under a palm tree and ate some fruit.
+                        His father taught him how desert animals survive in the hot weather.
+                        Leo learned to respect nature and never waste water.
+                        As the sun began to set, the sky turned orange and pink.
+                        They took many happy memories back home.
+                        Leo said it was the most exciting adventure he had ever had.
+                        He could not wait to visit the desert again.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+                <div class="navigation"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        const stories = [
+
+            {
+                title: "Desert Adventure",
+                text: "Mia and her brother Noah began their exciting journey across the golden desert. The warm sun shone brightly as they walked over soft sand dunes. They spotted a friendly camel carrying supplies across the desert. Along the way, they found a small oasis filled with cool water and green palm trees. Colorful birds flew overhead while gentle desert winds blew across the sand. As the sun began to set, the sky turned orange, pink, and purple. Mia and Noah smiled because they had discovered the beauty of the desert together.",
+                image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1200"
+            },
+
+            {
+                title: "The Blue River",
+                text: "The river sparkled under the morning sun. Fish leaped from the water while colorful birds danced through the trees nearby.",
+                image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200"
+            },
+
+            {
+                title: "The Mountain Journey",
+                text: "The young explorer climbed higher and higher. From the top, she could see forests, rivers, and clouds stretching endlessly.",
+                image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200"
+            },
+
+            {
+                title: "The Golden Beach",
+                text: "Waves rolled gently onto the shore. Children built castles while seagulls glided across the bright blue sky.",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200"
+            }
+
+        ];
+
+        let current = 0;
+        let translated = false;
+
+        function updateStory() {
+
+            document.getElementById("title").innerText =
+                stories[current].title;
+
+            document.getElementById("story").innerText =
+                stories[current].text;
+
+            document.getElementById("storyImage").src =
+                stories[current].image;
+
+            translated = false;
+        }
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").innerText
+            );
+
+            speech.lang = "en-US";
+            speech.rate = 0.9;
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+
+                story.innerText =
+                    "మియా మరియు ఆమె సోదరుడు నోవా బంగారు ఎడారిలో తమ సాహసయాత్రను ప్రారంభించారు. ప్రకాశవంతమైన సూర్యుడు వెలిగుతున్నప్పుడు వారు ఇసుక దిబ్బలపై నడిచారు. దారిలో సరుకులు మోసుకుంటూ వెళ్తున్న స్నేహపూర్వక ఒంటెను చూశారు. కొద్దిసేపటికి చల్లని నీరు మరియు పచ్చని తాటి చెట్లతో ఉన్న ఒక చిన్న ఒయాసిస్‌ను కనుగొన్నారు. రంగురంగుల పక్షులు ఎగురుతుండగా, మృదువైన ఎడారి గాలి వీచింది. సూర్యాస్తమయం సమయంలో ఆకాశం నారింజ, గులాబీ, ఊదా రంగులతో మెరిసింది. ఎడారి అందాలను చూసి మియా మరియు నోవా ఎంతో ఆనందించారు.";
+
+                translated = true;
+
+            } else {
+
+                story.innerText = stories[current].text;
+                translated = false;
+            }
+        }
+
+        updateStory();
+
+    </script>
+
+</body>
+
+</html>

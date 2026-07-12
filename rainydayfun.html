@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- LEFT IMAGE -->
+            <div class="story-image-card">
+
+                <div class="tag">Rainy Day Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=1200" alt="Rainy Day Fun">
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">Rainy Day Fun</h1>
+
+                    <p id="story">
+
+                        It was a rainy morning, and dark clouds covered the sky.
+                        Little Emma looked out of the window with a sad face.
+                        She wanted to play outside with her friends.
+                        Her mother smiled and gave her a bright yellow raincoat.
+                        Emma wore her boots and carried a colorful umbrella.
+                        She stepped outside and heard the soft sound of the rain.
+                        She happily splashed in little puddles.
+                        Her brother joined her with a paper boat.
+                        They floated their boats in the small stream beside the road.
+                        Tiny frogs jumped, and birds sang after the rain slowed down.
+                        Soon, a beautiful rainbow appeared in the sky.
+                        Emma pointed at it with excitement.
+                        She laughed and played until it was time to go home.
+                        Her mother made warm soup for everyone.
+                        Emma realized that even rainy days could be full of joy.
+                        She thanked her mother for making the day special.
+
+                    </p>
+
+                </div>
+
+                <div class="button">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = `
+It was a rainy morning, and dark clouds covered the sky.
+Little Emma looked out of the window with a sad face.
+She wanted to play outside with her friends.
+Her mother smiled and gave her a bright yellow raincoat.
+Emma wore her boots and carried a colorful umbrella.
+She stepped outside and heard the soft sound of the rain.
+She happily splashed in little puddles.
+Her brother joined her with a paper boat.
+They floated their boats in the small stream beside the road.
+Tiny frogs jumped, and birds sang after the rain slowed down.
+Soon, a beautiful rainbow appeared in the sky.
+Emma pointed at it with excitement.
+She laughed and played until it was time to go home.
+Her mother made warm soup for everyone.
+Emma realized that even rainy days could be full of joy.
+She thanked her mother for making the day special.
+`;
+
+        const teluguStory = `
+వర్షం పడుతున్న ఉదయం. నల్లని మేఘాలు ఆకాశాన్ని కప్పేశాయి.
+చిన్న ఎమ్మా కిటికీ బయటకు చూసి బాధపడింది.
+ఆమె తన స్నేహితులతో బయట ఆడాలని అనుకుంది.
+అమ్మ చిరునవ్వుతో ఆమెకు పసుపు రంగు రెయిన్‌కోట్ ఇచ్చింది.
+ఎమ్మా తన బూట్లు వేసుకుని రంగురంగుల గొడుగు పట్టుకుంది.
+బయటకు వెళ్లి వర్షపు చినుకుల మధురమైన శబ్దాన్ని విన్నది.
+నీటి గుంటల్లో ఆనందంగా దూకుతూ ఆడింది.
+ఆమె తమ్ముడు కాగితపు పడవతో వచ్చాడు.
+వాళ్లు చిన్న కాలువలో పడవలను తేల్చారు.
+చిన్న కప్పలు దూకాయి, వర్షం తగ్గిన తరువాత పక్షులు పాటలు పాడాయి.
+కొద్దిసేపటికి ఆకాశంలో అందమైన ఇంద్రధనుస్సు కనిపించింది.
+ఎమ్మా ఆనందంగా దానిని చూపించింది.
+ఇంటికి వెళ్లే సమయం వరకు నవ్వుతూ ఆడుకుంది.
+అమ్మ అందరికీ వేడి సూప్ తయారు చేసింది.
+వర్షపు రోజులు కూడా ఎంతో ఆనందంగా ఉండవచ్చని ఎమ్మా తెలుసుకుంది.
+ఆ ప్రత్యేకమైన రోజుకు ఆమె తన అమ్మకు ధన్యవాదాలు చెప్పింది.
+`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+            speech.rate = 0.9;
+
+            speechSynthesis.speak(speech);
+
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

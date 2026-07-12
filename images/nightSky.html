@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Night Adventure</div>
+
+                <img src="https://media.istockphoto.com/id/1062335014/photo/dhaulagiri-i-night-stars.webp?a=1&b=1&s=612x612&w=0&k=20&c=_kGOwTZ2V1FRSavohFoivVC0aytQybZMdYtQYUs41x4="
+                    alt="">
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Night Sky</h1>
+
+                    <p id="story">
+                        One calm evening, a little girl named Anu stepped outside and looked up at the night sky. It was
+                        dark and beautiful, filled with twinkling stars.
+
+                        "Mom, why do the stars sparkle?" Anu asked with wonder.
+
+                        Her mother smiled and said, "The stars shine brightly to make the night sky beautiful."
+
+                        Soon, the bright moon rose high into the sky. Its soft moonlight covered the trees, houses, and
+                        flowers.
+
+                        Anu began counting the stars.
+
+                        "One... two... three... Oh! There are too many to count!" she laughed.
+
+                        Just then, a bright shooting star streaked across the sky.
+
+                        "Look, Mom! A shooting star!" Anu exclaimed happily.
+
+                        Her mother said, "The night sky is full of wonderful surprises. Every night, nature gives us
+                        something beautiful to see."
+
+                        Anu smiled, waved to the moon and stars, and whispered, "Good night!"
+
+                        She went to bed with happy dreams, excited to look at the beautiful night sky again.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` One calm evening, a little girl named Anu stepped outside and looked up at the night sky. It was dark and beautiful, filled with twinkling stars.
+
+"Mom, why do the stars sparkle?" Anu asked with wonder.
+
+Her mother smiled and said, "The stars shine brightly to make the night sky beautiful."
+
+Soon, the bright moon rose high into the sky. Its soft moonlight covered the trees, houses, and flowers.
+
+Anu began counting the stars.
+
+"One... two... three... Oh! There are too many to count!" she laughed.
+
+Just then, a bright shooting star streaked across the sky.
+
+"Look, Mom! A shooting star!" Anu exclaimed happily.
+
+Her mother said, "The night sky is full of wonderful surprises. Every night, nature gives us something beautiful to see."
+
+Anu smiled, waved to the moon and stars, and whispered, "Good night!"
+
+She went to bed with happy dreams, excited to look at the beautiful night sky again.`;
+
+        const teluguStory = `ఒక ప్రశాంతమైన రాత్రి, చిన్నారి అను తన ఇంటి ముందు నిలబడి ఆకాశం వైపు చూసింది. ఆకాశం నల్లని వెల్వెట్‌లా మెరిసిపోతూ, చిన్న చిన్న నక్షత్రాలతో నిండిపోయి ఉంది.
+
+"అమ్మా! ఆ నక్షత్రాలు ఎందుకు మెరుస్తున్నాయి?" అని అను ఆశ్చర్యంగా అడిగింది.
+
+అమ్మ చిరునవ్వుతో, "అవి రాత్రి ఆకాశాన్ని అందంగా అలంకరించే చిన్న వెలుగులు." అని చెప్పింది.
+
+కొద్దిసేపటికి, గుండ్రంగా ప్రకాశిస్తున్న చంద్రుడు మెల్లగా ఆకాశంలోకి వచ్చాడు. అతని వెన్నెల భూమిపై మృదువుగా పరచుకుంది.
+
+అను ఆకాశంలో మెరుస్తున్న నక్షత్రాలను లెక్కపెట్టడం ప్రారంభించింది.
+
+"ఒకటి... రెండు... మూడు... అయ్యో! చాలా ఎక్కువ ఉన్నాయి!" అని నవ్వింది.
+
+అప్పుడే ఒక ప్రకాశవంతమైన ఉల్క ఆకాశాన్ని దాటుతూ వెళ్లింది.
+
+"చూడమ్మా! ఒక షూటింగ్ స్టార్!" అని అను ఆనందంగా అరిచింది.
+
+అమ్మ చెప్పింది, "మన ప్రకృతి ఎంత అందంగా ఉందో చూడమ్మా. ప్రతి రాత్రి ఆకాశం మనకు కొత్త అందాలను చూపిస్తుంది."
+
+అను చంద్రుడికి, నక్షత్రాలకు చేతులు ఊపి, "శుభరాత్రి!" అని చెప్పింది.
+
+ఆ రాత్రి ఆమె ఆనందంగా నిద్రపోయింది. అందమైన రాత్రి ఆకాశాన్ని ఎప్పటికీ గుర్తుంచుకుంది.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

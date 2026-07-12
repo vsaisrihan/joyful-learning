@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+                <div class="tag">Desert Night</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200" alt="Desert Night">
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Dessert Night </h1>
+
+                    <p id="story">
+                        As the golden sun slowly disappeared behind the endless sand dunes, the desert changed from hot
+                        and bright to cool and peaceful. A young traveler named Ali and his faithful camel continued
+                        their journey under the glowing moon. The soft silver light covered the sand, making it sparkle
+                        like tiny jewels. Countless stars filled the clear night sky, lighting their path. As they
+                        walked, they heard the gentle whisper of the wind moving across the dunes. An owl sat quietly on
+                        a cactus, while a little fox searched for food nearby. After traveling for many hours, Ali found
+                        a safe place to rest and set up a small camp. He lit a warm fire and shared water with his camel
+                        before eating a simple meal. Sitting beside the fire, he looked at the beautiful sky and felt
+                        grateful for nature's peaceful beauty. The cool breeze made the night comfortable, and
+                        everything around him was calm and silent. Soon, Ali and his camel fell asleep beneath the
+                        sparkling stars. Early the next morning, the first rays of the sun painted the desert with
+                        golden light once again. Ali packed his belongings, thanked the desert for its wonderful night,
+                        and happily continued his adventure, carrying unforgettable memories of the magical desert night
+                        in his heart.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` As the golden sun slowly disappeared behind the endless sand dunes, the desert changed from hot and bright to cool and peaceful. A young traveler named Ali and his faithful camel continued their journey under the glowing moon. The soft silver light covered the sand, making it sparkle like tiny jewels. Countless stars filled the clear night sky, lighting their path. As they walked, they heard the gentle whisper of the wind moving across the dunes. An owl sat quietly on a cactus, while a little fox searched for food nearby. After traveling for many hours, Ali found a safe place to rest and set up a small camp. He lit a warm fire and shared water with his camel before eating a simple meal. Sitting beside the fire, he looked at the beautiful sky and felt grateful for nature's peaceful beauty. The cool breeze made the night comfortable, and everything around him was calm and silent. Soon, Ali and his camel fell asleep beneath the sparkling stars. Early the next morning, the first rays of the sun painted the desert with golden light once again. Ali packed his belongings, thanked the desert for its wonderful night, and happily continued his adventure, carrying unforgettable memories of the magical desert night in his heart.`;
+
+        const teluguStory = `సూర్యుడు బంగారు ఇసుక దిబ్బల వెనుక నెమ్మదిగా అస్తమించడంతో, వేడిగా ఉన్న ఎడారి చల్లగా, ప్రశాంతంగా మారింది. అలీ అనే చిన్న ప్రయాణికుడు తన నమ్మకమైన ఒంటెతో కలిసి చంద్రకాంతిలో తన ప్రయాణాన్ని కొనసాగించాడు. వెండి వెలుగులా మెరిసే చంద్రకాంతి ఇసుకపై పరచుకొని, దానిని వజ్రాల్లా మెరిపించింది. లెక్కలేనన్ని నక్షత్రాలు నిర్మలమైన ఆకాశాన్ని అలంకరిస్తూ వారికి దారి చూపించాయి. వారు నడుస్తూ ఉండగా, ఇసుక దిబ్బలపై వీచే చల్లని గాలి మధురమైన శబ్దాన్ని వినిపించింది. ఒక కాకి గద్ద (గుడ్లగూబ) పొడవైన కాక్టస్ మొక్కపై నిశ్శబ్దంగా కూర్చొని చుట్టూ గమనిస్తోంది. కొద్దిదూరంలో ఒక చిన్న ఎడారి నక్క తన ఆహారం కోసం వెతుకుతోంది. ఎన్నో గంటలు ప్రయాణించిన తర్వాత, అలీ విశ్రాంతి తీసుకోవడానికి సురక్షితమైన ప్రదేశాన్ని కనుగొని చిన్న శిబిరాన్ని ఏర్పాటు చేశాడు. చలి నుంచి రక్షణ కోసం చిన్న మంట వెలిగించి, ముందుగా తన ఒంటెకు నీళ్లు ఇచ్చి, తరువాత సాధారణ భోజనం చేశాడు. మంట పక్కన కూర్చొని అందమైన నక్షత్రాల ఆకాశాన్ని చూస్తూ ప్రకృతి అందాలకు మనసారా కృతజ్ఞతలు తెలిపాడు. చల్లని గాలి అతనికి ఎంతో ఆహ్లాదాన్ని కలిగించింది, చుట్టూ ఉన్న నిశ్శబ్దం అతని మనసుకు ప్రశాంతతను ఇచ్చింది. కొద్దిసేపటికి అలీ, అతని ఒంటె ఇద్దరూ మెరిసే నక్షత్రాల కింద హాయిగా నిద్రపోయారు. తెల్లవారుజామున మొదటి సూర్యకిరణాలు ఎడారిని మళ్లీ బంగారు రంగుతో నింపాయి. అలీ తన సామాను సర్దుకుని, ఆ అద్భుతమైన ఎడారి రాత్రికి కృతజ్ఞతలు తెలుపుతూ ఆనందంగా తన ప్రయాణాన్ని కొనసాగించాడు. ఆ ప్రశాంతమైన రాత్రి జ్ఞాపకాలు అతని హృదయంలో ఎప్పటికీ నిలిచిపోయాయి.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

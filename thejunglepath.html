@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Jungle Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200" alt="Jungle Path">
+
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Jungle Path</h1>
+
+                    <p id="story">
+                        One sunny morning, a little rabbit named Bunny decided to explore a jungle path. The path was
+                        covered with green leaves, colorful flowers, and tall trees that touched the sky.
+
+                        As Bunny hopped along, he heard cheerful birds singing in the branches. A playful monkey swung
+                        from tree to tree and waved hello.
+
+                        Soon, Bunny met a tiny turtle trying to cross the path.
+
+                        "Can you help me?" asked the turtle.
+
+                        "Of course!" Bunny smiled.
+
+                        Bunny walked slowly beside the turtle until they reached the other side safely.
+
+                        Farther down the path, Bunny found a sparkling stream. He stopped to drink some cool water and
+                        watched bright butterflies dance above the flowers.
+
+                        Then Bunny heard a soft cry.
+
+                        "Oh no! My nest is too high," chirped a little bird.
+
+                        Bunny asked the monkey for help. The monkey climbed the tree and gently placed the little bird
+                        back into its nest.
+
+                        "Thank you!" the bird sang happily.
+
+                        As the sun began to set, golden light shined through the trees. Bunny walked home with a happy
+                        heart.
+
+                        He had discovered that every adventure becomes more special when we help others and enjoy
+                        nature.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` One sunny morning, a little rabbit named Bunny decided to explore a jungle path. The path was covered with green leaves, colorful flowers, and tall trees that touched the sky.
+
+As Bunny hopped along, he heard cheerful birds singing in the branches. A playful monkey swung from tree to tree and waved hello.
+
+Soon, Bunny met a tiny turtle trying to cross the path.
+
+"Can you help me?" asked the turtle.
+
+"Of course!" Bunny smiled.
+
+Bunny walked slowly beside the turtle until they reached the other side safely.
+
+Farther down the path, Bunny found a sparkling stream. He stopped to drink some cool water and watched bright butterflies dance above the flowers.
+
+Then Bunny heard a soft cry.
+
+"Oh no! My nest is too high," chirped a little bird.
+
+Bunny asked the monkey for help. The monkey climbed the tree and gently placed the little bird back into its nest.
+
+"Thank you!" the bird sang happily.
+
+As the sun began to set, golden light shined through the trees. Bunny walked home with a happy heart.
+
+He had discovered that every adventure becomes more special when we help others and enjoy nature.`;
+
+        const teluguStory = `ఒక ఎండగా ఉన్న ఉదయం, బన్నీ అనే చిన్న కుందేలు అడవిలోని ఒక అందమైన దారిని చూడాలని నిర్ణయించుకుంది. ఆ దారి పచ్చని ఆకులు, రంగురంగుల పూలు, ఆకాశాన్ని తాకే ఎత్తైన చెట్లతో నిండి ఉంది.
+
+బన్నీ దారిలో గెంతుతూ వెళ్తుండగా, చెట్లపై కూర్చున్న పక్షులు మధురంగా పాటలు పాడుతున్నాయి. ఒక చలాకీ కోతి చెట్టు నుండి చెట్టుకు ఊగుతూ బన్నీకి చేతి ఊపింది.
+
+కొంత దూరం వెళ్లాక, బన్నీకి దారిని దాటడానికి ప్రయత్నిస్తున్న ఒక చిన్న తాబేలు కనిపించింది.
+
+"నాకు సహాయం చేస్తావా?" అని తాబేలు అడిగింది.
+
+"తప్పకుండా!" అని బన్నీ చిరునవ్వుతో చెప్పింది.
+
+బన్నీ తాబేలుతో పాటు నెమ్మదిగా నడిచి, దానిని సురక్షితంగా దారి అవతలికి చేర్చింది.
+
+కొద్దిసేపటికి, బన్నీకి మెరిసే చిన్న వాగు కనిపించింది. చల్లని నీరు తాగి, పూలపై ఎగురుతున్న అందమైన సీతాకోకచిలుకలను ఆనందంగా చూసింది.
+
+అప్పుడే బన్నీకి ఒక చిన్న శబ్దం వినిపించింది.
+
+"అయ్యో! నా గూడు చాలా ఎత్తులో ఉంది!" అని ఒక చిన్న పక్షిపిల్ల ఏడుస్తూ చెప్పింది.
+
+బన్నీ వెంటనే కోతిని సహాయం కోరింది. కోతి చాకచక్యంగా చెట్టు ఎక్కి, పక్షిపిల్లను జాగ్రత్తగా దాని గూటిలో పెట్టింది.
+
+"ధన్యవాదాలు!" అని పక్షిపిల్ల సంతోషంగా కిచకిచలాడింది.
+
+సాయంత్రం కావడంతో, సూర్యుడి బంగారు కిరణాలు చెట్ల మధ్య నుంచి ప్రకాశించాయి. బన్నీ సంతోషంగా తన ఇంటి వైపు బయలుదేరింది.
+
+ఆ రోజు బన్నీ ఒక గొప్ప విషయం నేర్చుకుంది—ఇతరులకు సహాయం చేస్తూ ప్రకృతిని ప్రేమిస్తే ప్రతి ప్రయాణం ఆనందంగా మారుతుంది.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

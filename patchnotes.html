@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patch Notes</title>
+    <style>
+        :root {
+            --bg-color: #121214;
+            --card-bg: #1a1a1e;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --border: #27272a;
+            --add-color: #22c55e;
+            --fix-color: #eab308;
+            --remove-color: #ef4444;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+
+        .version-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .version-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .badge-added {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--add-color);
+        }
+
+        .badge-fixed {
+            background: rgba(234, 179, 8, 0.1);
+            color: var(--fix-color);
+        }
+
+        .badge-removed {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--remove-color);
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <main-header></main-header>
+    <!-- Version 1.1.0 -->
+    <div class="version-card">
+        <div class="header">
+            <h2 class="version-number">v1.1.0</h2>
+            <span class="date">July 12, 2026</span>
+        </div>
+
+        <div class="section-title">
+            <span class="badge badge-added">Added</span> New Features
+        </div>
+        <ul>
+            <li>Dark mode support toggles automatically based on system preferences.</li>
+            <li>Export functionality for user data profiles to JSON.</li>
+        </ul>
+
+        <div class="section-title">
+            <span class="badge badge-fixed">Fixed</span> Bug Fixes
+        </div>
+        <ul>
+            <li>Resolved a memory leak occurring on the dashboard analytics page.</li>
+            <li>Fixed broken password reset hyperlinks in invitation emails.</li>
+        </ul>
+    </div>
+
+    <!-- Version 1.0.0 -->
+    <div class="version-card">
+        <div class="header">
+            <h2 class="version-number">v1.0.0</h2>
+            <span class="date">July 12, 2026</span>
+        </div>
+
+        <div class="section-title">
+            <span class="badge badge-added">Added</span> Initial Release
+        </div>
+        <ul>
+            <li>Now We can create stories</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

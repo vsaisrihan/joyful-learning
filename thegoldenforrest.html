@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <!-- Updated tag to match the story theme -->
+                <div class="tag">Nature Adventure</div>
+
+                <!-- Updated image to a beautiful Golden Forest scenery -->
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200"
+                    alt="Sunlight streaming through a golden autumn forest">
+
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <!-- Updated title to match the content -->
+                    <h1 id="title">The Golden Forest</h1>
+
+                    <p id="story">
+                        Emma loved exploring the beautiful Golden Forest near her village.
+                        Every morning, the trees shone like gold in the warm sunlight.
+                        One day, Emma heard a tiny bird calling for help.
+                        She followed the sound and found a little bird with a hurt wing.
+                        Emma gently picked up the bird and cared for it.
+                        She gave it water and kept it safe under a big tree.
+                        Soon, the bird felt stronger and began to fly again.
+                        As a thank-you, the bird showed Emma a hidden path.
+                        The path led to a garden filled with colorful flowers.
+                        Butterflies danced happily around the bright blossoms.
+                        Emma smiled as she enjoyed the peaceful place.
+                        She picked up litter to keep the forest clean.
+                        The animals seemed happy to see her kindness.
+                        Before going home, Emma thanked the forest for its beauty.
+                        She promised to protect nature every day.
+                        The Golden Forest became her favorite place to visit.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` 
+Emma loved exploring the beautiful Golden Forest near her village.
+Every morning, the trees shone like gold in the warm sunlight.
+One day, Emma heard a tiny bird calling for help.
+She followed the sound and found a little bird with a hurt wing.
+Emma gently picked up the bird and cared for it.
+She gave it water and kept it safe under a big tree.
+Soon, the bird felt stronger and began to fly again.
+As a thank-you, the bird showed Emma a hidden path.
+The path led to a garden filled with colorful flowers.
+Butterflies danced happily around the bright blossoms.
+Emma smiled as she enjoyed the peaceful place.
+She picked up litter to keep the forest clean.
+The animals seemed happy to see her kindness.
+Before going home, Emma thanked the forest for its beauty.
+She promised to protect nature every day.
+The Golden Forest became her favorite place to visit.
+.`;
+
+        const teluguStory = `ఎమ్మా తన గ్రామం దగ్గర ఉన్న అందమైన బంగారు అడవిని ఎంతో ఇష్టపడేది.
+ప్రతి ఉదయం సూర్యకాంతిలో చెట్లు బంగారంలా మెరిసేవి.
+ఒక రోజు ఆమెకు ఒక చిన్న పక్షి సహాయం కోసం పిలుస్తున్న శబ్దం వినిపించింది.
+ఆ శబ్దం వైపు వెళ్లి చూస్తే, ఒక చిన్న పక్షి రెక్కకు గాయం అయింది.
+ఎమ్మా ఆ పక్షిని మెల్లగా ఎత్తుకొని ప్రేమగా చూసుకుంది.
+దానికి నీరు ఇచ్చి, పెద్ద చెట్టు నీడలో విశ్రాంతి తీసుకునేలా చేసింది.
+కొంతసేపటికి ఆ పక్షి మళ్లీ బలంగా మారి ఎగరసాగింది.
+కృతజ్ఞతగా ఆ పక్షి ఎమ్మాకు ఒక రహస్య దారిని చూపించింది.
+ఆ దారి రంగురంగుల పూలతో నిండిన అందమైన తోటకు తీసుకెళ్లింది.
+సీతాకోకచిలుకలు ఆనందంగా పూల చుట్టూ ఎగిరాయి.
+ఆ అందమైన ప్రదేశాన్ని చూసి ఎమ్మా ఎంతో సంతోషించింది.
+అడవి శుభ్రంగా ఉండాలని నేలపై ఉన్న చెత్తను ఏరి పారేసింది.
+జంతువులన్నీ ఆమె దయను చూసి ఆనందంగా కనిపించాయి.
+ఇంటికి వెళ్లే ముందు ఎమ్మా ఆ అడవికి కృతజ్ఞతలు తెలిపింది.
+ప్రకృతిని ఎప్పుడూ కాపాడుతానని ఆమె మాట ఇచ్చింది.
+ఆ బంగారు అడవి ఎమ్మాకు అత్యంత ఇష్టమైన ప్రదేశంగా మారింది.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

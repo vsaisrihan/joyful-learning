@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- LEFT IMAGE -->
+            <div class="story-image-card">
+
+                <div class="tag">Nature Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200" alt="The Blue River">
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Sunny Hill</h1>
+
+                    <p id="story">
+                        Sunny Hill was behind a small village, always bright and happy.
+                        A little boy named Arjun loved to visit it one sunny morning.
+                        The path was soft with grass and easy for his small feet.
+                        As he climbed, butterflies danced around him in the warm air.
+                        At the top, the hill was full of golden sunlight and gentle wind.
+                        A big old tree gave him shade where he sat and smiled.
+                        He felt peaceful, like the hill was giving him a hug.
+                        Birds sang sweet songs that made him feel brave and happy.
+                        Arjun thought Sunny Hill was a magical place made for fun.
+                        When he went back home, he promised to visit it again and again.
+                    </p>
+
+                </div>
+
+                <div class="button
+                   <button class=" read-btn" onclick="readStory()">🔊 Read Aloud</button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory =
+            "The river sparkled under the bright morning sun. Fish leaped joyfully from the clear blue water while colorful birds flew through the trees nearby. Lily followed the winding river, discovering smooth stones that shimmered like tiny jewels. She listened to the gentle sound of the flowing water and smiled as dragonflies danced above the river.";
+
+        const teluguStory =
+            "ఉదయపు ప్రకాశవంతమైన సూర్యకాంతిలో నది మెరిసింది. పారదర్శకమైన నీలి నీటిలో చేపలు ఆనందంగా ఎగిరాయి. రంగురంగుల పక్షులు చెట్ల మధ్య ఎగిరాయి. లిల్లీ నది ఒడ్డున నడుస్తూ మెరిసే చిన్న రాళ్లను కనుగొంది. ప్రవహించే నీటి మధురమైన శబ్దాన్ని వింటూ, నదిపై ఎగిరే తూనీగలను చూసి చిరునవ్వు చిందించింది.";
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+
+                story.textContent = teluguStory;
+                translated = true;
+
+            } else {
+
+                story.textContent = englishStory;
+                translated = false;
+
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

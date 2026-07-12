@@ -2,21 +2,743 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyful Learn</title>
 
     <link rel="stylesheet" href="style.css">
     <script src="components.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+    <style>
+        /* SEARCH BAR */
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .search-box input {
+            width: 60%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        /* STATS */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .stat-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            width: 150px;
+        }
+
+        .stat-box h2 {
+            margin: 0;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .stat-box p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+
+        /* ================= LOADER ================= */
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #4CAF50, #2E8B57, #00bcd4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity .7s ease, visibility .7s ease;
+        }
+
+        #loader.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+            animation: fadeUp 1s ease;
+        }
+
+        .loader-content h2 {
+            margin-top: 25px;
+            font-size: 38px;
+            letter-spacing: 2px;
+        }
+
+        .loader-content p {
+            margin-top: 10px;
+            opacity: .9;
+            font-size: 18px;
+        }
+
+        /* BOOK */
+
+        .book {
+            position: relative;
+            width: 90px;
+            height: 65px;
+            margin: auto;
+            transform-style: preserve-3d;
+        }
+
+        .page {
+            position: absolute;
+            width: 70px;
+            height: 50px;
+            left: 10px;
+            top: 8px;
+            background: white;
+            border-radius: 4px;
+            transform-origin: left;
+            animation: flip 1.2s infinite;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, .25);
+        }
+
+        .page:nth-child(2) {
+            animation-delay: .25s;
+        }
+
+        .page:nth-child(3) {
+            animation-delay: .5s;
+        }
+
+        @keyframes flip {
+
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            50% {
+                transform: rotateY(-180deg);
+            }
+
+            100% {
+                transform: rotateY(-180deg);
+            }
+
+        }
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* ===========================
+      JOYFUL LEARN LOADER
+=========================== */
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at top, #8be9fd 0%, transparent 45%),
+                radial-gradient(circle at bottom, #7ef9b8 0%, transparent 45%),
+                linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+        }
+
+        /* floating glow */
+
+        #loader::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            background: rgba(255, 255, 255, .08);
+
+            border-radius: 50%;
+
+            filter: blur(80px);
+
+            animation: float 6s infinite alternate ease-in-out;
+        }
+
+        .loader-container {
+
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        /* BOOK */
+
+        .book {
+
+            position: relative;
+
+            width: 180px;
+            height: 120px;
+
+            margin: auto;
+
+            perspective: 1200px;
+        }
+
+        /* Covers */
+
+        .cover {
+
+            position: absolute;
+
+            width: 90px;
+            height: 120px;
+
+            background: #ffb703;
+
+            border-radius: 8px;
+
+            top: 0;
+
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .3);
+        }
+
+        .left {
+
+            left: 0;
+
+            transform-origin: right;
+
+            animation: leftOpen 2.5s infinite ease-in-out;
+        }
+
+        .right {
+
+            right: 0;
+
+            transform-origin: left;
+
+            animation: rightOpen 2.5s infinite ease-in-out;
+        }
+
+        /* Pages */
+
+        .pages {
+
+            position: absolute;
+
+            left: 45px;
+
+            top: 8px;
+
+            width: 90px;
+
+            height: 104px;
+        }
+
+        .pages span {
+
+            position: absolute;
+
+            width: 90px;
+
+            height: 104px;
+
+            background: white;
+
+            border-radius: 4px;
+
+            transform-origin: left;
+
+            box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
+
+            animation: pageFlip 2.5s infinite;
+        }
+
+        .pages span:nth-child(1) {
+            animation-delay: .1s;
+        }
+
+        .pages span:nth-child(2) {
+            animation-delay: .25s;
+        }
+
+        .pages span:nth-child(3) {
+            animation-delay: .4s;
+        }
+
+        .pages span:nth-child(4) {
+            animation-delay: .55s;
+        }
+
+        .pages span:nth-child(5) {
+            animation-delay: .7s;
+        }
+
+        /* TEXT */
+
+        .loader-container h1 {
+
+            margin-top: 50px;
+
+            font-size: 42px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+        }
+
+        .loader-container p {
+
+            margin-top: 12px;
+
+            font-size: 18px;
+
+            opacity: .9;
+        }
+
+        /* BAR */
+
+        .loading-bar {
+
+            width: 260px;
+
+            height: 8px;
+
+            margin: 35px auto 0;
+
+            background: rgba(255, 255, 255, .2);
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .fill {
+
+            width: 0;
+
+            height: 100%;
+
+            border-radius: 30px;
+
+            background: linear-gradient(90deg, #00ff99, #00d4ff, #ffffff);
+
+            animation: loading 3s linear forwards;
+        }
+
+        /* Animations */
+
+        @keyframes leftOpen {
+
+            0%,
+            100% {
+
+                transform: rotateY(0deg);
+            }
+
+            50% {
+
+                transform: rotateY(-65deg);
+            }
+
+        }
+
+        @keyframes rightOpen {
+
+            0%,
+            100% {
+
+                transform: rotateY(0deg);
+            }
+
+            50% {
+
+                transform: rotateY(65deg);
+            }
+
+        }
+
+        @keyframes pageFlip {
+
+            0% {
+
+                transform: rotateY(0deg);
+            }
+
+            45% {
+
+                transform: rotateY(-170deg);
+            }
+
+            100% {
+
+                transform: rotateY(-170deg);
+            }
+
+        }
+
+        @keyframes loading {
+
+            from {
+
+                width: 0%;
+            }
+
+            to {
+
+                width: 100%;
+            }
+
+        }
+
+        @keyframes float {
+
+            from {
+
+                transform: translateY(-20px);
+            }
+
+            to {
+
+                transform: translateY(25px);
+            }
+
+        }
+
+        /* ==========================
+      STORY SEARCH BAR
+========================== */
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px auto;
+            width: 100%;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 750px;
+        }
+
+        .search-box::before {
+
+            content: "📖";
+
+            position: absolute;
+
+            left: 28px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 28px;
+
+            z-index: 5;
+
+            animation: bookFloat 2.5s ease-in-out infinite;
+        }
+
+        .search-box::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: -3px;
+
+            border-radius: 70px;
+
+            background: linear-gradient(90deg,
+                    #00d4ff,
+                    #4CAF50,
+                    #FFD93D,
+                    #FF6B6B,
+                    #00d4ff);
+
+            background-size: 400%;
+
+            animation: borderGlow 6s linear infinite;
+
+            filter: blur(15px);
+
+            opacity: .75;
+
+            z-index: -1;
+        }
+
+        .search-box input {
+
+            width: 100%;
+
+            height: 72px;
+
+            border: none;
+
+            outline: none;
+
+            border-radius: 70px;
+
+            padding-left: 75px;
+
+            padding-right: 30px;
+
+            font-size: 19px;
+
+            font-weight: 600;
+
+            color: #1e293b;
+
+            background: rgba(255, 255, 255, .88);
+
+            backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, .15),
+                inset 0 2px 8px rgba(255, 255, 255, .8);
+
+            transition: .45s;
+        }
+
+        .search-box input::placeholder {
+
+            color: #64748b;
+
+            font-weight: 500;
+
+            letter-spacing: .5px;
+        }
+
+        .search-box input:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 28px 70px rgba(76, 175, 80, .25),
+                inset 0 2px 8px rgba(255, 255, 255, .9);
+        }
+
+        .search-box input:focus {
+
+            background: white;
+
+            transform: scale(1.03);
+
+            box-shadow:
+                0 0 60px rgba(76, 175, 80, .35),
+                0 25px 70px rgba(0, 0, 0, .18);
+        }
+
+        /* Sparkles */
+
+        .search-box span {
+
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            animation: twinkle 2s infinite;
+        }
+
+        .search-box span:nth-child(2) {
+
+            top: 10px;
+            right: 60px;
+        }
+
+        .search-box span:nth-child(3) {
+
+            bottom: 14px;
+            right: 120px;
+
+            animation-delay: .8s;
+        }
+
+        .search-box span:nth-child(4) {
+
+            top: 18px;
+            left: 120px;
+
+            animation-delay: 1.3s;
+        }
+
+        /* Animations */
+
+        @keyframes borderGlow {
+
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 400%;
+            }
+        }
+
+        @keyframes bookFloat {
+
+            0%,
+            100% {
+                transform: translateY(-50%);
+            }
+
+            50% {
+                transform: translateY(-60%);
+            }
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: .2;
+                transform: scale(.5);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        @media(max-width:768px) {
+
+            .search-box {
+                width: 92%;
+            }
+
+            .search-box input {
+
+                height: 62px;
+
+                font-size: 17px;
+
+                padding-left: 65px;
+            }
+
+            .search-box::before {
+
+                font-size: 24px;
+
+                left: 22px;
+            }
+
+        }
+
+        /* ADD STORY BUTTON */
+        .add-story-btn {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            z-index: 100000;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .add-story-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+    </style>
+
 </head>
 
 <body>
 
     <main-header></main-header>
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="loader-container">
+
+            <div class="book">
+
+                <div class="cover left"></div>
+
+                <div class="pages">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="cover right"></div>
+
+            </div>
+
+            <h1>Joyful Learn</h1>
+
+            <p>Opening a world of stories...</p>
+
+            <div class="loading-bar">
+                <div class="fill"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- HERO -->
+
 
     <section class="hero">
 
         <div class="hero-text">
+
             <h1>Read, Learn & Explore</h1>
 
             <p>
@@ -27,85 +749,404 @@
             <button class="btn" onclick="startReading()">
                 Start Reading
             </button>
+            <a href="#" class="add-story-btn">Add a Story</a>
+
         </div>
 
         <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=1200" alt="Story">
 
     </section>
 
+    <h1>Scrol Down For Stories</h1>
+    <!-- STATS -->
+
+
     <h2 class="section-title">Featured Stories</h2>
 
+    <!-- SEARCH BAR -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Search stories..." onkeyup="searchStories()">
+    </div>
+
+    <!-- CARDS -->
     <div class="cards">
 
-        <!-- Story 1 -->
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=1200" alt="Whispering Forest">
-
+            <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=1200">
             <div class="card-content">
                 <h3>The Whispering Forest</h3>
                 <p>Join Ellie on a magical adventure.</p>
-
-                <button class="read-btn" onclick="window.location.href='thewhisperingforest.html'">
-                    Read Story
-                </button>
+                <p>3-4 Years</p>
+                <button onclick="Thewisperingforrest()" class="read-btn">Read Story</button>
             </div>
         </div>
 
-        <!-- Story 2 -->
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200" alt="Blue River">
-
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200">
             <div class="card-content">
                 <h3>The Blue River</h3>
                 <p>Discover mysteries beside the river.</p>
+                <p>4-5</p>
+                <button onclick="TheBlueRiver()" class="read-btn">Read Story</button>
+            </div>
+        </div>
 
-                <button class="read-btn" onclick="location.href='theblueriver.html'">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200">
+            <div class="card-content">
+                <h3>The Sunny Hill</h3>
+                <p>A happy day on the bright hill.</p>
+                <p>5-7</p>
+                <button onclick="theSunnyHill()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200">
+            <div class="card-content">
+                <h3>The Magic Lake</h3>
+                <p>A lake that sparkles at night.</p>
+                <p>5-7</p>
+                <button onclick="theMagicLake()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200">
+            <div class="card-content">
+                <h3>Desert Adventure</h3>
+                <p>A journey across golden sands.</p>
+                <p>6-8</p>
+                <button onclick="DessertAdventure()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 6 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&auto=format&fit=crop"
+                alt="The Golden Forest">
+
+            <div class="card-content">
+                <h3>The Golden Forest</h3>
+                <p>A forest glowing under golden sunlight.</p>
+                <p>5-7 Years</p>
+
+                <button onclick="goldenForest()" class="read-btn">
                     Read Story
                 </button>
             </div>
         </div>
 
-        <!-- Story 3 -->
+        <!-- STORY 7 -->
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200" alt="Mountain Journey">
+
+            <img src="https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?w=1200&auto=format&fit=crop"
+                alt="The Rainy Adventure">
 
             <div class="card-content">
-                <h3>Mountain Journey</h3>
-                <p>Adventure above the clouds.</p>
 
-                <button class="read-btn" onclick="location.href='mountainjourney.html'">
+                <h3>The Rainy Adventure</h3>
+
+                <p>Fun in the rainy streets.</p>
+
+                <p>4-6</p>
+
+                <button onclick="rainyAdventure()" class="read-btn">
                     Read Story
                 </button>
+
+            </div>
+
+        </div>
+
+        <!-- STORY 8 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200">
+            <div class="card-content">
+                <h3>The Desert Night</h3>
+                <p>Stars shining over the desert.</p>
+                <p>6-8</p>
+                <button onclick="desertNight()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 9 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=1200" alt="Clear River">
+            <div class="card-content">
+                <h3>The River Friends</h3>
+                <p>Animals playing near the river.</p>
+                <p>4-6</p>
+                <button onclick="riverFriends()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 10 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200">
+            <div class="card-content">
+                <h3>The Cloud Journey</h3>
+                <p>Flying above the clouds.</p>
+                <p>5-7</p>
+                <button onclick="cloudJourney()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 11 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200">
+            <div class="card-content">
+                <h3>The Beach Day</h3>
+                <p>Playing on sunny beaches.</p>
+                <p>3-5</p>
+                <button onclick="beachDay()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 12 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200">
+            <div class="card-content">
+                <h3>The Happy Hill</h3>
+                <p>A joyful hilltop picnic.</p>
+                <p>4-6</p>
+                <button onclick="happyHill()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 13 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200">
+            <div class="card-content">
+                <h3>The Magical Lake 2</h3>
+                <p>A hidden lake with secrets.</p>
+                <p>5-7</p>
+                <button onclick="magicLake2()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 14 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200">
+            <div class="card-content">
+                <h3>The Sand Castle</h3>
+                <p>Kids building castles on sand.</p>
+                <p>4-6</p>
+                <button onclick="sandCastle()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 15 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200" alt="Jungle Path">
+            <div class="card-content">
+                <h3>The Jungle Path</h3>
+                <p>Walking through wild nature.</p>
+                <p>5-7</p>
+                <button onclick="junglePath()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 16 -->
+        <div class="card">
+            <img id="storyImage" class="story-image"
+                src="https://images.unsplash.com/photo-1516431883659-655d41c09bf9?q=80&w=1200" alt="Snow Dream">
+            <div class="card-content">
+                <h3>The Snow Dream</h3>
+                <p>A magical snowy world.</p>
+                <p>6-8</p>
+                <button onclick="snowDream()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+        <!-- STORY 17 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200">
+            <div class="card-content">
+                <h3>The Flower Valley</h3>
+                <p>A valley full of flowers.</p>
+                <p>4-6</p>
+                <button onclick="flowerValley()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 18 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=1200">
+            <div class="card-content">
+                <h3>The Night Sky</h3>
+                <p>Stars and moon shining bright.</p>
+                <p>5-7</p>
+                <button onclick="nightSky()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 19 -->
+        <div class="card">
+            <img src="https://media.istockphoto.com/id/2270873795/photo/sorghum-bicolor-commonly-called-sorghum-and-also-known-as-great-millet-durra-jowar-jowar.webp?a=1&b=1&s=612x612&w=0&k=20&c=QJoiqATsHTkpzsi0BzVFOpW271jdrkHNZCOZf33iZow="
+                alt="">
+            <div class="card-content">
+                <h3>The Farm Day</h3>
+                <p>Life on a happy farm.</p>
+                <p>3-5</p>
+                <button onclick="farmDay()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 20 -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200">
+            <div class="card-content">
+                <h3>The Oasis Adventure</h3>
+                <p>A green oasis in the desert.</p>
+                <p>5-7</p>
+                <button onclick="oasisAdventure()" class="read-btn">Read Story</button>
+            </div>
+        </div>
+
+        <!-- STORY 21 -->
+        <div class="card">
+            <img src="https://plus.unsplash.com/premium_photo-1673037407203-f38b0b8b942a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8b2NlYW4lMjB3b3JsZHxlbnwwfHwwfHx8MA%3D%3D"
+                alt="">
+            <div class="card-content">
+                <h3>The Ocean World</h3>
+                <p>Underwater sea adventures.</p>
+                <p>6-8</p>
+                <button onclick="oceanWorld()" class="read-btn">Read Story</button>
             </div>
         </div>
 
     </div>
-
     <section class="stats">
 
-        <div class="stat">
-            <h2 id="stories">3</h2>
+        <div class="stat-box">
+            <h2>21</h2>
             <p>Stories</p>
         </div>
 
-        <div class="stat">
-            <h2 id="students">5000+</h2>
-            <p>Students</p>
+        <div class="stat-box">
+            <h2>5K+</h2>
+            <p>Readers</p>
         </div>
 
-        <div class="stat">
-            <h2 id="languages">15</h2>
+        <div class="stat-box">
+            <h2>2</h2>
             <p>Languages</p>
         </div>
 
-    </section>
+        <div class="stat-box">
+            <h2>100%</h2>
+            <p>Fun Learning</p>
+        </div>
 
+    </section>
+    <!-- FOOTER -->
     <main-footer></main-footer>
 
+    <!-- SCRIPT -->
     <script>
-        function startReading() {
-            window.location.href = "thewhisperingforest.html";
+
+        function searchStories() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                let title = card.querySelector("h3").innerText.toLowerCase();
+
+                if (title.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
         }
+
+        function startReading() {
+            window.scrollTo({
+                top: document.querySelector(".cards").offsetTop,
+                behavior: "smooth"
+            });
+        }
+
+        function DessertAdventure() {
+            window.location.href = "desertadventure.html"
+        }
+
+        function theMagicLake() {
+            window.location.href = "magiclake.html"
+        }
+
+        function theSunnyHill() {
+            window.location.href = "thesunnyhill.html"
+        }
+
+        function TheBlueRiver() {
+            window.location.href = "theblueriver.html"
+        }
+
+        function Thewisperingforrest() {
+            window.location.href = "thewhisperingforest.html"
+        }
+        function goldenForest() {
+            window.location.href = "thegoldenforrest.html"
+        }
+
+        function beachDay() {
+            window.location.href = "thebeachday.html"
+        }
+
+        function cloudJourney() {
+            window.location.href = "thecloudjourney.html"
+        }
+
+        function rainyAdventure() {
+            window.location.href = "rainydayfun.html"
+        }
+
+
+        function desertNight() {
+            window.location.href = "thedesertnight.html"
+        }
+
+        function junglePath() {
+            window.location.href = "thejunglepath.html"
+        }
+
+        function snowDream() {
+            window.location.href = "thesnowdream.html"
+        }
+
+
+        function sandCastle() {
+            window.location.href = "thesandcastle.html"
+        }
+
+        function oceanWorld() {
+            window.location.href = "theoceanworld.html"
+        }
+        function nightSky() {
+            window.location.href = "nightSky.html"
+        }
+
+        function riverFriends() {
+            window.location.href = "theriverfriends.html"
+        }
+        /* LOADER */
+
+        window.addEventListener("load", function () {
+
+            setTimeout(function () {
+
+                document.getElementById("loader").classList.add("hide");
+
+            }, 3000); // 3 seconds
+
+        });
+
+
+
+
+
+
     </script>
 
 </body>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">☁️ Cloud Journey</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=1200&q=80" alt="Cloud Journey">
+
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Cloud Journey</h1>
+
+                    <p id="story">
+                        Once upon a time, a little white cloud floated happily across the bright blue sky. It loved
+                        traveling with the gentle wind and seeing the beautiful forests, rivers, mountains, and villages
+                        below. As it moved across the sky, it collected tiny drops of water and slowly became bigger and
+                        heavier. One day, the cloud noticed that the fields were dry, the flowers were wilting, and the
+                        animals were looking for water. Feeling kind, the cloud decided to help. It gently poured rain
+                        over the land, bringing fresh water to the rivers and helping the plants grow again. The farmers
+                        were happy, the animals enjoyed the cool rain, and the flowers bloomed with bright colors. When
+                        the rain stopped, the sun came out and painted a beautiful rainbow across the sky. The little
+                        cloud became light again and continued its journey, feeling proud that it had helped so many
+                        living things.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = `Once upon a time, a little white cloud floated happily across the bright blue sky. It loved traveling with the gentle wind and seeing the beautiful forests, rivers, mountains, and villages below. As it moved across the sky, it collected tiny drops of water and slowly became bigger and heavier. One day, the cloud noticed that the fields were dry, the flowers were wilting, and the animals were looking for water. Feeling kind, the cloud decided to help. It gently poured rain over the land, bringing fresh water to the rivers and helping the plants grow again. The farmers were happy, the animals enjoyed the cool rain, and the flowers bloomed with bright colors. When the rain stopped, the sun came out and painted a beautiful rainbow across the sky. The little cloud became light again and continued its journey, feeling proud that it had helped so many living things.`;
+
+        const teluguStory = `ఒకప్పుడు, ఒక చిన్న తెల్లని మేఘం నీలిరంగు ఆకాశంలో ఆనందంగా తేలుతూ ఉండేది. అది మృదువైన గాలితో కలిసి అడవులు, నదులు, పర్వతాలు, గ్రామాలను చూస్తూ ప్రయాణించడం ఎంతో ఇష్టపడేది. ప్రయాణిస్తూ చిన్న చిన్న నీటి బిందువులను సేకరించి క్రమంగా పెద్దదిగా, బరువుగా మారింది. ఒక రోజు, పొలాలు ఎండిపోయి ఉండటం, పూలు వాడిపోవడం, జంతువులు నీటి కోసం వెతుకుతున్నట్లు అది గమనించింది. వారికి సహాయం చేయాలని నిర్ణయించుకున్న మేఘం మెల్లగా వర్షాన్ని కురిపించింది. ఆ వర్షంతో నదులు నీటితో నిండిపోయాయి, మొక్కలు మళ్లీ పచ్చగా మారాయి, రైతుల పంటలు బాగా పెరిగాయి, జంతువులు సంతోషించాయి, పూలు అందంగా వికసించాయి. వర్షం ఆగిన తర్వాత సూర్యుడు ప్రకాశించగా, ఆకాశంలో అందమైన ఇంద్రధనస్సు కనిపించింది. తన వల్ల ఎంతోమందికి మేలు జరిగిందని ఆనందపడుతూ ఆ చిన్న మేఘం తన తదుపరి ప్రయాణాన్ని కొనసాగించింది.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Beach Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1606459881381-2240e5f87bd4?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Sand Castel</h1>
+
+                    <p id="story">
+                        One sunny day, Mia went to the beach with her family.
+
+                        Mia found soft, golden sand.
+
+                        "I will build a big sand castle!" she said with a smile.
+
+                        She filled her bucket with wet sand.
+
+                        Pat! Pat! Pat!
+
+                        She turned the bucket upside down.
+
+                        Wow!
+
+                        A little sand tower appeared.
+
+                        Soon, Mia made more towers.
+
+                        She added a tiny door.
+
+                        She made little windows.
+
+                        She dug a small river around the castle.
+
+                        A friendly crab walked by.
+
+                        "Hello!" said the crab.
+
+                        A little seagull flew overhead.
+
+                        "Nice castle!" it chirped.
+
+                        Mia laughed happily.
+
+                        Then...
+
+                        A gentle wave came.
+
+                        Splash!
+
+                        The wave washed away one tiny tower.
+
+                        "Oh no!" said Mia.
+
+                        Dad smiled.
+
+                        "That's okay. We can build it again."
+
+                        Mia smiled too.
+
+                        She built an even bigger tower.
+
+                        This time, her whole family helped.
+
+                        Soon, the biggest sand castle on the beach was ready.
+
+                        Everyone clapped.
+
+                        Mia said,
+
+                        "Building together is the best part!"
+
+                        The sun began to set.
+
+                        Mia waved goodbye to the beach.
+
+                        "I'll build another sand castle next time!"
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` One sunny day, Mia went to the beach with her family.
+
+Mia found soft, golden sand.
+
+"I will build a big sand castle!" she said with a smile.
+
+She filled her bucket with wet sand.
+
+Pat! Pat! Pat!
+
+She turned the bucket upside down.
+
+Wow!
+
+A little sand tower appeared.
+
+Soon, Mia made more towers.
+
+She added a tiny door.
+
+She made little windows.
+
+She dug a small river around the castle.
+
+A friendly crab walked by.
+
+"Hello!" said the crab.
+
+A little seagull flew overhead.
+
+"Nice castle!" it chirped.
+
+Mia laughed happily.
+
+Then...
+
+A gentle wave came.
+
+Splash!
+
+The wave washed away one tiny tower.
+
+"Oh no!" said Mia.
+
+Dad smiled.
+
+"That's okay. We can build it again."
+
+Mia smiled too.
+
+She built an even bigger tower.
+
+This time, her whole family helped.
+
+Soon, the biggest sand castle on the beach was ready.
+
+Everyone clapped.
+
+Mia said,
+
+"Building together is the best part!"
+
+The sun began to set.
+
+Mia waved goodbye to the beach.
+
+"I'll build another sand castle next time!"`;
+
+        const teluguStory = `ఒక ఎండగా ఉన్న రోజున మీరా తన కుటుంబంతో కలిసి సముద్ర తీరానికి వెళ్లింది.
+
+మృదువైన బంగారు రంగు ఇసుకను చూసి మీరా చాలా సంతోషించింది.
+
+"నేను ఒక అందమైన ఇసుక కోట కడతాను!" అని చెప్పింది.
+
+ఆమె తన బకెట్‌లో తడి ఇసుకను నింపింది.
+
+టప్! టప్! టప్!
+
+బకెట్‌ను మెల్లగా తలకిందులుగా పెట్టింది.
+
+అబ్బా!
+
+ఒక చిన్న ఇసుక గోపురం తయారైంది.
+
+మీరా ఇంకొన్ని గోపురాలు కూడా కట్టింది.
+
+చిన్న తలుపు చేసింది.
+
+చిన్న కిటికీలు కూడా చేసింది.
+
+కోట చుట్టూ ఒక చిన్న కాలువ తవ్వింది.
+
+అప్పుడే ఒక చిన్న పీత అక్కడికి వచ్చింది.
+
+"హలో!" అని పీత పలికింది.
+
+ఒక చిన్న సముద్ర పక్షి పై నుంచి ఎగురుతూ వచ్చింది.
+
+"ఎంత అందమైన కోట!" అని కూత పెట్టింది.
+
+మీరా నవ్వింది.
+
+అంతలో...
+
+ఒక చిన్న అల వచ్చింది.
+
+చప్పాక్!
+
+ఆ అల ఒక చిన్న గోపురాన్ని కూల్చేసింది.
+
+"అయ్యో!" అని మీరా బాధపడింది.
+
+అప్పుడు నాన్న నవ్వుతూ,
+
+"పర్లేదు అమ్మా. మనం మళ్లీ కట్టుకుందాం!" అన్నారు.
+
+మీరా మళ్లీ నవ్వింది.
+
+ఈసారి అమ్మ, నాన్న అందరూ కలిసి కోట కట్టారు.
+
+కొద్దిసేపటికి సముద్ర తీరంలోనే అతి పెద్ద, అందమైన ఇసుక కోట సిద్ధమైంది.
+
+అందరూ చప్పట్లు కొట్టారు.
+
+మీరా సంతోషంగా చెప్పింది,
+
+"కలిసి చేస్తే ఇంకా బాగా ఉంటుంది!"
+
+సూర్యుడు అస్తమించడం ప్రారంభించాడు.
+
+మీరా సముద్రానికి చేతి ఊపి,
+
+"మళ్లీ వచ్చి ఇంకో ఇసుక కోట కడతాను!" అని చెప్పింది.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

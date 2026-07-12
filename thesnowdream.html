@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Snowy Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1516431883659-655d41c09bf9?q=80&w=1200" alt="Snow Dream">
+
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Snow Dream</h1>
+
+                    <p id="story">
+                        As the first snowflakes gently fell from the sky, a little girl named Emma looked outside her
+                        window with excitement. By morning, the whole village was covered in a soft blanket of sparkling
+                        white snow. Emma quickly put on her warm coat, colorful scarf, gloves, and boots before running
+                        outside to play. She built a cheerful snowman with a carrot nose, shiny black eyes, and a bright
+                        red hat. Soon, her friends joined her, and together they made snow angels, had friendly snowball
+                        fights, and laughed with joy. The tall pine trees stood proudly, their branches covered in fresh
+                        snow, making the forest look like a magical kingdom. Birds perched quietly on the snowy branches
+                        while rabbits left tiny footprints across the white ground. As evening arrived, soft snow
+                        continued to fall, covering everything in glittering white. Emma looked up at the sky and
+                        imagined that each snowflake carried a beautiful dream. She closed her eyes and wished that
+                        everyone could enjoy such a peaceful and happy winter day. The moon rose high above the snowy
+                        hills, making the snow sparkle like millions of tiny diamonds. Feeling warm and thankful, Emma
+                        returned home with rosy cheeks and a heart full of wonderful memories. That night, she fell
+                        asleep smiling, dreaming of another magical snowy adventure waiting for her the next morning.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` As the first snowflakes gently fell from the sky, a little girl named Emma looked outside her window with excitement. By morning, the whole village was covered in a soft blanket of sparkling white snow. Emma quickly put on her warm coat, colorful scarf, gloves, and boots before running outside to play. She built a cheerful snowman with a carrot nose, shiny black eyes, and a bright red hat. Soon, her friends joined her, and together they made snow angels, had friendly snowball fights, and laughed with joy. The tall pine trees stood proudly, their branches covered in fresh snow, making the forest look like a magical kingdom. Birds perched quietly on the snowy branches while rabbits left tiny footprints across the white ground. As evening arrived, soft snow continued to fall, covering everything in glittering white. Emma looked up at the sky and imagined that each snowflake carried a beautiful dream. She closed her eyes and wished that everyone could enjoy such a peaceful and happy winter day. The moon rose high above the snowy hills, making the snow sparkle like millions of tiny diamonds. Feeling warm and thankful, Emma returned home with rosy cheeks and a heart full of wonderful memories. That night, she fell asleep smiling, dreaming of another magical snowy adventure waiting for her the next morning.`;
+
+        const teluguStory = `ఆకాశం నుండి మొదటి మంచు రేకులు మెల్లగా కురవడం ప్రారంభించాయి. ఎమ్మా అనే చిన్నారి తన కిటికీ బయట చూసి ఎంతో ఆనందపడింది. మరుసటి ఉదయం లేచి చూసేసరికి, గ్రామమంతా తెల్లని మంచు దుప్పటితో కప్పబడి అద్భుతంగా కనిపించింది. ఎమ్మా వెంటనే తన వెచ్చని కోటు, రంగురంగుల స్కార్ఫ్, చేతి తొడుగులు, బూట్లు వేసుకుని బయటకు పరుగెత్తింది. ఆమె క్యారెట్ ముక్కు, నల్లని కళ్లూ, ఎర్రటి టోపీతో ఒక అందమైన మంచు మనిషిని తయారు చేసింది. కొద్దిసేపటికే ఆమె స్నేహితులు కూడా వచ్చి మంచు దేవదూతల ఆకారాలు చేశారు, సరదాగా మంచు బంతులు విసురుకుంటూ ఎంతో ఆనందంగా ఆడుకున్నారు. పొడవైన పైన్ చెట్లు మంచుతో కప్పబడి ఒక మాయా ప్రపంచంలా కనిపించాయి. చిన్న పక్షులు మంచు కొమ్మలపై ప్రశాంతంగా కూర్చుండగా, కుందేళ్లు మంచుపై తమ చిన్న చిన్న అడుగుల ముద్రలను వదిలాయి. సాయంత్రం అయ్యేసరికి మృదువైన మంచు ఇంకా కురుస్తూనే ఉండి, చుట్టూ ఉన్న ప్రతి వస్తువును తెల్లగా మెరిపించింది. ఎమ్మా ఆకాశం వైపు చూస్తూ ప్రతి మంచు రేకు ఒక అందమైన కలను తీసుకొస్తుందని ఊహించింది. ప్రపంచంలోని ప్రతి ఒక్కరూ ఇలాంటి అందమైన శీతాకాల రోజును ఆనందించాలని ఆమె మనస్ఫూర్తిగా కోరుకుంది. కొద్దిసేపటికి చంద్రుడు మంచుతో కప్పబడిన కొండలపై ప్రకాశించి, మంచు వజ్రాల్లా మెరుస్తూ కనిపించింది. ఆ అద్భుతమైన రోజు జ్ఞాపకాలను తన హృదయంలో నింపుకుని, ఎమ్మా సంతోషంగా ఇంటికి వెళ్లి నిద్రపోయింది. ఆ రాత్రి ఆమె మరో అందమైన మంచు సాహసం గురించి కలలు కంటూ చిరునవ్వుతో నిద్రలోకి జారుకుంది.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

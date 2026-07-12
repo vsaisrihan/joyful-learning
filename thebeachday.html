@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- LEFT IMAGE -->
+            <div class="story-image-card">
+
+                <div class="tag">Beach Day Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200" alt="Beach Day">
+
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">Beach Day Fun</h1>
+
+                    <p id="story">
+                        One sunny morning, Mia and her family went to the beach.
+                        The soft sand felt warm under her feet.
+                        She built a beautiful sandcastle with her little brother.
+                        They collected colorful seashells along the shore.
+                        The waves splashed gently as they laughed and played.
+                        Mia noticed some trash lying on the sand.
+                        She picked it up and put it in a nearby bin.
+                        Her brother helped her clean the beach too.
+                        Soon, other children joined them.
+                        The beach became clean and beautiful again.
+                        A family of seagulls landed happily near the water.
+                        Everyone enjoyed the fresh sea breeze.
+                        They watched the bright sun slowly set over the ocean.
+                        The sky turned orange, pink, and purple.
+                        Mia smiled because she had helped protect nature.
+                        She promised to always keep beaches clean.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = `
+One sunny morning, Mia and her family went to the beach.
+The soft sand felt warm under her feet.
+She built a beautiful sandcastle with her little brother.
+They collected colorful seashells along the shore.
+The waves splashed gently as they laughed and played.
+Mia noticed some trash lying on the sand.
+She picked it up and put it in a nearby bin.
+Her brother helped her clean the beach too.
+Soon, other children joined them.
+The beach became clean and beautiful again.
+A family of seagulls landed happily near the water.
+Everyone enjoyed the fresh sea breeze.
+They watched the bright sun slowly set over the ocean.
+The sky turned orange, pink, and purple.
+Mia smiled because she had helped protect nature.
+She promised to always keep beaches clean.
+`;
+
+        const teluguStory = `
+ఒక సన్నని ఎండల ఉదయం మియా మరియు ఆమె కుటుంబం బీచ్‌కు వెళ్లారు.
+మృదువైన ఇసుక ఆమె కాళ్లకు వెచ్చగా అనిపించింది.
+ఆమె తన తమ్ముడితో కలిసి అందమైన ఇసుక కోటను నిర్మించింది.
+వారు తీరంలో రంగురంగుల శంఖాలను సేకరించారు.
+అలలు మెల్లగా తాకుతుండగా వారు నవ్వుతూ ఆడుకున్నారు.
+మియా ఇసుకలో కొంత చెత్త పడిపోయి ఉండటాన్ని గమనించింది.
+ఆమె దాన్ని తీసి చెత్త బుట్టలో వేసింది.
+ఆమె తమ్ముడు కూడా ఆమెకు సహాయం చేశాడు.
+కొద్ది సేపటికి ఇతర పిల్లలు కూడా వారితో చేరారు.
+బీచ్ మళ్లీ శుభ్రంగా మరియు అందంగా మారింది.
+సముద్రం దగ్గర సీగల్స్ సంతోషంగా వచ్చి కూర్చున్నాయి.
+అందరూ చల్లని సముద్ర గాలిని ఆస్వాదించారు.
+సూర్యుడు నెమ్మదిగా సముద్రం వెనుకకు అస్తమించాడు.
+ఆకాశం నారింజ, గులాబీ మరియు ఊదా రంగుల్లో మెరిసింది.
+మియా ప్రకృతిని కాపాడినందుకు ఎంతో సంతోషించింది.
+ఆమె ఎప్పుడూ బీచ్‌లను శుభ్రంగా ఉంచుతానని వాగ్దానం చేసింది.
+`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speech.rate = 0.9;
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

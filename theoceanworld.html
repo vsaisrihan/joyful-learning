@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Ocean Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://plus.unsplash.com/premium_photo-1673037407203-f38b0b8b942a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8b2NlYW4lMjB3b3JsZHxlbnwwfHwwfHx8MA%3D%3D"
+                    alt="Jungle Path">
+
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Ocean World</h1>
+
+                    <p id="story">
+                        One bright morning, a little girl named Lily visited the ocean with her family. She looked at
+                        the sparkling blue water and smiled.
+
+                        "Wow! The ocean is so big!" Lily said.
+
+                        As she watched the waves, she imagined swimming under the sea. There she saw colorful fish
+                        swimming together, a friendly sea turtle gliding slowly, and a playful dolphin jumping high
+                        above the water.
+
+                        A tiny crab walked sideways on the sandy ocean floor.
+
+                        "Hello!" said the crab.
+
+                        "Hello!" Lily replied with a laugh.
+
+                        Soon, an octopus waved its eight arms, and a bright starfish rested quietly on a rock. Beautiful
+                        coral reefs were home to many sea animals.
+
+                        Lily remembered not to throw any trash into the ocean.
+
+                        "We must keep the ocean clean so the sea animals stay safe and happy," she said.
+
+                        As the sun began to set, the ocean sparkled like a blanket of diamonds.
+
+                        Lily waved goodbye to the ocean and said, "Thank you for the wonderful adventure! I'll visit
+                        again."
+
+                        She went home with happy memories and a promise to protect the ocean.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` One bright morning, a little girl named Lily visited the ocean with her family. She looked at the sparkling blue water and smiled.
+
+"Wow! The ocean is so big!" Lily said.
+
+As she watched the waves, she imagined swimming under the sea. There she saw colorful fish swimming together, a friendly sea turtle gliding slowly, and a playful dolphin jumping high above the water.
+
+A tiny crab walked sideways on the sandy ocean floor.
+
+"Hello!" said the crab.
+
+"Hello!" Lily replied with a laugh.
+
+Soon, an octopus waved its eight arms, and a bright starfish rested quietly on a rock. Beautiful coral reefs were home to many sea animals.
+
+Lily remembered not to throw any trash into the ocean.
+
+"We must keep the ocean clean so the sea animals stay safe and happy," she said.
+
+As the sun began to set, the ocean sparkled like a blanket of diamonds.
+
+Lily waved goodbye to the ocean and said, "Thank you for the wonderful adventure! I'll visit again."
+
+She went home with happy memories and a promise to protect the ocean.`;
+
+        const teluguStory = `ఒక ప్రకాశవంతమైన ఉదయం, లిల్లీ అనే చిన్నారి తన కుటుంబంతో కలిసి సముద్రం దగ్గరకు వెళ్లింది. నీలి రంగులో మెరిసే సముద్రాన్ని చూసి ఎంతో ఆనందించింది.
+
+"వావ్! సముద్రం ఎంత పెద్దగా ఉంది!" అని లిల్లీ ఆశ్చర్యంగా చెప్పింది.
+
+అలలను చూస్తూ ఉండగా, తాను సముద్రం లోపల ఈదుతున్నట్లు ఊహించింది. అక్కడ రంగురంగుల చేపలు గుంపులుగా ఈదుతున్నాయి. ఒక స్నేహపూర్వక సముద్ర తాబేలు నెమ్మదిగా ఈదుతూ కనిపించింది. ఒక చలాకీ డాల్ఫిన్ నీటిపైకి ఎగిరి అందంగా దూకింది.
+
+ఒక చిన్న పీత ఇసుకపై పక్కకు పక్కకు నడుస్తోంది.
+
+"హలో!" అని పీత పలికింది.
+
+"హలో!" అని లిల్లీ నవ్వుతూ చెప్పింది.
+
+కొద్దిసేపటికి, ఒక ఆక్టోపస్ తన ఎనిమిది చేతులను ఊపింది. దగ్గరలో ఒక అందమైన స్టార్‌ఫిష్ రాయి మీద ప్రశాంతంగా విశ్రాంతి తీసుకుంటోంది. రంగురంగుల పగడపు దిబ్బలు (కోరల్ రీఫ్స్) ఎన్నో సముద్ర జీవులకు అందమైన ఇల్లు.
+
+లిల్లీకి ఒక విషయం గుర్తుకు వచ్చింది.
+
+"సముద్రంలో చెత్త వేయకూడదు. సముద్రాన్ని శుభ్రంగా ఉంచితే సముద్ర జీవులు సురక్షితంగా, సంతోషంగా ఉంటాయి." అని చెప్పింది.
+
+సాయంత్రం అయ్యే సరికి, అస్తమిస్తున్న సూర్యుడి కిరణాలతో సముద్రం వజ్రాల్లా మెరిసింది.
+
+లిల్లీ సముద్రానికి చేతులు ఊపుతూ,
+
+"ఈ అందమైన ప్రయాణానికి ధన్యవాదాలు! నేను మళ్లీ వస్తాను." అని చెప్పింది.
+
+ఆమె ఆనందమైన జ్ఞాపకాలతో ఇంటికి తిరిగి వెళ్లింది. సముద్రాన్ని ఎప్పుడూ శుభ్రంగా ఉంచాలని మనసులో మాట ఇచ్చుకుంది.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Joyful Learn</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .contact-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            background: #f5f7ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        .btn {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+
+        .success {
+            margin-top: 15px;
+            color: green;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .contact-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #00c6ff, #0072ff, #00d4ff, #00ffcc);
+            background-size: 400% 400%;
+            animation: gradient 12s ease infinite;
+        }
+
+        @keyframes gradient {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+        body {
+            background: linear-gradient(-45deg, #00c6ff, #0072ff, #00d4ff, #00ffcc);
+            background-size: 400% 400%;
+            animation: gradient 12s ease infinite;
+        }
+
+        .contact-card {
+
+            backdrop-filter: blur(18px);
+
+            background: rgba(255, 255, 255, .15);
+
+            border: 1px solid rgba(255, 255, 255, .2);
+
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
+
+        }
+
+        .btn {
+
+            background: #4CAF50;
+
+            transition: .4s;
+
+        }
+
+        .btn:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 15px 40px #4CAF50;
+
+        }
+
+        input:focus,
+        textarea:focus {
+
+            border-color: #4CAF50;
+
+            box-shadow: 0 0 20px rgba(76, 175, 80, .5);
+
+        }
+
+        .contact-card {
+
+            animation: float 4s ease-in-out infinite;
+
+        }
+
+        @keyframes float {
+
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+
+        }
+    </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+    emailjs.init("YOUR_PUBLIC_KEY");
+
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const btn = document.querySelector(".btn");
+        btn.innerHTML = "Sending...";
+        btn.disabled = true;
+
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+
+            from_name: document.getElementById("name").value,
+
+            from_email: document.getElementById("email").value,
+
+            message: document.getElementById("message").value
+
+        })
+
+            .then(function () {
+
+                document.getElementById("success").innerHTML =
+                    "✅ Message sent successfully!";
+
+                document.getElementById("success").style.color = "green";
+
+                document.getElementById("contactForm").reset();
+
+                btn.innerHTML = "Send Message";
+                btn.disabled = false;
+
+            })
+
+            .catch(function (error) {
+
+                document.getElementById("success").innerHTML =
+                    "❌ Failed to send.";
+
+                document.getElementById("success").style.color = "red";
+
+                btn.innerHTML = "Send Message";
+                btn.disabled = false;
+
+            });
+
+        confetti({
+            particleCount: 200,
+            spread: 100
+        });
+
+    });
+</script>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="contact-container">
+
+        <h1>Contact Us 📩</h1>
+        <p>We would love to hear from you! Send us your message below.</p>
+
+        <div class="contact-card">
+
+            <!-- LEFT INFO -->
+            <div class="contact-info">
+                <h2>📚 Joyful Learn</h2>
+                <p>
+                    Learn stories, improve reading, and explore imagination with us.
+                    We are here to help students enjoy learning.
+                </p>
+
+                <p><strong>Email:</strong> support@joyfullearn.com</p>
+                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>Location:</strong> India</p>
+            </div>
+
+            <!-- FORM -->
+            <div>
+
+                <form id="contactForm">
+
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+
+                    <button class="btn" type="submit">Send Message</button>
+
+                    <div id="success" class="success"></div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !message) {
+                document.getElementById("success").textContent = "Please fill all fields!";
+                document.getElementById("success").style.color = "red";
+                return;
+            }
+
+            document.getElementById("success").textContent =
+                "Thank you " + name + "! Your message has been sent successfully.";
+
+            document.getElementById("success").style.color = "green";
+
+            document.getElementById("contactForm").reset();
+        });
+
+    </script>
+
+</body>
+
+</html>

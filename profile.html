@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season Infinity - Hyper Neon</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ================= GLOBAL ================= */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #05050a;
+            --neon-cyan: #00f0ff;
+            --neon-magenta: #ff007f;
+            --neon-purple: #a855f7;
+            --neon-yellow: #fffb00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 22px;
+            background: linear-gradient(90deg, #2563eb, #ff007f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* PROFILE BUTTON */
+        .profile {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #111;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .profile:hover {
+            transform: scale(1.1);
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            padding: 140px 10% 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+        }
+
+        /* ================= PROFILE MODAL ================= */
+        .profile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+        }
+
+        .profile-preview {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #00f0ff, #ff007f);
+        }
+
+        .profile-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        .profile-box button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .save-btn {
+            background: #00f0ff;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: #ff007f;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">⚡ Season Infinity</div>
+
+        <div class="profile" id="profileBtn" onclick="openProfile()">
+            <span id="profileInitial">A</span>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <h1>Hyper Neon Experience</h1>
+            <p>Customize your profile in glowing style</p>
+        </div>
+    </section>
+
+    <!-- PROFILE MODAL -->
+    <div class="profile-overlay" id="profileOverlay">
+
+        <div class="profile-box">
+
+            <h2>Customize Profile</h2>
+
+            <div class="profile-preview" id="preview">A</div>
+
+            <input type="text" id="username" placeholder="Enter Name">
+            <input type="color" id="colorPicker">
+
+            <button class="save-btn" onclick="saveProfile()">Save</button>
+            <button class="close-btn" onclick="closeProfile()">Close</button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        /* OPEN */
+        function openProfile() {
+            document.getElementById("profileOverlay").style.display = "flex";
+
+            let data = JSON.parse(localStorage.getItem("profile") || "{}");
+
+            if (data.name) document.getElementById("username").value = data.name;
+            if (data.color) document.getElementById("colorPicker").value = data.color;
+
+            updatePreview();
+        }
+
+        /* CLOSE */
+        function closeProfile() {
+            document.getElementById("profileOverlay").style.display = "none";
+        }
+
+        /* PREVIEW */
+        function updatePreview() {
+            let name = document.getElementById("username").value || "A";
+            let color = document.getElementById("colorPicker").value || "#00f0ff";
+
+            let preview = document.getElementById("preview");
+            preview.innerText = name.charAt(0).toUpperCase();
+            preview.style.background = color;
+        }
+
+        document.getElementById("username").addEventListener("input", updatePreview);
+        document.getElementById("colorPicker").addEventListener("input", updatePreview);
+
+        /* SAVE */
+        function saveProfile() {
+            let name = document.getElementById("username").value;
+            let color = document.getElementById("colorPicker").value;
+
+            localStorage.setItem("profile", JSON.stringify({ name, color }));
+
+            document.getElementById("profileInitial").innerText = name.charAt(0).toUpperCase();
+            document.getElementById("profileBtn").style.background = color;
+
+            closeProfile();
+        }
+
+        /* LOAD */
+        window.onload = function () {
+            let data = JSON.parse(localStorage.getItem("profile") || "{}");
+
+            if (data.name) {
+                document.getElementById("profileInitial").innerText = data.name.charAt(0).toUpperCase();
+            }
+
+            if (data.color) {
+                document.getElementById("profileBtn").style.background = data.color;
+            }
+        };
+
+    </script>
+
+</body>
+
+</html>

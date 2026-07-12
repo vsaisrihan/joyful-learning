@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Jungle Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200" alt="Jungle Path">
+
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Three River Friends</h1>
+
+                    <p id="story">
+                        In a beautiful jungle, a clear river flowed gently. Near the river lived three best
+                        friends—Ellie the Elephant, Benny the Bunny, and Monty the Monkey.
+
+                        Every morning, they met by the river to play, laugh, and enjoy the fresh air.
+
+                        One hot day, many animals came to the river because they were thirsty.
+
+                        Ellie filled her trunk with cool water and gently sprayed it on the smaller animals to help them
+                        cool down.
+
+                        Monty climbed a tall tree and picked sweet fruits for everyone to share.
+
+                        Benny happily gathered colorful flowers and showed his friends a lovely spot by the river.
+
+                        Just then, a little deer stood at the edge of the river. It was afraid to cross.
+
+                        "Don't worry," said Ellie. "We'll help you!"
+
+                        Ellie carefully guided the little deer through the shallow water. Monty showed the safest path
+                        from a tree, and Benny stayed beside the deer, cheering it on.
+
+                        Soon, the little deer reached the other side safely.
+
+                        "Thank you, my friends!" the deer said with a big smile.
+
+                        As the sun began to set, the three friends sat by the river and watched the golden sky together.
+
+                        They learned that helping one another makes friendship stronger and every day more joyful.
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` In a beautiful jungle, a clear river flowed gently. Near the river lived three best friends—Ellie the Elephant, Benny the Bunny, and Monty the Monkey.
+
+Every morning, they met by the river to play, laugh, and enjoy the fresh air.
+
+One hot day, many animals came to the river because they were thirsty.
+
+Ellie filled her trunk with cool water and gently sprayed it on the smaller animals to help them cool down.
+
+Monty climbed a tall tree and picked sweet fruits for everyone to share.
+
+Benny happily gathered colorful flowers and showed his friends a lovely spot by the river.
+
+Just then, a little deer stood at the edge of the river. It was afraid to cross.
+
+"Don't worry," said Ellie. "We'll help you!"
+
+Ellie carefully guided the little deer through the shallow water. Monty showed the safest path from a tree, and Benny stayed beside the deer, cheering it on.
+
+Soon, the little deer reached the other side safely.
+
+"Thank you, my friends!" the deer said with a big smile.
+
+As the sun began to set, the three friends sat by the river and watched the golden sky together.
+
+They learned that helping one another makes friendship stronger and every day more joyful.`;
+
+        const teluguStory = `ఒక అందమైన అడవిలో స్వచ్ఛమైన నది ప్రవహిస్తూ ఉండేది. ఆ నది ఒడ్డున ముగ్గురు మంచి స్నేహితులు ఉండేవారు—చిన్న ఏనుగు ఎల్లీ, కోతి మోను, కుందేలు బన్నీ.
+
+ప్రతి ఉదయం వారు నది దగ్గర కలుసుకుని కలిసి ఆడుకునేవారు.
+
+ఒక రోజు, ఎండ చాలా ఎక్కువగా ఉంది. జంతువులన్నీ దాహంతో నది దగ్గరకు వచ్చాయి.
+
+ఎల్లీ తన తొండంతో నీటిని తీసి చిన్న జంతువులపై చల్లింది. అందరూ చల్లగా, సంతోషంగా అనిపించింది.
+
+మోను చెట్లపైకి ఎక్కి తియ్యని పండ్లు కోసి తన స్నేహితులకు ఇచ్చింది.
+
+బన్నీ నది ఒడ్డున పెరిగిన అందమైన పూలను చూసి అందరినీ అక్కడికి తీసుకెళ్లింది.
+
+అప్పుడే ఒక చిన్న జింక నది దాటడానికి భయపడుతూ నిలబడి ఉంది.
+
+"భయపడకు, మేమున్నాం!" అని ముగ్గురు స్నేహితులు అన్నారు.
+
+ఎల్లీ నెమ్మదిగా జింకను నది దాటించింది. మోను దారి చూపింది. బన్నీ జింకతో పాటు నడుస్తూ ధైర్యం చెప్పింది.
+
+జింక సురక్షితంగా అవతలికి చేరింది.
+
+"ధన్యవాదాలు, నా స్నేహితులారా!" అని జింక ఆనందంగా చెప్పింది.
+
+సాయంత్రం అందరూ కలిసి నది ఒడ్డున కూర్చొని అందమైన సూర్యాస్తమయాన్ని చూశారు.
+
+ఆ రోజు వారు ఒక గొప్ప విషయం నేర్చుకున్నారు—మంచి స్నేహితులు ఎప్పుడూ ఒకరికొకరు సహాయం చేస్తారు.`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
