@@ -9,7 +9,6 @@ class MainHeader extends HTMLElement {
                 </a>
 
                 <div class="nav-links">
-                    <a href="patchnotes.html" class="nav-link">Patch Notes</a>
                     <a href="./index.html" class="nav-link">Home</a>
                     <a href="#stories" class="nav-link">Stories</a>
                     <a href="#" class="nav-link">Progress</a>
