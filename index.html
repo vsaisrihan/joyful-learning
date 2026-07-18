@@ -770,42 +770,100 @@
         }
 
         .hero {
+            position: relative;
+            overflow: hidden;
             min-height: auto;
             padding: clamp(52px, 8vw, 100px) clamp(20px, 7vw, 96px) clamp(36px, 6vw, 72px);
             gap: clamp(28px, 5vw, 64px);
             background:
-                radial-gradient(circle at 20% 18%, rgba(37, 99, 235, 0.12), transparent 32%),
-                radial-gradient(circle at 85% 18%, rgba(255, 107, 107, 0.12), transparent 30%),
-                linear-gradient(135deg, #ffffff 0%, #f4fbff 48%, #fffaf0 100%);
+                radial-gradient(circle at 16% 18%, rgba(37, 99, 235, 0.2), transparent 32%),
+                radial-gradient(circle at 70% 10%, rgba(255, 107, 107, 0.18), transparent 30%),
+                radial-gradient(circle at 88% 74%, rgba(20, 168, 107, 0.17), transparent 34%),
+                linear-gradient(135deg, #ffffff 0%, #eef7ff 46%, #fff6df 100%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 22px clamp(12px, 4vw, 56px);
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: min(44vw, 460px);
+            height: min(44vw, 460px);
+            left: -180px;
+            bottom: -230px;
+            background: conic-gradient(from 140deg, rgba(37, 99, 235, 0.18), rgba(20, 168, 107, 0.2), rgba(255, 107, 107, 0.16), rgba(37, 99, 235, 0.18));
+            filter: blur(10px);
+            border-radius: 50%;
+            opacity: 0.85;
+            pointer-events: none;
         }
 
         .hero-text {
+            position: relative;
+            z-index: 1;
             flex: 1 1 430px;
         }
 
         .hero-text h1 {
             max-width: 680px;
             color: var(--ink);
-            font-size: clamp(42px, 7vw, 82px);
-            line-height: 0.98;
+            font-size: clamp(48px, 7.4vw, 92px);
+            line-height: 0.95;
             letter-spacing: 0;
-            margin-bottom: 22px;
-            background: linear-gradient(120deg, var(--ink) 0%, var(--blue) 52%, var(--green) 100%);
+            margin-bottom: 24px;
+            background:
+                linear-gradient(115deg,
+                    #111827 0%,
+                    #2563eb 28%,
+                    #7c3aed 48%,
+                    #ff6b6b 68%,
+                    #14a86b 100%);
+            background-size: 170% 170%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: none;
-            filter: none;
+            animation: heroTitleGlow 7s ease-in-out infinite;
+            filter: drop-shadow(0 14px 26px rgba(37, 99, 235, 0.14));
+        }
+
+        .hero-text h1::selection,
+        .hero-text p::selection {
+            background: rgba(37, 99, 235, 0.18);
+            -webkit-text-fill-color: var(--ink);
         }
 
         .hero-text p {
+            position: relative;
             max-width: 610px;
-            color: var(--muted);
+            color: #46556b;
             font-size: clamp(18px, 2vw, 22px);
             line-height: 1.65;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
+            padding-left: 18px;
+            border-left: 4px solid;
+            border-image: linear-gradient(180deg, var(--blue), var(--green), var(--coral)) 1;
+        }
+
+        @keyframes heroTitleGlow {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .hero img {
+            position: relative;
+            z-index: 1;
             flex: 0 1 460px;
             width: min(42vw, 460px);
             aspect-ratio: 4 / 3;
@@ -1024,10 +1082,18 @@
             .hero-text p {
                 margin-left: auto;
                 margin-right: auto;
+                padding-left: 0;
+                border-left: 0;
             }
 
             .stats {
                 grid-template-columns: repeat(2, minmax(120px, 1fr));
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-text h1 {
+                animation: none;
             }
         }
 
