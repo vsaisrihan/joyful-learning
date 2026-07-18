@@ -37,6 +37,36 @@ class MainFooter extends HTMLElement {
 customElements.define('main-header', MainHeader);
 customElements.define('main-footer', MainFooter);
 
+function createAdSlot(type, label) {
+    const ad = document.createElement("aside");
+    ad.className = `ad-slot ad-slot-${type}`;
+    ad.setAttribute("aria-label", "Advertisement placeholder");
+    ad.innerHTML = `
+        <span>Advertisement</span>
+        <strong>${label}</strong>
+        <small>Ad placeholder</small>
+    `;
+    return ad;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const isHomePage = document.querySelector(".hero") && document.querySelector(".cards");
+    const isStoryPage = document.querySelector(".story-image-card") && document.querySelector(".story-card");
+
+    if (isHomePage && !document.querySelector(".ad-slot-home-top")) {
+        const hero = document.querySelector(".hero");
+        const cards = document.querySelector(".cards");
+
+        hero.insertAdjacentElement("afterend", createAdSlot("home-top", "Learning Partner Space"));
+        cards.insertAdjacentElement("afterend", createAdSlot("home-wide", "Featured Sponsor Space"));
+    }
+
+    if (isStoryPage && !document.querySelector(".ad-slot-story")) {
+        const content = document.querySelector(".content");
+        content.insertAdjacentElement("afterend", createAdSlot("story", "Story Sponsor Space"));
+    }
+});
+
 window.addEventListener("DOMContentLoaded", () => {
     const profileBtn = document.getElementById("profileBtn");
     const overlay = document.getElementById("profileOverlay");
