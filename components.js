@@ -37,21 +37,25 @@ class MainFooter extends HTMLElement {
 customElements.define('main-header', MainHeader);
 customElements.define('main-footer', MainFooter);
 
-const profileBtn = document.getElementById("profileBtn");
-const overlay = document.getElementById("profileOverlay");
-const closeBtn = document.getElementById("closeProfile");
-const avatar = document.getElementById("avatarPreview");
-const input = document.getElementById("profileName");
+window.addEventListener("DOMContentLoaded", () => {
+    const profileBtn = document.getElementById("profileBtn");
+    const overlay = document.getElementById("profileOverlay");
+    const closeBtn = document.getElementById("closeProfile");
 
-profileBtn.onclick = () => overlay.classList.add("active");
-
-closeBtn.onclick = () => overlay.classList.remove("active");
-
-overlay.onclick = (e) => {
-    if (e.target === overlay) {
-        overlay.classList.remove("active");
+    if (!profileBtn || !overlay || !closeBtn) {
+        return;
     }
-};
+
+    profileBtn.onclick = () => overlay.classList.add("active");
+
+    closeBtn.onclick = () => overlay.classList.remove("active");
+
+    overlay.onclick = (e) => {
+        if (e.target === overlay) {
+            overlay.classList.remove("active");
+        }
+    };
+});
 // Open form
 function openStoryForm() {
     document.getElementById("storyForm").style.display = "flex";
@@ -94,7 +98,11 @@ function saveStory() {
 
 // Add story card to page
 function addStoryToPage(story) {
-    const container = document.getElementById("storyContainer");
+    const container = document.getElementById("storyContainer") || document.querySelector(".cards");
+
+    if (!container) {
+        return;
+    }
 
     const card = document.createElement("div");
     card.className = "card";
