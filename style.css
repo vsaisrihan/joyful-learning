@@ -249,14 +249,27 @@ body {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    min-height: 52px;
+    gap: 12px;
     font-size: 35px;
     font-weight: 700;
     background: linear-gradient(90deg, #ff007f, #ff7f00, #ff00ff, #0077b6, #00b4d8, #ff007f);
     background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
     animation: rainbowShift 8s ease infinite;
+    text-decoration: none;
+}
+
+.logo img {
+    flex: 0 0 auto;
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+.logo span {
+    line-height: 1;
 }
 
 @keyframes rainbowShift {
@@ -270,6 +283,17 @@ body {
 
     100% {
         background-position: 0% 50%;
+    }
+}
+
+@keyframes logoFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(-2deg);
     }
 }
 

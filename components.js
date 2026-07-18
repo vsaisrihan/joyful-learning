@@ -4,7 +4,7 @@ class MainHeader extends HTMLElement {
         this.innerHTML = `
             <nav class="site-nav">
                 <a class="logo" href="index.html">
-                    <img src="./joyful.png" alt="Joyful Learn logo" />
+                    <img src="./i.png" alt="Joyful Learn logo" />
                     <span>Joyful Learn</span>
                 </a>
 
