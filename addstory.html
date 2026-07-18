@@ -1,0 +1,47 @@
+<html>
+
+<body>
+
+    <!-- ADD STORY BUTTON -->
+    <button class="add-story-btn" onclick="openStoryForm()">+ Add Story</button>
+
+    <!-- ADD STORY FORM -->
+    <div id="storyForm"
+        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:100001; justify-content:center; align-items:center;">
+        <div style="background:white; padding:25px; border-radius:15px; width:90%; max-width:500px;">
+            <h2>Add New Story</h2>
+
+            <input id="storyTitle" type="text" placeholder="Story Title"
+                style="width:100%; padding:10px; margin:8px 0;">
+
+            <input id="storyDesc" type="text" placeholder="Short Description"
+                style="width:100%; padding:10px; margin:8px 0;">
+
+            <input id="storyAge" type="text" placeholder="Age Group (Example: 5-7)"
+                style="width:100%; padding:10px; margin:8px 0;">
+
+            <input id="storyImageUrl" type="text" placeholder="Image URL"
+                style="width:100%; padding:10px; margin:8px 0;">
+
+            <input id="storyLink" type="text" placeholder="Story Page Link (example: myStory.html)"
+                style="width:100%; padding:10px; margin:8px 0;">
+
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button onclick="saveStory()"
+                    style="flex:1; padding:12px; background:#4CAF50; color:white; border:none; border-radius:8px;">Save
+                    Story</button>
+                <button onclick="closeStoryForm()"
+                    style="flex:1; padding:12px; background:#ccc; border:none; border-radius:8px;">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+
+</script>
+<style>
+
+</style>
+
+</html>
