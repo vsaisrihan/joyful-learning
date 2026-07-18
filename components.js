@@ -37,6 +37,34 @@ class MainFooter extends HTMLElement {
 customElements.define('main-header', MainHeader);
 customElements.define('main-footer', MainFooter);
 
+const GOOGLE_ANALYTICS_ID = "G-XXXXXXXXXX";
+
+function loadGoogleAnalytics() {
+    if (!GOOGLE_ANALYTICS_ID || GOOGLE_ANALYTICS_ID === "G-XXXXXXXXXX") {
+        return;
+    }
+
+    if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}"]`)) {
+        return;
+    }
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}`;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        window.dataLayer.push(arguments);
+    }
+
+    window.gtag = gtag;
+    gtag("js", new Date());
+    gtag("config", GOOGLE_ANALYTICS_ID);
+}
+
+loadGoogleAnalytics();
+
 function createAdSlot(type, label) {
     const ad = document.createElement("aside");
     ad.className = `ad-slot ad-slot-${type}`;
