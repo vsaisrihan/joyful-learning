@@ -11,7 +11,8 @@ body {
 
 nav {
     background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(2px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,6 +22,8 @@ nav {
     top: 0;
     z-index: 20;
     border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+    isolation: isolate;
 }
 
 .logo {
@@ -1418,5 +1421,281 @@ html {
 
     100% {
         background-position: 50% 0%;
+    }
+}
+
+/* ==========================================================================
+   STORY READER CONSISTENCY POLISH
+   ========================================================================== */
+body:has(.story-image-card) {
+    background:
+        radial-gradient(circle at 16% 18%, rgba(37, 99, 235, 0.16), transparent 32%),
+        radial-gradient(circle at 78% 12%, rgba(255, 107, 107, 0.12), transparent 30%),
+        radial-gradient(circle at 88% 76%, rgba(20, 168, 107, 0.13), transparent 34%),
+        linear-gradient(180deg, #f8fbff 0%, #ffffff 44%, #f6fbf8 100%);
+    color: #172033;
+}
+
+body:has(.story-image-card) .container {
+    width: min(1180px, calc(100% - 40px));
+    margin: clamp(28px, 5vw, 56px) auto clamp(44px, 7vw, 80px);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(23, 32, 51, 0.1);
+    box-shadow: 0 24px 54px rgba(31, 47, 76, 0.12);
+}
+
+body:has(.story-image-card) .container>.header {
+    padding: 18px clamp(20px, 3vw, 34px);
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom: 1px solid rgba(23, 32, 51, 0.09);
+}
+
+body:has(.story-image-card) .container>.header .logo {
+    min-height: auto;
+    color: #172033;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1;
+    letter-spacing: 0;
+}
+
+body:has(.story-image-card) .right {
+    color: #59677d;
+    font-weight: 700;
+}
+
+body:has(.story-image-card) .content {
+    grid-template-columns: minmax(320px, 0.95fr) minmax(340px, 1.05fr);
+    gap: clamp(22px, 4vw, 44px);
+    padding: clamp(20px, 4vw, 42px);
+    align-items: start;
+}
+
+body:has(.story-image-card) .story-image-card {
+    position: relative;
+    padding: 14px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(23, 32, 51, 0.1);
+    box-shadow: 0 18px 42px rgba(31, 47, 76, 0.12);
+    overflow: hidden;
+}
+
+body:has(.story-image-card) .story-image-card::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(23, 32, 51, 0.24), transparent 34%);
+    pointer-events: none;
+}
+
+body:has(.story-image-card) .tag {
+    top: 26px;
+    left: 26px;
+    z-index: 2;
+    max-width: calc(100% - 52px);
+    border-radius: 8px;
+    padding: 8px 12px;
+    background: rgba(23, 32, 51, 0.88);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    box-shadow: 0 12px 24px rgba(23, 32, 51, 0.18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+body:has(.story-image-card) .story-image {
+    height: clamp(380px, 54vw, 620px);
+    border-radius: 8px;
+    display: block;
+    filter: saturate(1.04) contrast(1.02);
+}
+
+body:has(.story-image-card) .story-card {
+    min-height: 340px;
+    border-radius: 8px;
+    padding: clamp(24px, 3vw, 36px);
+    background: #ffffff;
+    border: 1px solid rgba(23, 32, 51, 0.1);
+    box-shadow: 0 18px 42px rgba(31, 47, 76, 0.1);
+}
+
+body:has(.story-image-card) .story-card h1 {
+    margin-bottom: 18px;
+    color: #172033;
+    font-size: clamp(34px, 4.4vw, 52px);
+    line-height: 1.02;
+    letter-spacing: 0;
+    background: linear-gradient(115deg, #111827 0%, #2563eb 36%, #14a86b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body:has(.story-image-card) .story-card p {
+    color: #46556b;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.75;
+}
+
+body:has(.story-image-card) .progress {
+    min-height: 8px;
+    margin-bottom: 16px;
+    background: rgba(37, 99, 235, 0.12);
+}
+
+body:has(.story-image-card) .buttons,
+body:has(.story-image-card) .button {
+    display: flex;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+body:has(.story-image-card) .buttons .btn,
+body:has(.story-image-card) .button .btn {
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: none;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.18);
+}
+
+body:has(.story-image-card) .buttons .read-btn,
+body:has(.story-image-card) .button .read-btn {
+    background: linear-gradient(135deg, #2563eb, #14a86b);
+    color: #ffffff;
+}
+
+body:has(.story-image-card) .buttons .translate-btn,
+body:has(.story-image-card) .button .translate-btn {
+    background: #fff8e8;
+    color: #7c5615;
+    border: 1px solid rgba(245, 185, 66, 0.35);
+    box-shadow: none;
+}
+
+@media (max-width: 1000px) {
+    body:has(.story-image-card) .content {
+        grid-template-columns: 1fr;
+    }
+
+    body:has(.story-image-card) .story-image {
+        height: clamp(300px, 62vw, 460px);
+    }
+}
+
+@media (max-width: 640px) {
+    body:has(.story-image-card) .container {
+        width: min(440px, calc(100% - 28px));
+    }
+
+    body:has(.story-image-card) .container>.header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    body:has(.story-image-card) .right {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    body:has(.story-image-card) .buttons,
+    body:has(.story-image-card) .button {
+        flex-direction: column;
+    }
+
+    body:has(.story-image-card) .tag {
+        top: 22px;
+        left: 22px;
+        max-width: calc(100% - 44px);
+    }
+}
+
+/* ==========================================================================
+   HEADER WATER FLOW EFFECT
+   ========================================================================== */
+.site-nav {
+    position: sticky;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(240, 249, 255, 0.96)),
+        #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.site-nav::before,
+.site-nav::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.site-nav::before {
+    background:
+        radial-gradient(70px 18px at 12% 42%, rgba(255, 255, 255, 0.86), transparent 65%),
+        radial-gradient(96px 22px at 32% 56%, rgba(125, 211, 252, 0.36), transparent 70%),
+        radial-gradient(110px 24px at 64% 38%, rgba(20, 168, 107, 0.2), transparent 70%),
+        linear-gradient(100deg, transparent 0%, rgba(37, 99, 235, 0.12) 24%, rgba(255, 255, 255, 0.62) 42%, rgba(20, 168, 107, 0.12) 62%, transparent 100%);
+    background-size: 360px 100%, 460px 100%, 520px 100%, 640px 100%;
+    animation: headerWaterFlow 8s linear infinite;
+    opacity: 0.96;
+}
+
+.site-nav::after {
+    background:
+        repeating-linear-gradient(110deg,
+            rgba(255, 255, 255, 0) 0px,
+            rgba(255, 255, 255, 0) 18px,
+            rgba(37, 99, 235, 0.08) 20px,
+            rgba(255, 255, 255, 0.28) 23px,
+            rgba(255, 255, 255, 0) 30px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(219, 242, 255, 0.26));
+    mix-blend-mode: multiply;
+    background-size: 220px 100%, 100% 100%;
+    animation: headerRipple 5.5s linear infinite;
+    opacity: 0.62;
+}
+
+.site-nav .logo,
+.site-nav .nav-links {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes headerWaterFlow {
+    0% {
+        background-position: -360px 0, -460px 0, -520px 0, -640px 0;
+    }
+
+    100% {
+        background-position: 360px 0, 460px 0, 520px 0, 640px 0;
+    }
+}
+
+@keyframes headerRipple {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 220px 0, 0 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-nav::before,
+    .site-nav::after {
+        animation: none;
     }
 }

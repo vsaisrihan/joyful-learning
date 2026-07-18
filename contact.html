@@ -181,8 +181,372 @@
             }
 
         }
+
+        /* ================= INDEX-MATCHED CONTACT POLISH ================= */
+        :root {
+            --ink: #172033;
+            --muted: #59677d;
+            --paper: #ffffff;
+            --line: rgba(23, 32, 51, 0.1);
+            --blue: #2563eb;
+            --green: #14a86b;
+            --coral: #ff6b6b;
+            --gold: #f5b942;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 16% 18%, rgba(37, 99, 235, 0.18), transparent 32%),
+                radial-gradient(circle at 76% 12%, rgba(255, 107, 107, 0.14), transparent 30%),
+                radial-gradient(circle at 88% 76%, rgba(20, 168, 107, 0.14), transparent 34%),
+                linear-gradient(180deg, #f8fbff 0%, #ffffff 44%, #f6fbf8 100%);
+            color: var(--ink);
+            animation: none;
+            background-size: auto;
+        }
+
+        .site-nav {
+            padding: 12px clamp(18px, 5vw, 76px);
+            gap: 24px;
+            background: rgba(255, 255, 255, 0.86);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 14px 34px rgba(20, 32, 54, 0.08);
+        }
+
+        .logo {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            min-height: clamp(54px, 5.4vw, 68px);
+            gap: 12px;
+            color: var(--ink);
+            font-size: clamp(21px, 2.2vw, 30px);
+            font-weight: 900;
+            letter-spacing: 0;
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            animation: none;
+            line-height: 1;
+            isolation: isolate;
+        }
+
+        .logo::after {
+            content: "";
+            position: absolute;
+            inset: -7px -10px;
+            z-index: -1;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(20, 168, 107, 0.12), rgba(255, 107, 107, 0.1));
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.28s ease, transform 0.28s ease;
+        }
+
+        .logo:hover::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .logo span {
+            display: inline-block;
+            line-height: 1;
+            padding-bottom: 2px;
+            background: linear-gradient(110deg, var(--ink) 0%, var(--blue) 38%, var(--green) 64%, var(--coral) 100%);
+            background-size: 220% 220%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logoTextShimmer 6s ease-in-out infinite;
+        }
+
+        .logo img {
+            width: clamp(48px, 5vw, 62px);
+            height: clamp(48px, 5vw, 62px);
+            object-fit: contain;
+            border-radius: 8px;
+            background: #fff;
+            padding: 5px;
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.14);
+            animation: logoBounceGlow 4.8s ease-in-out infinite;
+            transform-origin: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .logo:hover img {
+            transform: translateY(-2px) rotate(-3deg) scale(1.04);
+            box-shadow: 0 14px 30px rgba(20, 168, 107, 0.2);
+        }
+
+        .nav-links {
+            gap: 6px;
+        }
+
+        .nav-links a {
+            border-radius: 8px;
+            color: #3b475a;
+            font-size: 15px;
+            padding: 9px 12px;
+        }
+
+        .nav-links a:hover {
+            background: #eef7ff;
+            color: var(--blue);
+        }
+
+        .nav-links .nav-cta {
+            background: linear-gradient(135deg, var(--blue), var(--green));
+            border-radius: 8px;
+            color: #fff;
+            box-shadow: 0 12px 24px rgba(20, 168, 107, 0.2);
+        }
+
+        .contact-container {
+            position: relative;
+            width: min(1120px, calc(100% - 40px));
+            max-width: none;
+            margin: 0 auto;
+            padding: clamp(48px, 7vw, 88px) 0 clamp(54px, 8vw, 96px);
+        }
+
+        .contact-container::before {
+            content: "";
+            position: absolute;
+            inset: 26px -16px auto;
+            height: 260px;
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        .contact-container>h1 {
+            max-width: 760px;
+            font-size: clamp(42px, 6.6vw, 78px);
+            line-height: 0.98;
+            letter-spacing: 0;
+            margin-bottom: 18px;
+            background: linear-gradient(115deg, #111827 0%, #2563eb 30%, #7c3aed 50%, #ff6b6b 70%, #14a86b 100%);
+            background-size: 170% 170%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: heroTitleGlow 7s ease-in-out infinite;
+            filter: drop-shadow(0 14px 26px rgba(37, 99, 235, 0.14));
+        }
+
+        .contact-container>p {
+            max-width: 650px;
+            color: #46556b;
+            font-size: clamp(18px, 2vw, 22px);
+            line-height: 1.65;
+            margin-bottom: 34px;
+            padding-left: 18px;
+            border-left: 4px solid;
+            border-image: linear-gradient(180deg, var(--blue), var(--green), var(--coral)) 1;
+        }
+
+        .contact-card {
+            display: grid;
+            grid-template-columns: minmax(260px, 0.85fr) minmax(320px, 1.15fr);
+            gap: 24px;
+            padding: clamp(18px, 3vw, 28px);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--line);
+            box-shadow: 0 22px 54px rgba(31, 47, 76, 0.12);
+            animation: none;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .contact-info {
+            border-radius: 8px;
+            padding: clamp(22px, 3vw, 32px);
+            background: #172033;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contact-info::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            right: -90px;
+            bottom: -100px;
+            background: conic-gradient(from 140deg, rgba(37, 99, 235, 0.42), rgba(20, 168, 107, 0.45), rgba(255, 107, 107, 0.34), rgba(37, 99, 235, 0.42));
+            border-radius: 50%;
+            filter: blur(6px);
+            opacity: 0.75;
+        }
+
+        .contact-info h2,
+        .contact-info p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 14px;
+            font-size: clamp(25px, 3vw, 34px);
+            line-height: 1.1;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.76);
+            margin-bottom: 16px;
+        }
+
+        .contact-info strong {
+            color: #fff;
+        }
+
+        form {
+            padding: clamp(8px, 1.6vw, 18px);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            color: var(--ink);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 13px 14px;
+            color: var(--ink);
+            background: #fff;
+            font-size: 16px;
+            transition: border-color 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+        }
+
+        .btn {
+            width: 100%;
+            border-radius: 8px;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, var(--blue), var(--green));
+            color: #fff;
+            font-weight: 800;
+            font-size: 16px;
+            box-shadow: 0 14px 30px rgba(37, 99, 235, 0.2);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--blue), var(--green));
+            transform: translateY(-2px);
+            box-shadow: 0 18px 36px rgba(20, 168, 107, 0.22);
+        }
+
+        .success {
+            min-height: 24px;
+            margin-top: 16px;
+            font-weight: 800;
+        }
+
+        footer {
+            background: #101827;
+        }
+
+        @keyframes logoTextShimmer {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes logoBounceGlow {
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-3px) rotate(2deg);
+            }
+        }
+
+        @keyframes heroTitleGlow {
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                width: min(440px, calc(100% - 28px));
+                padding-top: 38px;
+            }
+
+            .contact-container>p {
+                padding-left: 0;
+                border-left: 0;
+            }
+
+            .contact-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .site-nav {
+                padding: 12px 14px;
+            }
+
+            .logo {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                width: 100%;
+            }
+
+            .nav-links a {
+                text-align: center;
+                font-size: 13px;
+                padding: 8px 6px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .logo span,
+            .logo img,
+            .contact-container>h1 {
+                animation: none;
+            }
+        }
     </style>
 </head>
+<!--
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
@@ -240,27 +604,27 @@
     });
 </script>
 
+-->
 <body>
 
     <main-header></main-header>
 
     <div class="contact-container">
 
-        <h1>Contact Us 📩</h1>
+        <h1>Contact Us</h1>
         <p>We would love to hear from you! Send us your message below.</p>
 
         <div class="contact-card">
 
             <!-- LEFT INFO -->
             <div class="contact-info">
-                <h2>📚 Joyful Learn</h2>
+                <h2>Joyful Learn</h2>
                 <p>
                     Learn stories, improve reading, and explore imagination with us.
                     We are here to help students enjoy learning.
                 </p>
 
-                <p><strong>Email:</strong> support@joyfullearn.com</p>
-                <p><strong>Phone:</strong> +91 98765 43210</p>
+                <p><strong>Email:</strong> v.sai.srihan@gmail.com</p>
                 <p><strong>Location:</strong> India</p>
             </div>
 
