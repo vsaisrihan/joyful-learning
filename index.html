@@ -241,6 +241,40 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, .3);
         }
 
+        .cover::before {
+            content: "JL";
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .24);
+            border: 2px solid rgba(255, 255, 255, .45);
+            color: #5b2b00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 0;
+        }
+
+        .cover::after {
+            content: "";
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 26px;
+            height: 5px;
+            border-radius: 999px;
+            background: rgba(91, 43, 0, .22);
+            box-shadow:
+                0 12px 0 rgba(91, 43, 0, .16),
+                0 -12px 0 rgba(255, 255, 255, .2);
+        }
+
         .left {
 
             left: 0;
@@ -291,6 +325,59 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, .2);
 
             animation: pageFlip 2.5s infinite;
+        }
+
+        .pages span::before,
+        .pages span::after {
+            content: "";
+            position: absolute;
+            left: 14px;
+            right: 12px;
+            border-radius: 999px;
+            background: #c7d2fe;
+        }
+
+        .pages span::before {
+            top: 18px;
+            height: 6px;
+            box-shadow:
+                0 14px 0 #bfdbfe,
+                0 28px 0 #bbf7d0,
+                0 42px 0 #fecaca,
+                0 56px 0 #fde68a;
+        }
+
+        .pages span::after {
+            left: 58px;
+            top: 72px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #ffffff, #60a5fa 62%, #2563eb);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, .08);
+        }
+
+        .page-title {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+            right: 14px;
+            color: #172033;
+            font-size: 9px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: .4px;
+            text-transform: uppercase;
+        }
+
+        .page-word {
+            position: absolute;
+            left: 14px;
+            bottom: 11px;
+            color: #2563eb;
+            font-size: 10px;
+            font-weight: 900;
+            line-height: 1;
         }
 
         .pages span:nth-child(1) {
@@ -1223,11 +1310,26 @@
                 <div class="cover left"></div>
 
                 <div class="pages">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span>
+                        <em class="page-title">Story 1</em>
+                        <b class="page-word">Read</b>
+                    </span>
+                    <span>
+                        <em class="page-title">New Words</em>
+                        <b class="page-word">Learn</b>
+                    </span>
+                    <span>
+                        <em class="page-title">Magic Map</em>
+                        <b class="page-word">Explore</b>
+                    </span>
+                    <span>
+                        <em class="page-title">Voice On</em>
+                        <b class="page-word">Listen</b>
+                    </span>
+                    <span>
+                        <em class="page-title">Fun Quiz</em>
+                        <b class="page-word">Grow</b>
+                    </span>
                 </div>
 
                 <div class="cover right"></div>
@@ -1377,7 +1479,7 @@
             <div class="card-content">
                 <h3>The Desert Night</h3>
                 <p>Stars shining over the desert.</p>
-                <p>6-8</p>
+                <p>6-7</p>
                 <button onclick="desertNight()" class="read-btn">Read Story</button>
             </div>
         </div>
@@ -1467,7 +1569,7 @@
             <div class="card-content">
                 <h3>The Snow Dream</h3>
                 <p>A magical snowy world.</p>
-                <p>6-8</p>
+                <p>6-7</p>
                 <button onclick="snowDream()" class="read-btn">Read Story</button>
             </div>
         </div>

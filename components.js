@@ -77,6 +77,52 @@ function createAdSlot(type, label) {
     return ad;
 }
 
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll([
+        ".hero-text",
+        ".hero img",
+        ".section-title",
+        ".search-box",
+        ".card",
+        ".stat-box",
+        ".ad-slot",
+        ".story-image-card",
+        ".story-card",
+        ".buttons",
+        ".contact-container > h1",
+        ".contact-container > p",
+        ".contact-card"
+    ].join(", "));
+
+    if (!animatedElements.length) {
+        return;
+    }
+
+    animatedElements.forEach((element, index) => {
+        element.classList.add("scroll-reveal");
+        element.style.setProperty("--reveal-delay", `${Math.min(index % 8, 7) * 55}ms`);
+    });
+
+    if (!("IntersectionObserver" in window)) {
+        animatedElements.forEach(element => element.classList.add("is-visible"));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.14,
+        rootMargin: "0px 0px -70px 0px"
+    });
+
+    animatedElements.forEach(element => observer.observe(element));
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     const isHomePage = document.querySelector(".hero") && document.querySelector(".cards");
     const isStoryPage = document.querySelector(".story-image-card") && document.querySelector(".story-card");
@@ -184,5 +230,6 @@ function addStoryToPage(story) {
 window.addEventListener("DOMContentLoaded", function () {
     let stories = JSON.parse(localStorage.getItem("customStories")) || [];
     stories.forEach(addStoryToPage);
+    initScrollAnimations();
 });
 
