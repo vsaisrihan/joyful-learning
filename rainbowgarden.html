@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow Garden | Joyful Learn</title>
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main-header></main-header>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">Joyful Learn</div>
+            <div class="right">
+                <span>English</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="story-image-card">
+                <div class="tag">Garden Adventure</div>
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&auto=format&fit=crop"
+                    alt="Rainbow Garden">
+            </div>
+
+            <div>
+                <div class="story-card">
+                    <h1 id="title">Rainbow Garden</h1>
+                    <p id="story">
+                        Tara found a quiet garden behind her school where every flower had a different color.
+                        When the sun came out after the rain, the flowers opened one by one and made a bright rainbow path.
+                        Tara followed it carefully and found a tiny dry patch of soil.
+                        She shared water from her bottle, and the smallest seed began to grow.
+                        By evening, a new violet flower bloomed. Tara smiled because she learned that gardens grow best
+                        when everyone gives a little care.
+                    </p>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn read-btn" onclick="readStory()">Read Aloud</button>
+                    <button class="btn translate-btn" onclick="translateStory()">Translate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+        const englishStory = document.getElementById("story").textContent.trim();
+        const teluguStory = "తారా తన పాఠశాల వెనుక ఒక రంగురంగుల తోటను కనుగొంది. ఆమె చిన్న మొక్కకు నీళ్లు పోసింది. సాయంత్రానికి కొత్త పువ్వు వికసించింది. చిన్న సహాయం కూడా అందాన్ని పెంచుతుందని తారా తెలుసుకుంది.";
+        let translated = false;
+
+        function readStory() {
+            speechSynthesis.cancel();
+            const speech = new SpeechSynthesisUtterance(document.getElementById("story").textContent);
+            speech.lang = translated ? "te-IN" : "en-US";
+            speech.rate = 0.9;
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+            const story = document.getElementById("story");
+            story.textContent = translated ? englishStory : teluguStory;
+            translated = !translated;
+        }
+    </script>
+</body>
+
+</html>
