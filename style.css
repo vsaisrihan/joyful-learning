@@ -1691,3 +1691,151 @@ body:has(.story-image-card) .ad-slot-story {
     }
 }
 
+/* ==========================================================================
+   STORY SUBMISSION PAGE
+   ========================================================================== */
+.story-submit-page {
+    background:
+        radial-gradient(circle at 16% 18%, rgba(37, 99, 235, 0.18), transparent 32%),
+        radial-gradient(circle at 76% 12%, rgba(255, 107, 107, 0.14), transparent 30%),
+        radial-gradient(circle at 88% 76%, rgba(20, 168, 107, 0.14), transparent 34%),
+        linear-gradient(180deg, #f8fbff 0%, #ffffff 44%, #f6fbf8 100%);
+}
+
+.story-submit-page-wrap {
+    width: min(1040px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: clamp(48px, 7vw, 88px) 0 clamp(54px, 8vw, 96px);
+}
+
+.story-submit-hero {
+    max-width: 760px;
+    margin-bottom: 30px;
+}
+
+.story-submit-hero span {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.story-submit-hero h1 {
+    margin-bottom: 16px;
+    font-size: clamp(44px, 7vw, 78px);
+    line-height: 0.98;
+    background: linear-gradient(115deg, #111827 0%, #2563eb 30%, #7c3aed 50%, #ff6b6b 70%, #14a86b 100%);
+    background-size: 170% 170%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.story-submit-hero p {
+    max-width: 690px;
+    color: #46556b;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.65;
+    padding-left: 18px;
+    border-left: 4px solid;
+    border-image: linear-gradient(180deg, #2563eb, #14a86b, #ff6b6b) 1;
+}
+
+.story-submit-panel {
+    border-radius: 8px;
+    background:
+        radial-gradient(circle at 18% 12%, rgba(37, 99, 235, 0.12), transparent 34%),
+        radial-gradient(circle at 88% 18%, rgba(20, 168, 107, 0.12), transparent 32%),
+        #ffffff;
+    border: 1px solid rgba(23, 32, 51, 0.1);
+    box-shadow: 0 24px 54px rgba(31, 47, 76, 0.12);
+    padding: clamp(22px, 4vw, 34px);
+}
+
+.story-submit-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.story-submit-form .form-group {
+    margin: 0;
+}
+
+.story-submit-form .form-group-full {
+    grid-column: 1 / -1;
+}
+
+.story-submit-form label {
+    display: block;
+    margin-bottom: 7px;
+    color: #172033;
+    font-weight: 800;
+}
+
+.story-submit-form input,
+.story-submit-form textarea {
+    width: 100%;
+    border: 1px solid rgba(23, 32, 51, 0.12);
+    border-radius: 8px;
+    padding: 12px 13px;
+    color: #172033;
+    background: rgba(255, 255, 255, 0.94);
+    font-size: 16px;
+    outline: none;
+}
+
+.story-submit-form textarea {
+    min-height: 170px;
+    resize: vertical;
+}
+
+.story-submit-form input:focus,
+.story-submit-form textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.story-submit-button {
+    grid-column: 1 / -1;
+    border: 0;
+    border-radius: 8px;
+    padding: 15px 18px;
+    background: linear-gradient(135deg, #2563eb, #14a86b);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.2);
+}
+
+.story-submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(20, 168, 107, 0.22);
+}
+
+.story-submit-status {
+    grid-column: 1 / -1;
+    min-height: 22px;
+    color: #14a86b;
+    font-weight: 800;
+}
+
+@media (max-width: 680px) {
+    .story-submit-page-wrap {
+        width: min(440px, calc(100% - 28px));
+        padding-top: 38px;
+    }
+
+    .story-submit-hero p {
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .story-submit-form {
+        grid-template-columns: 1fr;
+    }
+}
+

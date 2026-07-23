@@ -77,6 +77,43 @@ function createAdSlot(type, label) {
     return ad;
 }
 
+const STORY_SUBMISSION_EMAIL = "v.sai.srihan@gmail.com";
+
+function submitStoryByEmail(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const status = document.getElementById("storySubmitStatus");
+
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    const data = new FormData(form);
+    const title = data.get("storyTitle").trim();
+    const body = [
+        "New Joyful Learn Story Submission",
+        "",
+        `Submitted by: ${data.get("submitterName").trim()}`,
+        `Email: ${data.get("submitterEmail").trim()}`,
+        "",
+        `Story title: ${title}`,
+        `Description: ${data.get("storyDescription").trim()}`,
+        `Thumbnail: ${data.get("storyThumbnail").trim() || "Not provided"}`,
+        `Age group: ${data.get("storyAge").trim() || "Not provided"}`,
+        "",
+        "Full story:",
+        data.get("storyText").trim()
+    ].join("\n");
+
+    const subject = `Story Submission: ${title}`;
+    const mailto = `mailto:${STORY_SUBMISSION_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
+    status.textContent = "Your email app is opening with the story details ready to send.";
+}
+
 window.addEventListener("DOMContentLoaded", () => {
     const isHomePage = document.querySelector(".hero") && document.querySelector(".cards");
     const isStoryPage = document.querySelector(".story-image-card") && document.querySelector(".story-card");
@@ -92,6 +129,12 @@ window.addEventListener("DOMContentLoaded", () => {
     if (isStoryPage && !document.querySelector(".ad-slot-story")) {
         const content = document.querySelector(".content");
         content.insertAdjacentElement("afterend", createAdSlot("story", "Story Sponsor Space"));
+    }
+
+    const storySubmissionForm = document.getElementById("storySubmissionForm");
+
+    if (storySubmissionForm) {
+        storySubmissionForm.addEventListener("submit", submitStoryByEmail);
     }
 });
 
@@ -114,46 +157,6 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     };
 });
-// Open form
-function openStoryForm() {
-    document.getElementById("storyForm").style.display = "flex";
-}
-
-// Close form
-function closeStoryForm() {
-    document.getElementById("storyForm").style.display = "none";
-}
-
-// Save story
-function saveStory() {
-    const title = document.getElementById("storyTitle").value;
-    const desc = document.getElementById("storyDesc").value;
-    const age = document.getElementById("storyAge").value;
-    const image = document.getElementById("storyImageUrl").value;
-    const link = document.getElementById("storyLink").value;
-
-    if (!title || !desc || !age || !image || !link) {
-        alert("Please fill all fields");
-        return;
-    }
-
-    const story = { title, desc, age, image, link };
-
-    let stories = JSON.parse(localStorage.getItem("customStories")) || [];
-    stories.push(story);
-    localStorage.setItem("customStories", JSON.stringify(stories));
-
-    addStoryToPage(story);
-    closeStoryForm();
-
-    // Clear form
-    document.getElementById("storyTitle").value = "";
-    document.getElementById("storyDesc").value = "";
-    document.getElementById("storyAge").value = "";
-    document.getElementById("storyImageUrl").value = "";
-    document.getElementById("storyLink").value = "";
-}
-
 // Add story card to page
 function addStoryToPage(story) {
     const container = document.getElementById("storyContainer") || document.querySelector(".cards");

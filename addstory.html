@@ -1,47 +1,71 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Story | Joyful Learn</title>
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <!-- ADD STORY BUTTON -->
-    <button class="add-story-btn" onclick="openStoryForm()">+ Add Story</button>
+<body class="story-submit-page">
+    <main-header></main-header>
 
-    <!-- ADD STORY FORM -->
-    <div id="storyForm"
-        style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:100001; justify-content:center; align-items:center;">
-        <div style="background:white; padding:25px; border-radius:15px; width:90%; max-width:500px;">
-            <h2>Add New Story</h2>
+    <main class="story-submit-page-wrap">
+        <section class="story-submit-hero">
+            <span>Share Your Story</span>
+            <h1>Add a Story</h1>
+            <p>
+                Submit your story idea with a title, description, thumbnail, and full story text.
+                When you press submit, your email app will open with everything ready to send.
+            </p>
+        </section>
 
-            <input id="storyTitle" type="text" placeholder="Story Title"
-                style="width:100%; padding:10px; margin:8px 0;">
+        <section class="story-submit-panel">
+            <form id="storySubmissionForm" class="story-submit-form">
+                <div class="form-group">
+                    <label for="submitterName">Your Name</label>
+                    <input id="submitterName" name="submitterName" type="text" placeholder="Your name" required>
+                </div>
 
-            <input id="storyDesc" type="text" placeholder="Short Description"
-                style="width:100%; padding:10px; margin:8px 0;">
+                <div class="form-group">
+                    <label for="submitterEmail">Your Email</label>
+                    <input id="submitterEmail" name="submitterEmail" type="email" placeholder="you@example.com" required>
+                </div>
 
-            <input id="storyAge" type="text" placeholder="Age Group (Example: 5-7)"
-                style="width:100%; padding:10px; margin:8px 0;">
+                <div class="form-group">
+                    <label for="submittedStoryTitle">Story Title</label>
+                    <input id="submittedStoryTitle" name="storyTitle" type="text" placeholder="The Magical Mango Tree" required>
+                </div>
 
-            <input id="storyImageUrl" type="text" placeholder="Image URL"
-                style="width:100%; padding:10px; margin:8px 0;">
+                <div class="form-group">
+                    <label for="submittedStoryDescription">Short Description</label>
+                    <input id="submittedStoryDescription" name="storyDescription" type="text" placeholder="A short, exciting summary" required>
+                </div>
 
-            <input id="storyLink" type="text" placeholder="Story Page Link (example: myStory.html)"
-                style="width:100%; padding:10px; margin:8px 0;">
+                <div class="form-group">
+                    <label for="submittedStoryThumbnail">Thumbnail Image URL</label>
+                    <input id="submittedStoryThumbnail" name="storyThumbnail" type="url" placeholder="https://example.com/story-image.jpg">
+                </div>
 
-            <div style="display:flex; gap:10px; margin-top:15px;">
-                <button onclick="saveStory()"
-                    style="flex:1; padding:12px; background:#4CAF50; color:white; border:none; border-radius:8px;">Save
-                    Story</button>
-                <button onclick="closeStoryForm()"
-                    style="flex:1; padding:12px; background:#ccc; border:none; border-radius:8px;">Cancel</button>
-            </div>
-        </div>
-    </div>
+                <div class="form-group">
+                    <label for="submittedStoryAge">Age Group</label>
+                    <input id="submittedStoryAge" name="storyAge" type="text" placeholder="5-7 Years">
+                </div>
+
+                <div class="form-group form-group-full">
+                    <label for="submittedStoryText">Full Story</label>
+                    <textarea id="submittedStoryText" name="storyText" placeholder="Write or paste the full story here..." required></textarea>
+                </div>
+
+                <button class="story-submit-button" type="submit">Submit Story by Email</button>
+                <p id="storySubmitStatus" class="story-submit-status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <main-footer></main-footer>
 </body>
-
-<script>
-
-</script>
-<style>
-
-</style>
 
 </html>
