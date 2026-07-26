@@ -1839,3 +1839,99 @@ body:has(.story-image-card) .ad-slot-story {
     }
 }
 
+/* ==========================================================================
+   STORY FAVORITES
+   ========================================================================== */
+.favorites-toolbar {
+    width: min(720px, 92%);
+    margin: -24px auto 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.favorites-toolbar button {
+    border: 0;
+    border-radius: 8px;
+    padding: 11px 16px;
+    background: #172033;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 12px 24px rgba(23, 32, 51, 0.16);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.favorites-toolbar button:hover,
+.favorites-toolbar button.active {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #2563eb, #14a86b);
+    box-shadow: 0 16px 28px rgba(37, 99, 235, 0.2);
+}
+
+.favorites-toolbar span {
+    color: #59677d;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 6;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #172033;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(23, 32, 51, 0.15);
+    transition: transform 0.22s ease, background 0.22s ease, color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.favorite-btn:hover,
+.card.is-favorite .favorite-btn {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #ff6b6b, #f5b942);
+    color: #172033;
+    box-shadow: 0 14px 24px rgba(255, 107, 107, 0.22);
+}
+
+.card.is-favorite {
+    border-color: rgba(255, 107, 107, 0.32);
+}
+
+.favorites-empty {
+    display: none;
+    width: min(720px, calc(100% - 40px));
+    margin: -34px auto 46px;
+    border-radius: 8px;
+    padding: 18px;
+    background: #fff8e8;
+    color: #7c5615;
+    text-align: center;
+    font-weight: 900;
+    border: 1px solid rgba(245, 185, 66, 0.35);
+}
+
+.favorites-empty.active {
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .favorites-toolbar {
+        margin-top: -18px;
+    }
+
+    .favorite-btn {
+        top: 10px;
+        right: 10px;
+    }
+}
+

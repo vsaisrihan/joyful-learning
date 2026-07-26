@@ -78,6 +78,152 @@ function createAdSlot(type, label) {
 }
 
 const STORY_SUBMISSION_EMAIL = "v.sai.srihan@gmail.com";
+const FAVORITE_STORIES_KEY = "favoriteStories";
+
+let showingFavoriteStories = false;
+
+function getFavoriteStories() {
+    return JSON.parse(localStorage.getItem(FAVORITE_STORIES_KEY)) || [];
+}
+
+function saveFavoriteStories(favorites) {
+    localStorage.setItem(FAVORITE_STORIES_KEY, JSON.stringify(favorites));
+}
+
+function getStoryIdFromCard(card) {
+    const title = card.querySelector("h3")?.textContent || "";
+    return title.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+function decorateStoryCard(card) {
+    if (!card || card.querySelector(".favorite-btn")) {
+        return;
+    }
+
+    const storyId = getStoryIdFromCard(card);
+
+    if (!storyId) {
+        return;
+    }
+
+    card.dataset.storyId = storyId;
+
+    const button = document.createElement("button");
+    button.className = "favorite-btn";
+    button.type = "button";
+    button.setAttribute("aria-label", "Add story to favorites");
+    button.textContent = "Favorite";
+
+    button.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleFavoriteStory(storyId);
+    });
+
+    card.appendChild(button);
+}
+
+function updateFavoriteControls() {
+    const favorites = getFavoriteStories();
+    const favoriteCount = document.getElementById("favoriteCount");
+    const favoriteToggle = document.getElementById("favoriteToggle");
+
+    document.querySelectorAll(".cards .card").forEach(card => {
+        const storyId = card.dataset.storyId || getStoryIdFromCard(card);
+        const isFavorite = favorites.includes(storyId);
+        const button = card.querySelector(".favorite-btn");
+
+        card.classList.toggle("is-favorite", isFavorite);
+
+        if (button) {
+            button.textContent = isFavorite ? "Saved" : "Favorite";
+            button.setAttribute("aria-label", isFavorite ? "Remove story from favorites" : "Add story to favorites");
+        }
+    });
+
+    if (favoriteCount) {
+        favoriteCount.textContent = favorites.length;
+    }
+
+    if (favoriteToggle) {
+        favoriteToggle.classList.toggle("active", showingFavoriteStories);
+        favoriteToggle.textContent = showingFavoriteStories ? "Show All Stories" : "Show Favorites";
+    }
+}
+
+function toggleFavoriteStory(storyId) {
+    const favorites = getFavoriteStories();
+    const nextFavorites = favorites.includes(storyId)
+        ? favorites.filter(id => id !== storyId)
+        : [...favorites, storyId];
+
+    saveFavoriteStories(nextFavorites);
+    updateFavoriteControls();
+    applyStoryFilters();
+}
+
+function applyStoryFilters() {
+    const searchInput = document.getElementById("searchInput");
+    const searchTerm = searchInput ? searchInput.value.trim().toLowerCase() : "";
+    const favorites = getFavoriteStories();
+    let visibleCount = 0;
+
+    document.querySelectorAll(".cards .card").forEach(card => {
+        const title = card.querySelector("h3")?.textContent.toLowerCase() || "";
+        const storyId = card.dataset.storyId || getStoryIdFromCard(card);
+        const matchesSearch = title.includes(searchTerm);
+        const matchesFavorite = !showingFavoriteStories || favorites.includes(storyId);
+        const isVisible = matchesSearch && matchesFavorite;
+
+        card.style.display = isVisible ? "" : "none";
+
+        if (isVisible) {
+            visibleCount++;
+        }
+    });
+
+    const emptyState = document.getElementById("favoritesEmptyState");
+
+    if (emptyState) {
+        emptyState.classList.toggle("active", visibleCount === 0);
+    }
+}
+
+function initFavorites() {
+    const cardsContainer = document.querySelector(".cards");
+    const searchBox = document.querySelector(".search-box");
+
+    if (!cardsContainer || !searchBox) {
+        return;
+    }
+
+    if (!document.querySelector(".favorites-toolbar")) {
+        const toolbar = document.createElement("div");
+        toolbar.className = "favorites-toolbar";
+        toolbar.innerHTML = `
+            <button id="favoriteToggle" type="button">Show Favorites</button>
+            <span><strong id="favoriteCount">0</strong> saved favorites</span>
+        `;
+        searchBox.insertAdjacentElement("afterend", toolbar);
+
+        document.getElementById("favoriteToggle").addEventListener("click", () => {
+            showingFavoriteStories = !showingFavoriteStories;
+            updateFavoriteControls();
+            applyStoryFilters();
+        });
+    }
+
+    if (!document.getElementById("favoritesEmptyState")) {
+        const emptyState = document.createElement("p");
+        emptyState.id = "favoritesEmptyState";
+        emptyState.className = "favorites-empty";
+        emptyState.textContent = "No stories match this view yet.";
+        cardsContainer.insertAdjacentElement("afterend", emptyState);
+    }
+
+    document.querySelectorAll(".cards .card").forEach(decorateStoryCard);
+    updateFavoriteControls();
+    applyStoryFilters();
+}
 
 function submitStoryByEmail(event) {
     event.preventDefault();
@@ -195,11 +341,17 @@ function addStoryToPage(story) {
     `;
 
     container.appendChild(card);
+    decorateStoryCard(card);
+    updateFavoriteControls();
+    applyStoryFilters();
 }
 
 // Load saved stories when page opens
 window.addEventListener("DOMContentLoaded", function () {
     let stories = JSON.parse(localStorage.getItem("customStories")) || [];
     stories.forEach(addStoryToPage);
+    initFavorites();
 });
+
+window.applyStoryFilters = applyStoryFilters;
 
