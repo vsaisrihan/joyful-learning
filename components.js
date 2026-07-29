@@ -37,10 +37,10 @@ class MainFooter extends HTMLElement {
 customElements.define('main-header', MainHeader);
 customElements.define('main-footer', MainFooter);
 
-const GOOGLE_ANALYTICS_ID = "G-XXXXXXXXXX";
+const GOOGLE_ANALYTICS_ID = "G-FP3E6RRYEH";
 
 function loadGoogleAnalytics() {
-    if (!GOOGLE_ANALYTICS_ID || GOOGLE_ANALYTICS_ID === "G-XXXXXXXXXX") {
+    if (!GOOGLE_ANALYTICS_ID || GOOGLE_ANALYTICS_ID === "G-FP3E6RRYEH") {
         return;
     }
 
