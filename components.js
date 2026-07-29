@@ -40,7 +40,7 @@ customElements.define('main-footer', MainFooter);
 const GOOGLE_ANALYTICS_ID = "G-FP3E6RRYEH";
 
 function loadGoogleAnalytics() {
-    if (!GOOGLE_ANALYTICS_ID || GOOGLE_ANALYTICS_ID === "G-FP3E6RRYEH") {
+    if (!GOOGLE_ANALYTICS_ID || GOOGLE_ANALYTICS_ID === "G-XXXXXXXXXX") {
         return;
     }
 
@@ -354,4 +354,3 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 window.applyStoryFilters = applyStoryFilters;
-
