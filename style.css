@@ -1853,6 +1853,8 @@ body:has(.story-image-card) .ad-slot-story {
 }
 
 .favorites-toolbar button {
+    min-width: 160px;
+    white-space: nowrap;
     border: 0;
     border-radius: 8px;
     padding: 11px 16px;
