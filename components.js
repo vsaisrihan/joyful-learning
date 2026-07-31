@@ -38,6 +38,52 @@ customElements.define('main-header', MainHeader);
 customElements.define('main-footer', MainFooter);
 
 const GOOGLE_ANALYTICS_ID = "G-FP3E6RRYEH";
+const GOOGLE_ADS_CLIENT_ID = "ca-pub-6378941290908904";
+
+const AD_PLACEMENTS = {
+    "home-top": {
+        label: "Learning Partner Space",
+        size: "728 x 90 Leaderboard",
+        mobileSize: "320 x 100 Mobile banner",
+        shape: "leaderboard",
+        slot: "1111111111"
+    },
+    "home-grid": {
+        label: "Story Discovery Space",
+        size: "300 x 250 Medium rectangle",
+        mobileSize: "300 x 250 Medium rectangle",
+        shape: "medium-rectangle",
+        slot: "2222222222"
+    },
+    "home-square": {
+        label: "Learning Partner Space",
+        size: "250 x 250 Square",
+        mobileSize: "250 x 250 Square",
+        shape: "square",
+        slot: "5555555555"
+    },
+    "home-wide": {
+        label: "Featured Sponsor Space",
+        size: "970 x 90 Large leaderboard",
+        mobileSize: "320 x 100 Mobile banner",
+        shape: "large-leaderboard",
+        slot: "3333333333"
+    },
+    story: {
+        label: "Story Sponsor Space",
+        size: "300 x 250 Medium rectangle",
+        mobileSize: "300 x 250 Medium rectangle",
+        shape: "medium-rectangle",
+        slot: "4444444444"
+    },
+    square: {
+        label: "Learning Partner Space",
+        size: "250 x 250 Square",
+        mobileSize: "250 x 250 Square",
+        shape: "square",
+        slot: "6666666666"
+    }
+};
 
 function loadGoogleAnalytics() {
     if (!GOOGLE_ANALYTICS_ID || GOOGLE_ANALYTICS_ID === "G-XXXXXXXXXX") {
@@ -65,15 +111,66 @@ function loadGoogleAnalytics() {
 
 loadGoogleAnalytics();
 
-function createAdSlot(type, label) {
+function hasRealGoogleAdsClient() {
+    return GOOGLE_ADS_CLIENT_ID && !GOOGLE_ADS_CLIENT_ID.includes("XXXXXXXX");
+}
+
+function loadGoogleAds() {
+    if (!hasRealGoogleAdsClient()) {
+        return;
+    }
+
+    if (document.querySelector(`script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${GOOGLE_ADS_CLIENT_ID}"]`)) {
+        return;
+    }
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${GOOGLE_ADS_CLIENT_ID}`;
+    document.head.appendChild(script);
+}
+
+loadGoogleAds();
+
+function createAdSlot(type, customLabel) {
+    const placement = AD_PLACEMENTS[type] || AD_PLACEMENTS.square;
+    const label = customLabel || placement.label;
     const ad = document.createElement("aside");
-    ad.className = `ad-slot ad-slot-${type}`;
-    ad.setAttribute("aria-label", "Advertisement placeholder");
+    ad.className = `ad-slot ad-slot-${type} ad-slot-${placement.shape}`;
+    ad.classList.toggle("ad-slot-live", hasRealGoogleAdsClient());
+    ad.dataset.adSize = placement.size;
+    ad.dataset.adMobileSize = placement.mobileSize;
+    ad.setAttribute("aria-label", `${label} advertisement`);
+
+    const adMarkup = hasRealGoogleAdsClient()
+        ? `<ins class="adsbygoogle ad-unit"
+                data-ad-client="${GOOGLE_ADS_CLIENT_ID}"
+                data-ad-slot="${placement.slot}"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>`
+        : "";
+
     ad.innerHTML = `
-        <span>Advertisement</span>
-        <strong>${label}</strong>
-        <small>Ad placeholder</small>
+        <div class="ad-slot-frame">
+            ${adMarkup}
+            <span>Advertisement</span>
+            <strong>${label}</strong>
+            <small>${placement.size}</small>
+        </div>
     `;
+
+    if (hasRealGoogleAdsClient()) {
+        window.adsbygoogle = window.adsbygoogle || [];
+        requestAnimationFrame(() => {
+            try {
+                window.adsbygoogle.push({});
+            } catch (error) {
+                console.warn("Google ad could not be requested.", error);
+            }
+        });
+    }
+
     return ad;
 }
 
@@ -112,7 +209,8 @@ function decorateStoryCard(card) {
     button.className = "favorite-btn";
     button.type = "button";
     button.setAttribute("aria-label", "Add story to favorites");
-    button.textContent = "Favorite";
+    button.setAttribute("aria-pressed", "false");
+    button.textContent = "♡";
 
     button.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -135,8 +233,9 @@ function updateFavoriteControls() {
         card.classList.toggle("is-favorite", isFavorite);
 
         if (button) {
-            button.textContent = isFavorite ? "Saved" : "Favorite";
+            button.textContent = isFavorite ? "♥" : "♡";
             button.setAttribute("aria-label", isFavorite ? "Remove story from favorites" : "Add story to favorites");
+            button.setAttribute("aria-pressed", String(isFavorite));
         }
     });
 
@@ -268,13 +367,23 @@ window.addEventListener("DOMContentLoaded", () => {
         const hero = document.querySelector(".hero");
         const cards = document.querySelector(".cards");
 
-        hero.insertAdjacentElement("afterend", createAdSlot("home-top", "Learning Partner Space"));
-        cards.insertAdjacentElement("afterend", createAdSlot("home-wide", "Featured Sponsor Space"));
+        hero.insertAdjacentElement("afterend", createAdSlot("home-top"));
+        cards.insertAdjacentElement("afterend", createAdSlot("home-wide"));
+
+        const storyCards = cards.querySelectorAll(".card");
+
+        if (storyCards.length > 8 && !document.querySelector(".ad-slot-home-grid")) {
+            storyCards[7].insertAdjacentElement("afterend", createAdSlot("home-grid"));
+        }
+
+        if (storyCards.length > 16 && !document.querySelector(".ad-slot-home-square")) {
+            storyCards[15].insertAdjacentElement("afterend", createAdSlot("home-square"));
+        }
     }
 
     if (isStoryPage && !document.querySelector(".ad-slot-story")) {
         const content = document.querySelector(".content");
-        content.insertAdjacentElement("afterend", createAdSlot("story", "Story Sponsor Space"));
+        content.insertAdjacentElement("afterend", createAdSlot("story"));
     }
 
     const storySubmissionForm = document.getElementById("storySubmissionForm");
