@@ -228,8 +228,11 @@ function showStoryAdModal(navigate) {
     modal.className = "story-ad-modal active";
     modal.innerHTML = `
         <div class="story-ad-dialog" role="dialog" aria-modal="true" aria-label="Advertisement before story">
-            <button class="story-ad-close" type="button" aria-label="Close advertisement">x</button>
-            <button class="story-ad-skip" type="button">Skip</button>
+            <div class="story-ad-close-controls">
+                <span class="story-ad-countdown" aria-live="polite">Skip ad in 3</span>
+                <button class="story-ad-close" type="button" aria-label="Close advertisement">×</button>
+            </div>
+            <button class="story-ad-skip" type="button">Skip Ad</button>
             <div class="story-ad-slot-wrap"></div>
         </div>
     `;
@@ -239,14 +242,19 @@ function showStoryAdModal(navigate) {
 
     const closeButton = modal.querySelector(".story-ad-close");
     const skipButton = modal.querySelector(".story-ad-skip");
+    const countdown = modal.querySelector(".story-ad-countdown");
+    let secondsRemaining = 3;
 
-    setTimeout(() => {
-        closeButton.classList.add("visible");
-    }, 2000);
+    const countdownTimer = window.setInterval(() => {
+        secondsRemaining -= 1;
+        countdown.textContent = secondsRemaining > 0 ? `Skip ad in ${secondsRemaining}` : "Ready to skip";
 
-    setTimeout(() => {
-        skipButton.classList.add("visible");
-    }, 3000);
+        if (secondsRemaining === 0) {
+            window.clearInterval(countdownTimer);
+            closeButton.classList.add("visible");
+            skipButton.classList.add("visible");
+        }
+    }, 1000);
 
     closeButton.addEventListener("click", () => closeStoryAdModal(true));
     skipButton.addEventListener("click", () => closeStoryAdModal(true));
@@ -308,7 +316,8 @@ function decorateStoryCard(card) {
     button.className = "favorite-btn";
     button.type = "button";
     button.setAttribute("aria-label", "Add story to favorites");
-    button.textContent = "Favorite";
+    button.setAttribute("aria-pressed", "false");
+    button.textContent = "♡";
 
     button.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -331,8 +340,9 @@ function updateFavoriteControls() {
         card.classList.toggle("is-favorite", isFavorite);
 
         if (button) {
-            button.textContent = isFavorite ? "Saved" : "Favorite";
+            button.textContent = isFavorite ? "♥" : "♡";
             button.setAttribute("aria-label", isFavorite ? "Remove story from favorites" : "Add story to favorites");
+            button.setAttribute("aria-pressed", String(isFavorite));
         }
     });
 

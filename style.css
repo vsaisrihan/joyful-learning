@@ -1823,6 +1823,22 @@ body:has(.story-image-card) .ad-slot-story {
     margin: 0;
 }
 
+.story-ad-close-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.story-ad-countdown {
+    color: #59677d;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
 .story-ad-close,
 .story-ad-skip {
     position: absolute;
@@ -1843,7 +1859,9 @@ body:has(.story-image-card) .ad-slot-story {
 }
 
 .story-ad-close {
-    right: 10px;
+    position: relative;
+    top: auto;
+    right: auto;
     width: 34px;
     height: 34px;
     background: #172033;
@@ -2079,11 +2097,14 @@ body:has(.story-image-card) .ad-slot-story {
     right: 12px;
     z-index: 6;
     border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 8px;
-    padding: 8px 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    padding: 0;
     background: rgba(255, 255, 255, 0.9);
     color: #172033;
-    font-size: 12px;
+    font-size: 26px;
+    line-height: 1;
     font-weight: 900;
     cursor: pointer;
     box-shadow: 0 10px 20px rgba(23, 32, 51, 0.15);
