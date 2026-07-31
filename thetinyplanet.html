@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">Joyful Learn</div>
+
+            <div class="right">
+                <span>English</span>
+                <span>Settings</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+                <div class="tag">Space Discovery</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1200&auto=format&fit=crop&q=80"
+                    alt="A view of Earth and space">
+            </div>
+
+            <div>
+                <div class="story-card">
+                    <h1 id="title">The Tiny Planet</h1>
+
+                    <p id="story">
+                        Isha had a telescope that could see farther than any telescope in town. One clear night, she saw
+                        a tiny green planet blinking beside the moon. It looked lonely, so she waved. To her surprise,
+                        the planet waved back with a ring of sparkles. The next night, Isha built a paper rocket and
+                        placed a note inside that said, "Hello, little planet."
+                        A breeze carried the rocket up, up, and away. Soon a shining seed floated down to Isha's
+                        windowsill. She planted it in a pot, and by morning it had grown a small silver leaf shaped like
+                        a star. Each night, the leaf collected moonlight and sent it back to the tiny planet. The planet
+                        grew brighter and greener. Isha learned that even a small hello can make a faraway place feel
+                        less alone.
+                    </p>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn read-btn" onclick="readStory()">Read Aloud</button>
+                    <button class="btn translate-btn" onclick="translateStory()">Translate</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+        let translated = false;
+
+        const englishStory = `Isha had a telescope that could see farther than any telescope in town. One clear night, she saw a tiny green planet blinking beside the moon. It looked lonely, so she waved. To her surprise, the planet waved back with a ring of sparkles. The next night, Isha built a paper rocket and placed a note inside that said, "Hello, little planet." A breeze carried the rocket up, up, and away. Soon a shining seed floated down to Isha's windowsill. She planted it in a pot, and by morning it had grown a small silver leaf shaped like a star. Each night, the leaf collected moonlight and sent it back to the tiny planet. The planet grew brighter and greener. Isha learned that even a small hello can make a faraway place feel less alone.`;
+
+        const translatedStory = `ఈషా దగ్గర ఉన్న దూరదర్శిని (Telescope) ఆ పట్టణంలో దేనికంటే అయినా చాలా దూరంలోని దృశ్యాలను చూడగలదు. ఒక ప్రశాంతమైన రాత్రి, ఆమె చంద్రుని పక్కన ఒక చిన్న పచ్చని గ్రహం మెరుస్తూ ఉండటాన్ని చూసింది. అది చాలా ఒంటరిగా ఉన్నట్లు అనిపించడంతో, ఈషా దానికి చేయి ఊపింది. ఆమెను ఆశ్చర్యపరుస్తూ, ఆ గ్రహం కూడా మిలమిలలాడే కాంతుల వలయంతో తిరుగు చేయి ఊపింది!
+
+మరుసటి రాత్రి, ఈషా ఒక కాగితపు రాకెట్‌ను తయారుచేసి, దాని లోపల "హలో, చిన్న గ్రహమా!" అని ఒక ఉత్తరం రాసి పెట్టింది. ఒక చిన్న గాలి తరంగం ఆ రాకెట్‌ను ఆకాశంలోకి ఎత్తుగా తీసుకెళ్లింది. కాసేపటికే ఒక మెరిసే విత్తనం తేలుకుంటూ వచ్చి ఈషా కిటికీ దరిపై పడింది. ఆమె దాన్ని ఒక పూల తొట్టిలో నాటింది. మరుసటి ఉదయానికల్లా దానికి నక్షత్రం ఆకారంలో ఉన్న ఒక చిన్న వెండి ఆకు మొలకెత్తింది.
+
+ప్రతి రాత్రి, ఆ ఆకు వెన్నెలను సేకరించి ఆ చిన్న గ్రహానికి తిరిగి పంపేది. దాంతో ఆ గ్రహం మరింత ప్రకాశవంతంగా, పచ్చగా మారింది. ఒక చిన్న "హలో" కూడా ఎంత దూరాన ఉన్న ప్రదేశాన్నైనా ఒంటరితనం లేకుండా చేయగలదని ఈషా తెలుసుకుంది.`;
+
+        function readStory() {
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(document.getElementById("story").textContent);
+            speech.lang = "en-US";
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+            const story = document.getElementById("story");
+            story.textContent = translated ? englishStory : translatedStory;
+            translated = !translated;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">Joyful Learn</div>
+
+            <div class="right">
+                <span>English</span>
+                <span>Settings</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+                <div class="tag">Invention Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1200&auto=format&fit=crop&q=80"
+                    alt="A kite flying in the sky">
+            </div>
+
+            <div>
+                <div class="story-card">
+                    <h1 id="title">The Clockwork Kite</h1>
+
+                    <p id="story">
+                        Ravi found a broken kite in his grandfather's workshop. It had wooden wings, brass wheels, and a
+                        little clock on its tail. "This kite only flies when someone asks a brave question," Grandfather
+                        said with a wink. Ravi repaired the string, turned the tiny key, and asked, "Where does the wind
+                        sleep?" The kite lifted into the air and tugged him across the meadow.
+                        It carried him over rooftops, fields, and a sleepy train station until they reached a hill where
+                        the wind rested inside tall silver grass. Ravi listened carefully. The wind told him it worked
+                        all day pushing clouds, spinning seeds, and cooling tired travelers. Ravi thanked the wind and
+                        asked the kite to take him home. When he returned, the clock on the kite chimed once. Ravi wrote
+                        his question in a notebook, then smiled. Tomorrow, he would ask something even braver.
+                    </p>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn read-btn" onclick="readStory()">Read Aloud</button>
+                    <button class="btn translate-btn" onclick="translateStory()">Translate</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+        let translated = false;
+
+        const englishStory = `Ravi found a broken kite in his grandfather's workshop. It had wooden wings, brass wheels, and a little clock on its tail. "This kite only flies when someone asks a brave question," Grandfather said with a wink. Ravi repaired the string, turned the tiny key, and asked, "Where does the wind sleep?" The kite lifted into the air and tugged him across the meadow. It carried him over rooftops, fields, and a sleepy train station until they reached a hill where the wind rested inside tall silver grass. Ravi listened carefully. The wind told him it worked all day pushing clouds, spinning seeds, and cooling tired travelers. Ravi thanked the wind and asked the kite to take him home. When he returned, the clock on the kite chimed once. Ravi wrote his question in a notebook, then smiled. Tomorrow, he would ask something even braver.`;
+
+        const translatedStory = `రవి తన తాతయ్య వర్క్‌షాప్‌లో ఒక విరిగిపోయిన గాలిపటాన్ని చూశాడు. దానికి చెక్క రెక్కలు, ఇత్తడి చక్రాలు మరియు తోక భాగంలో ఒక చిన్న గడియారం ఉన్నాయి. "ఎవరైనా ఒక ధైర్యమైన ప్రశ్న అడిగినప్పుడు మాత్రమే ఈ గాలిపటం ఎగురుతుంది" అని తాతయ్య కన్నుగీటుతూ చెప్పారు.
+
+రవి దారానికి మరమ్మత్తు చేసి, దానికి ఉన్న చిన్న తాళంచెవిని తిప్పి, "గాలి ఎక్కడ నిద్రపోతుంది?" అని అడిగాడు. వెంటనే ఆ గాలిపటం గాల్లోకి లేచి, రవిని పచ్చికబయళ్ల గుండా ముందుకు లాక్కెళ్లింది. అది అతన్ని ఇళ్ల కప్పులు, పొలాలు మరియు ప్రశాంతంగా ఉన్న ఒక రైల్వే స్టేషన్ మీదుగా తీసుకెళ్లింది. చివరికి పొడవైన వెండి రంగు గడ్డి పరచుకున్న ఒక కొండపైకి చేరింది. అక్కడ గాలి విశ్రాంతి తీసుకుంటోంది.
+
+రవి చాలా శ్రద్ధగా విన్నాడు. పగలంతా మేఘాలను నెట్టడం, విత్తనాలను చల్లడం మరియు అలసిపోయిన ప్రయాణికులకు ఉపశమనం అందించడం తన పని అని గాలి రవితో చెప్పింది. రవి గాలికి ధన్యవాదాలు చెప్పి, తన్ను ఇంటికి తీసుకెళ్లమని గాలిపటాన్ని అడిగాడు.
+
+ఇంటికి తిరిగి రాగానే, గాలిపటానికి ఉన్న గడియారం ఒకసారి మోగింది. రవి తన ప్రశ్నను ఒక నోట్‌బుక్‌లో రాసుకుని నవ్వుకున్నాడు. రేపు, అతను దీనికంటే ఇంకా ధైర్యమైన ప్రశ్న అడగాలని నిశ్చయించుకున్నాడు.`;
+
+        function readStory() {
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(document.getElementById("story").textContent);
+            speech.lang = "en-US";
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+            const story = document.getElementById("story");
+            story.textContent = translated ? englishStory : translatedStory;
+            translated = !translated;
+        }
+    </script>
+
+</body>
+
+</html>

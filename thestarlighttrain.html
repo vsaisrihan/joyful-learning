@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">Joyful Learn</div>
+
+            <div class="right">
+                <span>English</span>
+                <span>Settings</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+                <div class="tag">Sky Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=1200&auto=format&fit=crop&q=80"
+                    alt="A train under a bright sky">
+            </div>
+
+            <div>
+                <div class="story-card">
+                    <h1 id="title">The Starlight Train</h1>
+
+                    <p id="story">
+                        Every Friday night, Tara heard a train whistle outside her window, but there were no tracks near
+                        her house. One night, she looked outside and saw a train made of starlight waiting beside the
+                        mango tree. The conductor tipped his blue hat and invited her aboard. The seats were soft as
+                        clouds, and the windows showed planets, comets, and sleeping towns.
+                        The train stopped at the Station of Lost Wishes. There, Tara found small glowing tickets with
+                        wishes written on them. One ticket wished for courage before a school play. Another wished for a
+                        friend at recess. Tara helped sort the tickets into bright mailbags, and the train carried them
+                        across the sky. When she returned home, a silver ticket rested in her pocket. It said, "Kind
+                        helpers always have a seat." Tara kept it safely under her pillow.
+                    </p>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn read-btn" onclick="readStory()">Read Aloud</button>
+                    <button class="btn translate-btn" onclick="translateStory()">Translate</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+        let translated = false;
+
+        const englishStory = `Every Friday night, Tara heard a train whistle outside her window, but there were no tracks near her house. One night, she looked outside and saw a train made of starlight waiting beside the mango tree. The conductor tipped his blue hat and invited her aboard. The seats were soft as clouds, and the windows showed planets, comets, and sleeping towns. The train stopped at the Station of Lost Wishes. There, Tara found small glowing tickets with wishes written on them. One ticket wished for courage before a school play. Another wished for a friend at recess. Tara helped sort the tickets into bright mailbags, and the train carried them across the sky. When she returned home, a silver ticket rested in her pocket. It said, "Kind helpers always have a seat." Tara kept it safely under her pillow.`;
+
+        const translatedStory = `ప్రతి శుక్రవారం రాత్రి తారకు తన ఇంటి కిటికీ బయట ఒక రైలు కూత వినిపించేది. కానీ ఆమె ఇంటి దరిదాపుల్లో ఎక్కడా రైలు పట్టాలే లేవు! ఒక రాత్రి, ఆమె కిటికీ గుండా బయటకు చూసింది. ఇంటి పక్కన ఉన్న మామిడి చెట్టు పక్కన నక్షత్రాల వెలుగుతో మెరిసిపోతున్న ఒక వింత రైలు ఆగి ఉంది. ఆ రైలు కండక్టర్ తన నీలిరంగు టోపీని పైకెత్తి, ఆమెను లోపలికి రమ్మని ఆహ్వానించాడు.
+
+రైలులోని సీట్లు మేఘాలంత మెత్తగా ఉన్నాయి. ఆ కిటికీల గుండా చూస్తుంటే గ్రహాలు, తోకచుక్కలు మరియు హాయిగా నిద్రపోతున్న నగరాలు, గ్రామాలు కనిపించాయి. ఆ రైలు ప్రయాణిస్తూ "పోగొట్టుకున్న కోరికల స్టేషన్" (Station of Lost Wishes) వద్ద ఆగింది. అక్కడ తారకు మెరుస్తున్న చిన్న చిన్న టికెట్లు కనిపించాయి. వాటిపై రకరకాల కోరికలు రాసి ఉన్నాయి. ఒక టికెట్‌పై "స్కూల్ నాటకానికి ముందు ధైర్యం కావాలి" అని, మరొక టికెట్‌పై "బ్రేక్ టైమ్‌లో ఆడుకోవడానికి ఒక స్నేహితుడు కావాలి" అని రాసి ఉంది.
+
+తార ఆ టికెట్లన్నింటినీ వెలుగులీనే తపాలా సంచుల్లో (mailbags) సరేద్రి అమర్చడంలో సహాయపడింది. ఆ తర్వాత రైలు ఆ కోరికల సంచులను నిగనిగలాడే ఆకాశంలోకి తీసుకెళ్లింది.
+
+తిరిగి ఇంటికి చేరుకున్నాక, తార జేబులో ఒక వెండి రంగు టికెట్ కనిపించింది. దానిపై "దయగల సహాయకులకు ఎల్లప్పుడూ సీటు ఉంటుంది" అని రాసి ఉంది. తార ఆ టికెట్‌ను తన దిండు కింద చాలా జాగ్రత్తగా దాచుకుంది.`;
+
+        function readStory() {
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(document.getElementById("story").textContent);
+            speech.lang = "en-US";
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+            const story = document.getElementById("story");
+            story.textContent = translated ? englishStory : translatedStory;
+            translated = !translated;
+        }
+    </script>
+
+</body>
+
+</html>

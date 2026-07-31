@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">Joyful Learn</div>
+
+            <div class="right">
+                <span>English</span>
+                <span>Settings</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+                <div class="tag">Discovery Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&auto=format&fit=crop&q=80"
+                    alt="A glowing cave path">
+            </div>
+
+            <div>
+                <div class="story-card">
+                    <h1 id="title">The Crystal Cave</h1>
+
+                    <p id="story">
+                        Nila and Dev were collecting smooth stones near the mountain when they heard music under their
+                        feet. A narrow opening glowed behind a curtain of vines. Inside, crystals covered the walls like
+                        frozen stars. Each crystal rang a soft note when light touched it. Nila held up her lantern, and
+                        the cave answered with a bright melody.
+                        At the center of the cave was a crystal shaped like a heart. It had grown dim because the cave
+                        had not heard laughter for many years. Dev told his funniest joke, and Nila laughed so hard that
+                        her lantern shook. The heart crystal began to shine pink, blue, and gold. The music grew warm
+                        and gentle. Before they left, the cave gave them two tiny crystals to remember their visit. Nila
+                        and Dev promised to return with more songs, more stories, and more laughter.
+                    </p>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn read-btn" onclick="readStory()">Read Aloud</button>
+                    <button class="btn translate-btn" onclick="translateStory()">Translate</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+        let translated = false;
+
+        const englishStory = `Nila and Dev were collecting smooth stones near the mountain when they heard music under their feet. A narrow opening glowed behind a curtain of vines. Inside, crystals covered the walls like frozen stars. Each crystal rang a soft note when light touched it. Nila held up her lantern, and the cave answered with a bright melody. At the center of the cave was a crystal shaped like a heart. It had grown dim because the cave had not heard laughter for many years. Dev told his funniest joke, and Nila laughed so hard that her lantern shook. The heart crystal began to shine pink, blue, and gold. The music grew warm and gentle. Before they left, the cave gave them two tiny crystals to remember their visit. Nila and Dev promised to return with more songs, more stories, and more laughter.`;
+
+        const translatedStory = `నిల మరియు దేవ్ పర్వతాల దగ్గర నునుపైన రాళ్లను సేకరిస్తుండగా, తమ కాళ్ల కింద నుంచి ఒక సంగీతం వినిపించింది. అక్కడ అల్లుకున్న తీగల వెనుక ఒక చిన్న గుహ ద్వారం కాంతులీనుతూ కనిపించింది. లోపల చూస్తే, గడ్డకట్టిన నక్షత్రాల్లా గోడలనిండా స్పటికాలు (Crystals) మెరుస్తున్నాయి. వాటిపై వెలుతురు పడినప్పుడల్లా ప్రతి స్పటికం ఒక మధురమైన స్వరాన్ని వినిపిస్తోంది. నిల తన లాంతరును పైకెత్తగానే, ఆ గుహ అంతా కలిసి ఒక అద్భుతమైన రాగాన్ని ఆలపించింది.
+
+ఆ గుహ మధ్యలో గుండె ఆకారంలో ఉన్న ఒక పెద్ద స్పటికం ఉంది. చాలా ఏళ్లుగా ఆ గుహలో ఎవరి నవ్వులూ వినిపించకపోవడం వల్ల అది తన కాంతిని కోల్పోయి మసకబారిపోయింది. దేవ్ తను విన్న అత్యంత రసవత్తరమైన జోక్ చెప్పాడు. అది విని నిల నవ్వడంతో, ఆమె చేతిలోని లాంతరు కూడా వణికిపోయింది! దాంతో ఆ గుండె ఆకారపు స్పటికం గులాబీ, నీలం మరియు బంగారు రంగుల్లో ప్రకాశించడం ప్రారంభించింది. గుహలోని సంగీతం కూడా చాలా వెచ్చగా, హాయిగా మారిపోయింది.
+
+వారు తిరుగుప్రయాణమయ్యే ముందు, వారి ప్రయాణానికి గుర్తుగా ఆ గుహ వారికి రెండు చిన్న స్పటికాలను బహుమతిగా ఇచ్చింది. నిల మరియు దేవ్ మళ్లీ ఇక్కడికి మరింత సంగీతంతో, మరెన్నో కథలతో, ఇంకా ఎక్కువ నవ్వులతో తిరిగి వస్తామని ఆ గుహకు మాట ఇచ్చారు.`;
+
+        function readStory() {
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(document.getElementById("story").textContent);
+            speech.lang = "en-US";
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+            const story = document.getElementById("story");
+            story.textContent = translated ? englishStory : translatedStory;
+            translated = !translated;
+        }
+    </script>
+
+</body>
+
+</html>
