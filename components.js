@@ -5,7 +5,7 @@ class MainHeader extends HTMLElement {
             <nav class="site-nav">
                 <a class="logo" href="index.html">
                     <img src="./i.png" alt="Joyful Learn logo" />
-                    <span>Joyful Learn</span>
+                    <span>Kids Stories</span>
                 </a>
 
                 <div class="nav-links">
