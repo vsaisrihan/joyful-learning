@@ -38,7 +38,7 @@ customElements.define('main-header', MainHeader);
 customElements.define('main-footer', MainFooter);
 
 const GOOGLE_ANALYTICS_ID = "G-FP3E6RRYEH";
-const GOOGLE_ADS_CLIENT_ID = "ca-pub-XXXXXXXXXXXXXXXX";
+const GOOGLE_ADS_CLIENT_ID = "ca-pub-6378941290908904";
 
 const AD_PLACEMENTS = {
     "home-top": {
@@ -172,113 +172,6 @@ function createAdSlot(type, customLabel) {
     }
 
     return ad;
-}
-
-let pendingStoryNavigation = null;
-let storyAdModalActive = false;
-
-function getStoryNavigationFromButton(button) {
-    const onclick = button.getAttribute("onclick") || "";
-    const functionMatch = onclick.match(/^([a-zA-Z_$][\w$]*)\(\)$/);
-    const hrefMatch = onclick.match(/window\.location\.href\s*=\s*['"]([^'"]+)['"]/);
-
-    if (functionMatch && typeof window[functionMatch[1]] === "function") {
-        return () => window[functionMatch[1]]();
-    }
-
-    if (hrefMatch) {
-        return () => {
-            window.location.href = hrefMatch[1];
-        };
-    }
-
-    return null;
-}
-
-function closeStoryAdModal(shouldContinue) {
-    const modal = document.getElementById("storyAdModal");
-
-    if (modal) {
-        modal.classList.remove("active");
-        modal.remove();
-    }
-
-    storyAdModalActive = false;
-
-    if (shouldContinue && pendingStoryNavigation) {
-        const navigate = pendingStoryNavigation;
-        pendingStoryNavigation = null;
-        navigate();
-        return;
-    }
-
-    pendingStoryNavigation = null;
-}
-
-function showStoryAdModal(navigate) {
-    if (storyAdModalActive) {
-        return;
-    }
-
-    storyAdModalActive = true;
-    pendingStoryNavigation = navigate;
-
-    const modal = document.createElement("div");
-    modal.id = "storyAdModal";
-    modal.className = "story-ad-modal active";
-    modal.innerHTML = `
-        <div class="story-ad-dialog" role="dialog" aria-modal="true" aria-label="Advertisement before story">
-            <div class="story-ad-close-controls">
-                <span class="story-ad-countdown" aria-live="polite">Skip ad in 3</span>
-                <button class="story-ad-close" type="button" aria-label="Close advertisement">×</button>
-            </div>
-            <button class="story-ad-skip" type="button">Skip Ad</button>
-            <div class="story-ad-slot-wrap"></div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-    modal.querySelector(".story-ad-slot-wrap").appendChild(createAdSlot("story"));
-
-    const closeButton = modal.querySelector(".story-ad-close");
-    const skipButton = modal.querySelector(".story-ad-skip");
-    const countdown = modal.querySelector(".story-ad-countdown");
-    let secondsRemaining = 3;
-
-    const countdownTimer = window.setInterval(() => {
-        secondsRemaining -= 1;
-        countdown.textContent = secondsRemaining > 0 ? `Skip ad in ${secondsRemaining}` : "Ready to skip";
-
-        if (secondsRemaining === 0) {
-            window.clearInterval(countdownTimer);
-            closeButton.classList.add("visible");
-            skipButton.classList.add("visible");
-        }
-    }, 1000);
-
-    closeButton.addEventListener("click", () => closeStoryAdModal(true));
-    skipButton.addEventListener("click", () => closeStoryAdModal(true));
-}
-
-function initStoryAdModal() {
-    document.addEventListener("click", (event) => {
-        const button = event.target.closest(".cards .read-btn");
-
-        if (!button) {
-            return;
-        }
-
-        const navigate = getStoryNavigationFromButton(button);
-
-        if (!navigate) {
-            return;
-        }
-
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        showStoryAdModal(navigate);
-    }, true);
 }
 
 const STORY_SUBMISSION_EMAIL = "v.sai.srihan@gmail.com";
@@ -492,8 +385,6 @@ window.addEventListener("DOMContentLoaded", () => {
         const content = document.querySelector(".content");
         content.insertAdjacentElement("afterend", createAdSlot("story"));
     }
-
-    initStoryAdModal();
 
     const storySubmissionForm = document.getElementById("storySubmissionForm");
 
