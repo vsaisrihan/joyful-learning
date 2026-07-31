@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">Joyful Learn</div>
+
+            <div class="right">
+                <span>English</span>
+                <span>Settings</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+                <div class="tag">Mystery Adventure</div>
+
+                <img id="storyImage" class="story-image"
+                    src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1200&auto=format&fit=crop&q=80"
+                    alt="A magical library at night">
+            </div>
+
+            <div>
+                <div class="story-card">
+                    <h1 id="title">The Midnight Library</h1>
+
+                    <p id="story">
+                        Mira loved the old library at the end of Maple Street. One evening, she returned a book just as
+                        the clock began to strike twelve. Instead of closing, the library lights glowed silver, and a
+                        tiny paper boat sailed across the carpet. Mira followed it between tall shelves until she found
+                        a book with no title. When she opened it, the blank pages filled with a map of the library. The
+                        map showed a missing chapter hiding behind the history shelf.
+                        Mira gently pushed the shelf, and a secret reading room appeared. Inside, books whispered facts,
+                        riddles, and brave ideas. A small golden key waited on a desk with a note that said, "Every good
+                        reader opens a new door." Mira used the key on the untitled book, and the missing chapter flew
+                        back into place. By morning, the library looked normal again, but Mira knew its secret. From that
+                        day on, she visited often, ready for the next midnight mystery.
+                    </p>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn read-btn" onclick="readStory()">Read Aloud</button>
+                    <button class="btn translate-btn" onclick="translateStory()">Translate</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+        let translated = false;
+
+        const englishStory = `Mira loved the old library at the end of Maple Street. One evening, she returned a book just as the clock began to strike twelve. Instead of closing, the library lights glowed silver, and a tiny paper boat sailed across the carpet. Mira followed it between tall shelves until she found a book with no title. When she opened it, the blank pages filled with a map of the library. The map showed a missing chapter hiding behind the history shelf. Mira gently pushed the shelf, and a secret reading room appeared. Inside, books whispered facts, riddles, and brave ideas. A small golden key waited on a desk with a note that said, "Every good reader opens a new door." Mira used the key on the untitled book, and the missing chapter flew back into place. By morning, the library looked normal again, but Mira knew its secret. From that day on, she visited often, ready for the next midnight mystery.`;
+
+        const translatedStory = `A girl named Mira discovers that her quiet library becomes magical at midnight. She follows a paper boat, finds a secret room, and learns that books can open surprising new doors.`;
+
+        function readStory() {
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(document.getElementById("story").textContent);
+            speech.lang = "en-US";
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+            const story = document.getElementById("story");
+            story.textContent = translated ? englishStory : translatedStory;
+            translated = !translated;
+        }
+    </script>
+
+</body>
+
+</html>
