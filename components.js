@@ -9,13 +9,15 @@ class MainHeader extends HTMLElement {
                 </a>
 
                 <div class="nav-links">
-                    <a href="./index.html" class="nav-link">Home</a>
-                    <a href="index.html#stories" class="nav-link" id="storiesNavLink">Stories</a>
+                    <a href="./index.html" class="nav-link nav-active">Home</a>
+                    <a href="./index.html#stories" class="nav-link">Stories</a>
                     <a href="#" class="nav-link">Progress</a>
                     <a href="#" class="nav-link">Achievements</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                     <a href="addstory.html" class="nav-cta">Add a Story</a>
                 </div>
+
+                <span class="cart-spacer" aria-hidden="true"></span>
             </nav>
         `;
     }
@@ -392,19 +394,6 @@ window.addEventListener("DOMContentLoaded", () => {
         storySubmissionForm.addEventListener("submit", submitStoryByEmail);
     }
 
-    const storiesNavLink = document.getElementById("storiesNavLink");
-
-    if (storiesNavLink) {
-        storiesNavLink.addEventListener("click", (event) => {
-            const isIndexPage = window.location.pathname.endsWith("/index.html") || window.location.pathname.endsWith("/");
-
-            if (isIndexPage) {
-                event.preventDefault();
-                window.location.href = "index.html#stories";
-                window.location.reload();
-            }
-        });
-    }
 });
 
 window.addEventListener("DOMContentLoaded", () => {

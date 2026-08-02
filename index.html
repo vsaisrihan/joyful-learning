@@ -8,6 +8,11 @@
     <title>Joyful Learn</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <script src="components.js"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -1294,6 +1299,225 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Homepage header and hero, based on the supplied children's-story design. */
+        .site-nav {
+            padding: 25px clamp(20px, 5vw, 60px);
+            gap: 20px;
+            background: #f7c938;
+            border: 0;
+            border-bottom: 0;
+            border-radius: 0;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .site-nav .logo {
+            min-height: 0;
+            color: #1a1a1a;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .site-nav .logo img {
+            width: 42px;
+            height: 42px;
+            padding: 3px;
+            border-radius: 50%;
+            box-shadow: none;
+            animation: none;
+        }
+
+        .site-nav .logo span {
+            background: none;
+            -webkit-text-fill-color: currentColor;
+            animation: none;
+        }
+
+        .site-nav .nav-links {
+            justify-content: flex-end;
+            gap: 4px;
+        }
+
+        .site-nav .nav-links a {
+            color: #222;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: none;
+        }
+
+        .site-nav .nav-links .nav-active,
+        .site-nav .nav-links .nav-cta {
+            background: #ff914d;
+            color: #fff;
+        }
+
+        .site-nav .nav-links a:hover,
+        .site-nav .nav-links .nav-cta:hover {
+            background: #ff914d;
+            color: #fff;
+            transform: none;
+        }
+
+        .site-nav .cart-icon {
+            display: inline-flex;
+            align-items: center;
+            color: #222;
+        }
+
+        .kids-hero {
+            position: relative;
+            min-height: 550px;
+            overflow: hidden;
+            padding: 40px 20px 120px;
+            background: #f7c938;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .kids-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .kids-hero .badge {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 6px 18px;
+            border-radius: 4px;
+            background: #ffb8d2;
+            color: #222;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .kids-hero h1 {
+            margin: 0 0 20px;
+            color: #0d0d0d;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.2;
+        }
+
+        .kids-hero p {
+            max-width: 600px;
+            margin: 0 auto 35px;
+            color: #2c2c2c;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .kids-hero .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .kids-hero .hero-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .kids-hero .hero-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .kids-hero .btn-green {
+            border: 2px solid #55a868;
+            background: #c0f4d0;
+            box-shadow: 0 4px 0 #55a868;
+            color: #1a1a1a;
+        }
+
+        .kids-hero .btn-white {
+            border: 2px solid #5ca0f2;
+            background: #fff;
+            box-shadow: 0 4px 0 #5ca0f2;
+            color: #1a1a1a;
+        }
+
+        .kids-hero .decor {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .kids-hero .plane-left {
+            top: 210px;
+            left: 5%;
+            width: 70px;
+            transform: rotate(-10deg);
+        }
+
+        .kids-hero .plane-right {
+            top: 45px;
+            right: 12%;
+            width: 130px;
+        }
+
+        .kids-hero .hot-air-balloon {
+            top: 300px;
+            right: 9%;
+            width: 45px;
+        }
+
+        .kids-hero .clouds-bg {
+            position: absolute;
+            right: 0;
+            bottom: -1px;
+            left: 0;
+            z-index: 1;
+            line-height: 0;
+        }
+
+        .kids-hero .clouds-bg svg {
+            width: 100%;
+            height: 120px;
+        }
+
+        @media (max-width: 760px) {
+            .site-nav .cart-icon {
+                display: none;
+            }
+
+            .kids-hero {
+                min-height: 500px;
+            }
+
+            .kids-hero .plane-right {
+                right: -28px;
+                opacity: .65;
+            }
+
+            .kids-hero .plane-left {
+                left: -16px;
+                opacity: .65;
+            }
+
+            .kids-hero .hot-air-balloon {
+                right: 6%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .kids-hero .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+        }
     </style>
 
 
@@ -1311,73 +1535,45 @@
 <body>
 
     <main-header></main-header>
-    <!-- LOADER -->
-    <div id="loader">
-        <div class="loader-container">
-
-            <div class="book">
-
-                <div class="cover left"></div>
-
-                <div class="pages">
-                    <span>
-                        <em class="page-title">Story 1</em>
-                        <b class="page-word">Read</b>
-                    </span>
-                    <span>
-                        <em class="page-title">New Words</em>
-                        <b class="page-word">Learn</b>
-                    </span>
-                    <span>
-                        <em class="page-title">Magic Map</em>
-                        <b class="page-word">Explore</b>
-                    </span>
-                    <span>
-                        <em class="page-title">Voice On</em>
-                        <b class="page-word">Listen</b>
-                    </span>
-                    <span>
-                        <em class="page-title">Fun Quiz</em>
-                        <b class="page-word">Grow</b>
-                    </span>
-                </div>
-
-                <div class="cover right"></div>
-
-            </div>
-
-            <h1>Kids Stories</h1>
-
-            <p>Opening a world of stories...</p>
-
-            <div class="loading-bar">
-                <div class="fill"></div>
-            </div>
-
-        </div>
-    </div>
     <!-- HERO -->
 
 
-    <section class="hero">
+    <section class="kids-hero">
+        <svg class="decor plane-left" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="3"
+            aria-hidden="true">
+            <path d="M10,50 L90,10 L50,90 L40,60 Z" />
+            <path d="M40,60 L90,10" />
+        </svg>
+        <svg class="decor plane-right" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="2"
+            aria-hidden="true">
+            <path d="M10,30 L85,15 L55,80 L40,50 Z" />
+            <path d="M40,50 L85,15" />
+        </svg>
+        <svg class="decor hot-air-balloon" viewBox="0 0 60 90" fill="none" stroke="#222" stroke-width="2"
+            aria-hidden="true">
+            <ellipse cx="30" cy="30" rx="25" ry="30" fill="#7bdcb5" />
+            <path d="M15 50 L25 70 M45 50 L35 70" />
+            <rect x="23" y="70" width="14" height="12" rx="2" fill="#ff914d" />
+        </svg>
 
-        <div class="hero-text">
-
-            <h1>Read, Learn & Explore</h1>
-
-            <p>
-                Discover interactive stories, listen to narration,
-                translate content, and improve your reading skills.
+        <div class="kids-hero-content">
+            <span class="badge">A World of Stories Awaits</span>
+            <h1>Crafting Professional<br>Engaging Children’s Stories</h1>
+            <p>Discover interactive stories that inspire imagination, build reading confidence, and make learning fun.
             </p>
-
-            <button class="btn" onclick="startReading()">
-                Start Reading!!!
-            </button>
-
+            <div class="cta-buttons">
+                <a class="hero-btn btn-green" href="#stories">Explore Stories</a>
+                <a class="hero-btn btn-white" href="contact.html">Learn More</a>
+            </div>
         </div>
 
-        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=1200" alt="Story">
-
+        <div class="clouds-bg" aria-hidden="true">
+            <svg viewBox="0 0 1440 120" fill="white" preserveAspectRatio="none">
+                <path
+                    d="M0,64L40,69.3C80,75,160,85,240,80C320,75,400,53,480,48C560,43,640,53,720,64C800,75,880,85,960,80C1040,75,1120,53,1200,48C1280,43,1360,53,1400,58.7L1440,64L1440,120L0,120Z">
+                </path>
+            </svg>
+        </div>
     </section>
 
     <!-- STATS -->
@@ -1927,23 +2123,6 @@
         function riverFriends() {
             window.location.href = "theriverfriends.html"
         }
-        /* LOADER */
-
-        window.addEventListener("load", function () {
-
-            setTimeout(function () {
-
-                document.getElementById("loader").classList.add("hide");
-
-            }, 1000); // 1 second
-
-        });
-
-
-
-
-
-
     </script>
 
 </body>

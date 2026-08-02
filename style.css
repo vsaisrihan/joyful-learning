@@ -72,6 +72,20 @@ nav {
     transform: translateY(-1px);
 }
 
+/* Keeps the navigation aligned after the cart icon was removed. */
+.cart-spacer {
+    display: inline-block;
+    width: 20px;
+}
+
+@media (min-width: 769px) {
+    .site-nav .nav-links {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
 @media (max-width: 768px) {
     nav {
         padding: 14px 20px;
