@@ -362,24 +362,21 @@ function submitStoryByEmail(event) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    const isHomePage = document.querySelector(".hero") && document.querySelector(".cards");
+    const isHomePage = document.querySelector(".kids-hero, .hero") && document.querySelector(".cards");
     const isStoryPage = document.querySelector(".story-image-card") && document.querySelector(".story-card");
 
     if (isHomePage && !document.querySelector(".ad-slot-home-top")) {
-        const hero = document.querySelector(".hero");
+        const searchBox = document.querySelector(".search-box");
         const cards = document.querySelector(".cards");
 
-        hero.insertAdjacentElement("afterend", createAdSlot("home-top"));
+        // Keep ads at natural content breaks, away from navigation and primary actions.
+        searchBox.insertAdjacentElement("afterend", createAdSlot("home-top"));
         cards.insertAdjacentElement("afterend", createAdSlot("home-wide"));
 
         const storyCards = cards.querySelectorAll(".card");
 
         if (storyCards.length > 8 && !document.querySelector(".ad-slot-home-grid")) {
             storyCards[7].insertAdjacentElement("afterend", createAdSlot("home-grid"));
-        }
-
-        if (storyCards.length > 16 && !document.querySelector(".ad-slot-home-square")) {
-            storyCards[15].insertAdjacentElement("afterend", createAdSlot("home-square"));
         }
     }
 
