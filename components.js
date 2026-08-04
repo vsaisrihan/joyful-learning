@@ -133,8 +133,6 @@ function loadGoogleAds() {
     document.head.appendChild(script);
 }
 
-loadGoogleAds();
-
 function createAdSlot(type, customLabel) {
     const placement = AD_PLACEMENTS[type] || AD_PLACEMENTS.square;
     const label = customLabel || placement.label;
@@ -363,26 +361,23 @@ function submitStoryByEmail(event) {
 
 window.addEventListener("DOMContentLoaded", () => {
     const isHomePage = document.querySelector(".kids-hero, .hero") && document.querySelector(".cards");
-    const isStoryPage = document.querySelector(".story-image-card") && document.querySelector(".story-card");
 
     if (isHomePage && !document.querySelector(".ad-slot-home-top")) {
         const searchBox = document.querySelector(".search-box");
         const cards = document.querySelector(".cards");
 
-        // Keep ads at natural content breaks, away from navigation and primary actions.
-        searchBox.insertAdjacentElement("afterend", createAdSlot("home-top"));
-        cards.insertAdjacentElement("afterend", createAdSlot("home-wide"));
+        if (searchBox && cards) {
+            // Ads are requested only on the content-rich homepage, at natural content breaks.
+            loadGoogleAds();
+            searchBox.insertAdjacentElement("afterend", createAdSlot("home-top"));
+            cards.insertAdjacentElement("afterend", createAdSlot("home-wide"));
 
-        const storyCards = cards.querySelectorAll(".card");
+            const storyCards = cards.querySelectorAll(".card");
 
-        if (storyCards.length > 8 && !document.querySelector(".ad-slot-home-grid")) {
-            storyCards[7].insertAdjacentElement("afterend", createAdSlot("home-grid"));
+            if (storyCards.length > 8 && !document.querySelector(".ad-slot-home-grid")) {
+                storyCards[7].insertAdjacentElement("afterend", createAdSlot("home-grid"));
+            }
         }
-    }
-
-    if (isStoryPage && !document.querySelector(".ad-slot-story")) {
-        const content = document.querySelector(".content");
-        content.insertAdjacentElement("afterend", createAdSlot("story"));
     }
 
     const storySubmissionForm = document.getElementById("storySubmissionForm");
