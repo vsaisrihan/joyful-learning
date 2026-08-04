@@ -42,51 +42,6 @@ customElements.define('main-footer', MainFooter);
 const GOOGLE_ANALYTICS_ID = "G-FP3E6RRYEH";
 const GOOGLE_ADS_CLIENT_ID = "ca-pub-6378941290908904";
 
-const AD_PLACEMENTS = {
-    "home-top": {
-        label: "Learning Partner Space",
-        size: "728 x 90 Leaderboard",
-        mobileSize: "320 x 100 Mobile banner",
-        shape: "leaderboard",
-        slot: "1111111111"
-    },
-    "home-grid": {
-        label: "Story Discovery Space",
-        size: "300 x 250 Medium rectangle",
-        mobileSize: "300 x 250 Medium rectangle",
-        shape: "medium-rectangle",
-        slot: "2222222222"
-    },
-    "home-square": {
-        label: "Learning Partner Space",
-        size: "250 x 250 Square",
-        mobileSize: "250 x 250 Square",
-        shape: "square",
-        slot: "5555555555"
-    },
-    "home-wide": {
-        label: "Featured Sponsor Space",
-        size: "970 x 90 Large leaderboard",
-        mobileSize: "320 x 100 Mobile banner",
-        shape: "large-leaderboard",
-        slot: "3333333333"
-    },
-    story: {
-        label: "Story Sponsor Space",
-        size: "300 x 250 Medium rectangle",
-        mobileSize: "300 x 250 Medium rectangle",
-        shape: "medium-rectangle",
-        slot: "4444444444"
-    },
-    square: {
-        label: "Learning Partner Space",
-        size: "250 x 250 Square",
-        mobileSize: "250 x 250 Square",
-        shape: "square",
-        slot: "6666666666"
-    }
-};
-
 function loadGoogleAnalytics() {
     if (!GOOGLE_ANALYTICS_ID || GOOGLE_ANALYTICS_ID === "G-XXXXXXXXXX") {
         return;
@@ -133,48 +88,8 @@ function loadGoogleAds() {
     document.head.appendChild(script);
 }
 
+// Auto ads uses this one site-wide script; placement is managed in AdSense.
 loadGoogleAds();
-
-function createAdSlot(type, customLabel) {
-    const placement = AD_PLACEMENTS[type] || AD_PLACEMENTS.square;
-    const label = customLabel || placement.label;
-    const ad = document.createElement("aside");
-    ad.className = `ad-slot ad-slot-${type} ad-slot-${placement.shape}`;
-    ad.classList.toggle("ad-slot-live", hasRealGoogleAdsClient());
-    ad.dataset.adSize = placement.size;
-    ad.dataset.adMobileSize = placement.mobileSize;
-    ad.setAttribute("aria-label", `${label} advertisement`);
-
-    const adMarkup = hasRealGoogleAdsClient()
-        ? `<ins class="adsbygoogle ad-unit"
-                data-ad-client="${GOOGLE_ADS_CLIENT_ID}"
-                data-ad-slot="${placement.slot}"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>`
-        : "";
-
-    ad.innerHTML = `
-        <div class="ad-slot-frame">
-            ${adMarkup}
-            <span>Advertisement</span>
-            <strong>${label}</strong>
-            <small>${placement.size}</small>
-        </div>
-    `;
-
-    if (hasRealGoogleAdsClient()) {
-        window.adsbygoogle = window.adsbygoogle || [];
-        requestAnimationFrame(() => {
-            try {
-                window.adsbygoogle.push({});
-            } catch (error) {
-                console.warn("Google ad could not be requested.", error);
-            }
-        });
-    }
-
-    return ad;
-}
 
 const STORY_SUBMISSION_EMAIL = "v.sai.srihan@gmail.com";
 const FAVORITE_STORIES_KEY = "favoriteStories";
@@ -362,29 +277,6 @@ function submitStoryByEmail(event) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    const isHomePage = document.querySelector(".kids-hero, .hero") && document.querySelector(".cards");
-    const isStoryPage = document.querySelector(".story-image-card") && document.querySelector(".story-card");
-
-    if (isHomePage && !document.querySelector(".ad-slot-home-top")) {
-        const searchBox = document.querySelector(".search-box");
-        const cards = document.querySelector(".cards");
-
-        // Keep ads at natural content breaks, away from navigation and primary actions.
-        searchBox.insertAdjacentElement("afterend", createAdSlot("home-top"));
-        cards.insertAdjacentElement("afterend", createAdSlot("home-wide"));
-
-        const storyCards = cards.querySelectorAll(".card");
-
-        if (storyCards.length > 8 && !document.querySelector(".ad-slot-home-grid")) {
-            storyCards[7].insertAdjacentElement("afterend", createAdSlot("home-grid"));
-        }
-    }
-
-    if (isStoryPage && !document.querySelector(".ad-slot-story")) {
-        const content = document.querySelector(".content");
-        content.insertAdjacentElement("afterend", createAdSlot("story"));
-    }
-
     const storySubmissionForm = document.getElementById("storySubmissionForm");
 
     if (storySubmissionForm) {
@@ -422,6 +314,7 @@ function addStoryToPage(story) {
 
     const card = document.createElement("div");
     card.className = "card";
+    const storyLink = story.link || `story.html?story=${encodeURIComponent(story.id)}`;
 
     card.innerHTML = `
         <img src="${story.image}" alt="${story.title}">
@@ -429,7 +322,7 @@ function addStoryToPage(story) {
             <h3>${story.title}</h3>
             <p>${story.desc}</p>
             <p>${story.age}</p>
-            <button class="read-btn" onclick="window.location.href='${story.link}'">
+            <button class="read-btn" onclick="window.location.href='${storyLink}'">
                 Read Story
             </button>
         </div>
@@ -444,6 +337,9 @@ function addStoryToPage(story) {
 // Load saved stories when page opens
 window.addEventListener("DOMContentLoaded", function () {
     let stories = JSON.parse(localStorage.getItem("customStories")) || [];
+    const extraStories = window.JOYFUL_EXTRA_STORIES || [];
+
+    extraStories.forEach(addStoryToPage);
     stories.forEach(addStoryToPage);
     initFavorites();
 });
