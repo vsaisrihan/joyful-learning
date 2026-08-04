@@ -422,6 +422,7 @@ function addStoryToPage(story) {
 
     const card = document.createElement("div");
     card.className = "card";
+    const storyLink = story.link || `story.html?story=${encodeURIComponent(story.id)}`;
 
     card.innerHTML = `
         <img src="${story.image}" alt="${story.title}">
@@ -429,7 +430,7 @@ function addStoryToPage(story) {
             <h3>${story.title}</h3>
             <p>${story.desc}</p>
             <p>${story.age}</p>
-            <button class="read-btn" onclick="window.location.href='${story.link}'">
+            <button class="read-btn" onclick="window.location.href='${storyLink}'">
                 Read Story
             </button>
         </div>
@@ -444,6 +445,9 @@ function addStoryToPage(story) {
 // Load saved stories when page opens
 window.addEventListener("DOMContentLoaded", function () {
     let stories = JSON.parse(localStorage.getItem("customStories")) || [];
+    const extraStories = window.JOYFUL_EXTRA_STORIES || [];
+
+    extraStories.forEach(addStoryToPage);
     stories.forEach(addStoryToPage);
     initFavorites();
 });
