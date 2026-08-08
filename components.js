@@ -29,6 +29,7 @@ class MainFooter extends HTMLElement {
         this.innerHTML = `
            <footer>
         © 2026 Joyful Learn. All Rights Reserved.
+
     </footer>
 
         `;
