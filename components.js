@@ -19,6 +19,11 @@ class MainHeader extends HTMLElement {
 
                 <span class="cart-spacer" aria-hidden="true"></span>
             </nav>
+            <div class="season-announcement" role="status">
+                <span aria-hidden="true">✦</span>
+                Season 20 Celebration — New stories, brighter adventures, bigger imagination!
+                <span aria-hidden="true">✦</span>
+            </div>
         `;
     }
 }
