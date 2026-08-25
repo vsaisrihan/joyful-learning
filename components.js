@@ -313,8 +313,13 @@ function addStoryToPage(story) {
         return;
     }
 
+    if (container.querySelector(`[data-story-id="${story.id}"]`)) {
+        return;
+    }
+
     const card = document.createElement("div");
     card.className = "card";
+    card.dataset.storyId = story.id;
     const storyLink = story.link || `story.html?story=${encodeURIComponent(story.id)}`;
 
     card.innerHTML = `
