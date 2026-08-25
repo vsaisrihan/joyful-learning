@@ -73,8 +73,16 @@ function hasRealGoogleAdsClient() {
     return GOOGLE_ADS_CLIENT_ID && !GOOGLE_ADS_CLIENT_ID.includes("XXXXXXXX");
 }
 
+function isAdEligibleContentPage() {
+    // Auto ads must never run on utility, form, error, or navigation-only
+    // screens. This shared file is used by those pages as well as the story
+    // catalogue, so opt in only the content-rich home page.
+    const page = window.location.pathname.split("/").pop().toLowerCase();
+    return page === "" || page === "index.html";
+}
+
 function loadGoogleAds() {
-    if (!hasRealGoogleAdsClient()) {
+    if (!hasRealGoogleAdsClient() || !isAdEligibleContentPage()) {
         return;
     }
 
@@ -89,7 +97,8 @@ function loadGoogleAds() {
     document.head.appendChild(script);
 }
 
-// Auto ads uses this one site-wide script; placement is managed in AdSense.
+// Auto ads is intentionally limited to the content-rich story catalogue.
+// Do not load it on contact, submission, profile, redirect, or similar pages.
 loadGoogleAds();
 
 const STORY_SUBMISSION_EMAIL = "v.sai.srihan@gmail.com";
@@ -313,8 +322,13 @@ function addStoryToPage(story) {
         return;
     }
 
+    if (container.querySelector(`[data-story-id="${story.id}"]`)) {
+        return;
+    }
+
     const card = document.createElement("div");
     card.className = "card";
+    card.dataset.storyId = story.id;
     const storyLink = story.link || `story.html?story=${encodeURIComponent(story.id)}`;
 
     card.innerHTML = `

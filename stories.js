@@ -27,3 +27,27 @@ const lostLetterPostbox = window.JOYFUL_EXTRA_STORIES.find(story => story.id ===
 if (lostLetterPostbox) {
     lostLetterPostbox.image = "https://images.unsplash.com/photo-1532262318931-eb6ff23aabc6?w=1200&auto=format&fit=crop&q=80";
 }
+
+window.JOYFUL_EXTRA_STORIES.push(
+    {
+        id: "rainbow-paintbrush",
+        title: "The Rainbow Paintbrush",
+        desc: "Ira brings colour and smiles to a grey village wall.",
+        age: "5-7 Years",
+        image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&auto=format&fit=crop&q=80",
+        story: "Ira found a paintbrush with a silver handle in her art box. Every colour she painted shone a little brighter when she invited someone else to help. With her friends, Ira turned the old grey wall beside the playground into a rainbow garden filled with birds, flowers, and smiling children. The next morning, families stopped to admire it. Ira learned that creativity becomes even more beautiful when it is shared.",
+        telugu: "ఇరాకు తన ఆర్ట్ బాక్స్‌లో వెండి పిడికిలి ఉన్న పెయింట్ బ్రష్ దొరికింది. ఇతరులను సహాయం చేయమని పిలిచినప్పుడల్లా ఆమె వేసిన రంగులు మరింత ప్రకాశించాయి. స్నేహితులతో కలిసి ఇరా ఆటస్థలం పక్కనున్న బూడిద రంగు గోడను పక్షులు, పూలు, నవ్వుతున్న పిల్లలతో రంగురంగుల తోటగా మార్చింది. మరుసటి రోజు కుటుంబాలన్నీ ఆ చిత్రాన్ని చూసి ఆనందించాయి. పంచుకున్నప్పుడు సృజనాత్మకత మరింత అందంగా ఉంటుందని ఇరా నేర్చుకుంది."
+    },
+    {
+        id: "firefly-lantern",
+        title: "The Firefly Lantern",
+        desc: "Rohan discovers that even a small light can guide the way.",
+        age: "4-6 Years",
+        image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=1200&auto=format&fit=crop&q=80",
+        story: "On a dark evening, Rohan saw a group of fireflies dancing above the garden path. Their tiny lights gathered around an old lantern and made it glow softly. Rohan used the gentle light to guide Grandma safely back from the gate. Grandma thanked the fireflies, and Rohan promised to keep the garden safe for them. He learned that a small light can make a big difference.",
+        telugu: "చీకటి సాయంత్రం రోహన్ తోట దారిపై మిణుగురులు నాట్యం చేయడం చూశాడు. వాటి చిన్న వెలుగులు పాత లాంతరు చుట్టూ చేరి మృదువుగా ప్రకాశించాయి. ఆ వెలుగుతో రోహన్ అమ్మమ్మను గేటు నుండి సురక్షితంగా ఇంటికి తీసుకువచ్చాడు. అమ్మమ్మ మిణుగురులకు ధన్యవాదాలు చెప్పగా, రోహన్ వాటి కోసం తోటను సురక్షితంగా ఉంచుతానని మాట ఇచ్చాడు. చిన్న వెలుగు కూడా పెద్ద మార్పు తేవగలదని అతను నేర్చుకున్నాడు."
+    },
+
+
+
+);

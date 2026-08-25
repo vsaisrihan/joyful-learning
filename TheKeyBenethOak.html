@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FP3E6RRYEH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FP3E6RRYEH');
+    </script>
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Nature Adventure</div>
+
+                <img src="https://images.unsplash.com/photo-1654789433595-59a0b5231d85?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8VGhlJTIwS2V5JTIwQmVuZWF0aCUyMHRoZSUyME9ha3xlbnwwfHwwfHx8MA%3D%3D"
+                    alt="">
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Key Beneath the Oak</h1>
+
+                    <p id="story">
+                        The ancient oak tree at the edge of the school grounds had always been off-limits, surrounded by
+                        a rusty chain-link fence and a dozen neighborhood rumors. But when Maya’s younger brother lost
+                        his favorite brass compass over the fence during recess, nine-year-old Leo knew they couldn't
+                        just leave it behind.
+
+                        That afternoon, with the sun dipping low and painting the sky in deep shades of amber, Maya and
+                        Leo slipped past the loose wire at the corner of the fence. The air inside the grove felt
+                        different—cooler, quieter, and thick with the scent of damp earth and pine.
+
+                        "It landed right near the trunk," Leo whispered, pointing through the tangled roots.
+
+                        As Maya reached down into the hollow beneath the tree, her fingers brushed against cold
+                        metal—but it wasn't the compass. It was a heavy brass key wrapped in a faded leather ribbon.
+                        Beside it sat a small, wooden box carved with intricate constellations.
+
+                        Before Leo could say a word, a soft, mechanical click echoed from the base of the oak. A hidden
+                        panel in the ground popped open, revealing a stone staircase spiraling down into the dark.
+
+                        "We should go back," Leo said, his voice trembling slightly.
+
+                        "We've come this far," Maya replied, her eyes bright with curiosity. She pulled a small
+                        flashlight from her backpack, clicked it on, and stepped onto the first stone step.
+
+                        The air grew crisp as they descended, light filtering from glowing moss clinging to the cavern
+                        walls. At the bottom of the stairs lay a subterranean chamber filled with dozens of brass
+                        contraptions, floating glass orbs displaying starry maps, and shelves lined with leather-bound
+                        journals. In the center of the room, resting on a pedestal, was a brass globe missing a
+                        keyhole-shaped piece right at its apex.
+
+                        Maya looked at the key in her hand, then at Leo. "I think someone built this place to map things
+                        no one else could see."
+
+                        With a steady breath, she stepped up to the pedestal and fit the key into the globe. The moment
+                        it turned, the glass orbs above them burst into brilliant light, projecting a projection of the
+                        night sky—not as it looked from Earth, but as it looked from deep space, swirling with comets
+                        and uncharted worlds.
+
+                        Sitting on a velvet cushion right next to the pedestal was Leo's brass compass, shining softly
+                        under the light of the artificial stars.
+
+                        Maya smiled, handing the compass back to her brother. "Looks like we found more than just your
+                        lost property."
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` The ancient oak tree at the edge of the school grounds had always been off-limits, surrounded by a rusty chain-link fence and a dozen neighborhood rumors. But when Maya’s younger brother lost his favorite brass compass over the fence during recess, nine-year-old Leo knew they couldn't just leave it behind.
+
+That afternoon, with the sun dipping low and painting the sky in deep shades of amber, Maya and Leo slipped past the loose wire at the corner of the fence. The air inside the grove felt different—cooler, quieter, and thick with the scent of damp earth and pine.
+
+"It landed right near the trunk," Leo whispered, pointing through the tangled roots.
+
+As Maya reached down into the hollow beneath the tree, her fingers brushed against cold metal—but it wasn't the compass. It was a heavy brass key wrapped in a faded leather ribbon. Beside it sat a small, wooden box carved with intricate constellations.
+
+Before Leo could say a word, a soft, mechanical click echoed from the base of the oak. A hidden panel in the ground popped open, revealing a stone staircase spiraling down into the dark.
+
+"We should go back," Leo said, his voice trembling slightly.
+
+"We've come this far," Maya replied, her eyes bright with curiosity. She pulled a small flashlight from her backpack, clicked it on, and stepped onto the first stone step.
+
+The air grew crisp as they descended, light filtering from glowing moss clinging to the cavern walls. At the bottom of the stairs lay a subterranean chamber filled with dozens of brass contraptions, floating glass orbs displaying starry maps, and shelves lined with leather-bound journals. In the center of the room, resting on a pedestal, was a brass globe missing a keyhole-shaped piece right at its apex.
+
+Maya looked at the key in her hand, then at Leo. "I think someone built this place to map things no one else could see."
+
+With a steady breath, she stepped up to the pedestal and fit the key into the globe. The moment it turned, the glass orbs above them burst into brilliant light, projecting a projection of the night sky—not as it looked from Earth, but as it looked from deep space, swirling with comets and uncharted worlds.
+
+Sitting on a velvet cushion right next to the pedestal was Leo's brass compass, shining softly under the light of the artificial stars.
+
+Maya smiled, handing the compass back to her brother. "Looks like we found more than just your lost property."`;
+
+        const teluguStory = `పాఠశాల మైదానం చివర ఉన్న ఆ పురాతన మర్రి చెట్టు ఎప్పుడూ ఎవరూ వెళ్లకూడని ప్రదేశంగా ఉండేది. దాని చుట్టూ తుప్పు పట్టిన ఇనుప కంచె, ఎన్నో రకాల ఊహాగానాలు ప్రచారంలో ఉండేవి. కానీ విరామ సమయంలో లీయో తనకిష్టమైన ఇత్తడి దిక్సూచి (కాంపస్) ఆ కంచె అవతలికి పడిపోవడంతో, తొమ్మిదేళ్ల లీయో దాన్ని అలాగే వదిలేయకూడదని నిశ్చయించుకున్నాడు.
+
+ఆ సాయంత్రం, సూర్యుడు అస్తమిస్తూ ఆకాశాన్ని ఎర్రటి రంగుతో ముంచెత్తుతున్న వేళ, మాయ మరియు లీయో కంచె మూలన ఉన్న చిన్న రంధ్రం గుండా లోపలికి దూరాడు. అక్కడ వాతావరణం చాలా భిన్నంగా ఉంది—చల్లగా, ప్రశాంతంగా, తేమ నేల మరియు పైన్ చెట్ల సువాసనతో నిండి ఉంది.
+
+"అది సరిగ్గా ఆ చెట్టు మొదట్లో పడింది," అని లీయో చిక్కుకున్న వేర్ల వైపు చూపిస్తూ గుసగుసలాడాడు.
+
+మాయ చెట్టు తొర్రలోకి చేయి పెట్టి వెతికినప్పుడు, ఆమె వేళ్లకు ఒక చల్లటి లోహం తగిలింది—కానీ అది దిక్సూచి కాదు. అదొక పాత తోలు రిబ్బన్‌తో కట్టబడిన బరువైన ఇత్తడి తాళంచెవి. దాని పక్కనే విభిన్నమైన నక్షత్రాల గుర్తులు చెక్కి ఉన్న ఒక చిన్న చెక్క పెట్టె ఉంది.
+
+లీయో ఏదైనా చెప్పేలోపే, చెట్టు మొదట్లో ఒక చిన్న శబ్దం (మెకానికల్ క్లిక్) వినిపించింది. నేలలో దాగి ఉన్న ఒక తలుపు తెరుచుకుని, చీకట్లోకి వెళ్లే రాతి మెట్లు కనిపించాయి.
+
+"మనం వెనక్కి వెళ్ళిపోదాం," అని లీయో కాస్త భయంతో అన్నాడు.
+
+"మనం ఇంతవరకు వచ్చేశాం కదా," అని మాయ కుతూహలంతో నిండిన కళ్లతో సమాధానమిచ్చింది. ఆమె తన బ్యాగ్ నుండి ఒక చిన్న టార్చ్ లైట్ తీసి, వెలిగించి, మొదటి రాతి మెట్టుపై కాలు పెట్టింది.
+
+వారు కిందకి దిగుతున్న కొద్దీ గాలి మరింత చల్లగా మారింది, గుహ గోడలకు ఉన్న మెరిసే నాచు నుండి వెలుగు వస్తోంది. మెట్ల చివరన ఒక పెద్ద భూగర్భ గది ఉంది. అందులో రకరకాల ఇత్తడి పరికరాలు, నక్షత్రాల మ్యాప్‌లను చూపిస్తూ గాలిలో తేలుతున్న గాజు గోళాలు, తోలు ముఖచిత్రం ఉన్న పుస్తకాల అలమరాలు ఉన్నాయి. ఆ గది మధ్యలో ఒక వేదికపై, పైన తాళం వేయడానికి వీలుగా ఉన్న ఒక ఇత్తడి గ్లోబ్ ఉంది.
+
+మాయ తన చేతిలోని తాళంచెవిని, ఆ తర్వాత లీయోని చూసింది. "ఎవరూ చూడలేని వాటిని మ్యాప్ చేయడానికి ఎవరో ఈ ప్రదేశాన్ని తయారు చేశారని నేను అనుకుంటున్నాను."
+
+ధైర్యంగా ఊపిరి పీల్చుకుని, ఆమె ఆ వేదిక దగ్గరకు వెళ్లి తాళంచెవిని గ్లోబ్‌లో పెట్టి తిప్పింది. అది తిరిగిన మరుక్షణమే, వారి తలపై ఉన్న గాజు గోళాలు ప్రకాశవంతమైన వెలుగుతో మెరిసాయి. అది కేవలం భూమి నుండి కనిపించే ఆకాశం కాదు, అంతరిక్షం లోతుల్లోని తోకచుక్కలు మరియు కొత్త ప్రపంచాల అద్భుతమైన దృశ్యాన్ని కళ్లముందు నిలిపింది.
+
+ఆ కృత్రిమ నక్షత్రాల వెలుగులో, వేదిక పక్కనే ఉన్న ఒక మృదువైన కుషన్ పై లీయో ఇత్తడి దిక్సూచి ప్రశాంతంగా మెరుస్తూ కనిపించింది.
+
+మాయ నవ్వుతూ, ఆ దిక్సూచిని తన తమ్ముడికి అందించింది. "మనం పోగొట్టుకున్న దానికంటే చాలా పెద్ద రహస్యాన్నే కనుగొన్నట్లున్నాం!"`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
