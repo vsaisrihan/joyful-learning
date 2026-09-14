@@ -51,3 +51,97 @@ window.JOYFUL_EXTRA_STORIES.push(
 
 
 );
+
+// A fresh collection of longer, warm-hearted adventures for the story library.
+window.JOYFUL_EXTRA_STORIES.push(
+    {
+        id: "banyan-bell", title: "The Bell Beneath the Banyan", desc: "A gentle bell helps Anaya bring a lonely new neighbour into the village." , age: "5-7 Years",
+        image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&auto=format&fit=crop&q=80",
+        story: "When Anaya found a tiny brass bell under the banyan tree, it rang only when someone nearby needed a friend. The very next afternoon, it chimed as she passed the blue house at the end of the lane. A new boy, Samir, was sitting behind its gate, too shy to join the cricket game. Anaya invited him to keep score, then showed him how to bowl. Samir's first ball knocked over the stumps, and everyone cheered. The bell gave one bright final ring before falling quiet. Anaya tucked it back beneath the banyan, knowing friendship sometimes begins with simply noticing who is waiting." ,
+        telugu: "అనయకు మర్రిచెట్టు కింద చిన్న ఇత్తడి గంట దొరికింది. ఎవరికైనా ఒక స్నేహితుడు అవసరమైనప్పుడే అది మోగేది. మరుసటి రోజు కొత్తగా వచ్చిన సమీర్ ఒంటరిగా కూర్చున్నాడని గంట చెప్పింది. అనయ అతన్ని క్రికెట్ ఆటకు పిలిచింది. సమీర్ మొదటి బంతికే వికెట్లు పడగొట్టాడు; అందరూ ఆనందంగా చప్పట్లు కొట్టారు. ఎవరు ఒంటరిగా ఉన్నారో గమనించడం నుంచే స్నేహం మొదలవుతుందని అనయ నేర్చుకుంది."
+    },
+    {
+        id: "moonbeam-bakery", title: "The Moonbeam Bakery", desc: "Dev makes a midnight delivery that saves the town's celebration.", age: "6-8 Years",
+        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&auto=format&fit=crop&q=80",
+        story: "On the night before the Lantern Festival, Dev's aunt discovered that the bakery's oven had gone cold. Without the honey buns, the musicians would have nothing to eat before their long parade. Dev carried warm coals from neighbour to neighbour in a covered pot, but each stove had already gone out. Then he remembered the old sun oven on the school roof. By moonlight, friends polished its mirrors while Dev arranged the dough in small trays. At dawn, the first buns came out golden and fragrant. The musicians shared them with everyone, and Dev learned that a good idea becomes wonderful when many hands help it rise.",
+        telugu: "లాంతరు పండుగకు ముందు రాత్రి బేకరీ పొయ్యి చల్లారిపోయింది. సంగీత బృందానికి తేనె బన్నులు కావాలి. దేవ్‌కు పాఠశాల పైకప్పుపై ఉన్న సూర్య పొయ్యి గుర్తొచ్చింది. స్నేహితులు అద్దాలను శుభ్రం చేయగా, దేవ్ పిండిని చిన్న ట్రేలలో పెట్టాడు. ఉదయానికి బన్నులు బంగారు రంగులో కాలాయి. మంచి ఆలోచనకు అందరి సహాయం కలిస్తే అద్భుతం జరుగుతుందని దేవ్ తెలుసుకున్నాడు."
+    },
+    {
+        id: "coral-compass", title: "The Coral Compass", desc: "Niko follows a compass that points toward creatures needing care.", age: "6-8 Years",
+        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&auto=format&fit=crop&q=80",
+        story: "Niko found a compass in a jar washed onto the beach. Its needle did not point north; it pointed to the tide pools. There, he saw a small octopus tangled in a piece of fishing line. Niko called the beach ranger, who showed him how to free it safely. The compass turned again, leading them to a rock covered with plastic bottle caps. By sunset, Niko and the other children had filled three sacks with rubbish and made a sign asking visitors to protect the shore. The next day, the compass lay still. Niko smiled: it had pointed him not toward treasure, but toward responsibility.",
+        telugu: "నికోకు తీరంలో ఒక సీసాలో దిక్సూచి దొరికింది. అది ఉత్తరానికి కాదు, అలల గుంటలవైపు చూపింది. అక్కడ చేపల దారంలో చిక్కుకున్న చిన్న ఆక్టోపస్ కనిపించింది. నికో రేంజర్‌ను పిలిచి దానిని సురక్షితంగా విడిపించాడు. తరువాత పిల్లలంతా చెత్తను ఏరి తీరాన్ని శుభ్రం చేశారు. నిజమైన నిధి ప్రకృతిని కాపాడటమే అని నికో అర్థం చేసుకున్నాడు."
+    },
+    {
+        id: "paper-crane-parade", title: "The Paper Crane Parade", desc: "A forgotten wish turns a rainy school day into a beautiful welcome.", age: "5-7 Years",
+        image: "https://images.unsplash.com/photo-1492106087820-71f1a00d20ea?w=1200&auto=format&fit=crop&q=80",
+        story: "Rain cancelled the school parade, and the hall filled with disappointed sighs. While tidying the art shelf, Imani found one paper crane with the words, 'Make room for someone new,' written inside. She folded another crane and wrote a welcome note for the new girl, Hana. Soon every child was folding one. They hung the cranes from the ceiling in a bright river of wings and walked beneath them to Hana's desk. Hana looked up, smiled, and taught everyone a song from her old school. The parade had not disappeared after all; it had simply become a celebration that made room for a new friend.",
+        telugu: "వర్షం వల్ల పాఠశాల ఊరేగింపు రద్దయింది. ఇమానికి ఒక కాగితపు కొంగలో ‘కొత్తవారికి చోటివ్వు’ అనే మాట కనిపించింది. ఆమె కొత్త విద్యార్థిని హానాకోసం మరొక కొంగను మడిచింది. వెంటనే అందరూ స్వాగత సందేశాలతో కొంగలు తయారు చేశారు. వాటిని తరగతి గదిలో వేలాడదీశారు. హానా నవ్వి తన పాత పాఠశాల పాటను నేర్పింది. కొత్త స్నేహితునికి చోటివ్వడం కూడా పండుగే అని అందరూ తెలుసుకున్నారు."
+    },
+    {
+        id: "silent-pond-secret", title: "The Secret of the Silent Pond", desc: "Mira discovers that listening closely can solve a garden mystery.", age: "4-6 Years",
+        image: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1200&auto=format&fit=crop&q=80",
+        story: "Every morning, the pond behind Mira's house glittered with frogs and dragonflies. Then one week it became strangely quiet. Mira wanted to splash through the reeds to look, but Grandpa handed her a notebook and said, 'First, listen.' From the bank, she noticed a fallen branch blocking the little stream that fed the pond. With Grandpa and two neighbours, Mira carefully moved the branch without disturbing any nests. Water trickled through, then bubbled, then filled the pond again. A frog croaked from beneath a lily pad. Mira wrote in her notebook: Sometimes the best way to help is to be still long enough to understand.",
+        telugu: "మీరా ఇంటి వెనుక ఉన్న చెరువు ఒక్కసారిగా నిశ్శబ్దమైంది. ఆమె పరుగెత్తి చూడాలనుకుంది, కానీ తాతయ్య ముందు వినమన్నారు. ఒడ్డున కూర్చుని చూస్తే చిన్న వాగును ఒక కొమ్మ అడ్డుకున్నట్టు తెలిసింది. మీరా, తాతయ్య, పొరుగువారు గూళ్లను కదలకుండా కొమ్మను తొలగించారు. నీరు మళ్లీ చెరువులోకి చేరింది; కప్పలు మళ్లీ కూశాయి. అర్థం చేసుకోవడానికి ముందుగా శ్రద్ధగా వినాలని మీరా నేర్చుకుంది."
+    },
+    {
+        id: "pebble-post-office", title: "The Pebble Post Office", desc: "Two friends deliver messages of courage along a winding river.", age: "5-7 Years",
+        image: "https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=1200&auto=format&fit=crop&q=80",
+        story: "At the river bend, Ria and Joel discovered a little wooden box labelled Pebble Post Office. Inside were smooth stones painted with messages: 'You can try again,' 'Thank you for helping,' and 'You belong here.' The children asked the librarian if they could leave one kind pebble for anyone who needed it. Soon people carried them home: a nervous child took one to her first recital, and a gardener placed one beside his new seedlings. When the box was empty, Ria and Joel painted more. Their smallest messages travelled farther than they ever could, making the whole village a little braver.",
+        telugu: "రియా, జోయెల్‌లకు నది మలుపు వద్ద ‘గులకరాయి పోస్టాఫీసు’ కనిపించింది. అందులో ‘మళ్లీ ప్రయత్నించు’, ‘ధన్యవాదాలు’, ‘నీవు ఇక్కడివాడివే’ వంటి సందేశాలున్న రాళ్లు ఉన్నాయి. వారు మరిన్ని మంచి మాటలతో రాళ్లను రంగించారు. ఒక చిన్నారి తన తొలి ప్రదర్శనకు ఒక రాయిని తీసుకెళ్లింది; తోటమాలి తన మొక్కల దగ్గర పెట్టుకున్నాడు. చిన్న మంచి సందేశాలు కూడా చాలా దూరం చేరతాయని ఇద్దరూ తెలుసుకున్నారు."
+    },
+    {
+        id: "orchards-lost-song", title: "The Orchard's Lost Song", desc: "A patient listener helps the apple trees welcome the bees back.", age: "5-7 Years",
+        image: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=1200&auto=format&fit=crop&q=80",
+        story: "The apple orchard usually hummed like a cheerful choir, but one spring it was quiet. Arjun's grandmother said the trees had lost their song. Arjun looked everywhere for a magical answer, until he noticed that the wildflowers beside the fence had been pulled up. With permission from the farmer, he and his class planted marigolds, basil, and native flowers along the path. A few days later, one bee arrived. Then ten. Soon the orchard was buzzing again, and tiny apples appeared beneath the blossoms. Arjun learned that caring for the smallest guests can help an entire garden sing.",
+        telugu: "వసంతంలో ఆపిల్ తోట సాధారణంగా తేనెటీగల మోతతో నిండేది, కానీ ఈసారి నిశ్శబ్దంగా ఉంది. అర్జున్ గమనిస్తే కంచె పక్కన ఉన్న అడవి పూలు లేకపోయాయి. రైతు అనుమతితో అతని తరగతి బంతిపూలు, తులసి, స్థానిక పూలు నాటింది. కొద్దిరోజుల్లో ఒక తేనెటీగ వచ్చింది, తరువాత ఎన్నో వచ్చాయి. తోట మళ్లీ మోగింది. చిన్న జీవులను చూసుకోవడం మొత్తం తోటకు మేలు చేస్తుందని అర్జున్ నేర్చుకున్నాడు."
+    },
+    {
+        id: "library-under-stairs", title: "The Library Beneath the Stairs", desc: "Tara turns an unused corner into a magical reading hideaway.", age: "6-8 Years",
+        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200&auto=format&fit=crop&q=80",
+        story: "The space beneath the community hall stairs was dusty, dark, and ignored. Tara imagined it as a library small enough for secrets and big enough for dreams. She asked the carpenter for scrap shelves, the painter for leftover blue paint, and neighbours for books they had finished. On opening day, a shy boy found a book about planets, an elderly woman donated a book of folktales, and Tara read aloud to three toddlers on a cushion. By evening, the little room had become everyone's favourite corner. Tara learned that an overlooked space can become precious when it is made for sharing.",
+        telugu: "సమాజ భవనంలోని మెట్ల కిందున్న స్థలం దుమ్ముగా, చీకటిగా ఉండేది. తార దాన్ని చిన్న గ్రంథాలయంగా ఊహించింది. వడ్రంగి వద్ద నుంచి మిగిలిన పలకలు, పెయింటర్ వద్ద నుంచి నీలిరంగు, పొరుగువారి వద్ద నుంచి పుస్తకాలు తీసుకుంది. ప్రారంభ రోజున చిన్న పిల్లలు కథలు విన్నారు, ఒక బాలుడు గ్రహాల పుస్తకం కనుగొన్నాడు. ఎవరూ పట్టించుకోని చోటు పంచుకుంటే ఎంతో విలువైనదవుతుందని తార నేర్చుకుంది."
+    },
+    {
+        id: "brave-little-umbrella", title: "The Brave Little Umbrella", desc: "A bright umbrella becomes a shelter for everyone caught in a storm.", age: "3-5 Years",
+        image: "https://images.unsplash.com/photo-1493314894560-5c412a56f285?w=1200&auto=format&fit=crop&q=80",
+        story: "Kavi's umbrella was small, yellow, and covered in dancing ducks. When rain burst from the clouds after school, he saw a puppy shivering by the gate. Kavi held the umbrella low so the puppy could stand beneath it. Then a younger child joined them, followed by a woman carrying a basket of bread. The little umbrella could not cover everyone perfectly, but they walked close together and laughed at their wet shoes. At the corner, the rain stopped. Kavi looked at the umbrella's crowded duck pictures and felt proud: courage does not always mean being big; sometimes it means making room.",
+        telugu: "కవి చిన్న పసుపు గొడుగుపై బాతుల బొమ్మలు ఉండేవి. పాఠశాల తర్వాత వర్షం పడగా గేటు దగ్గర ఒక కుక్కపిల్ల వణుకుతోంది. కవి దానికి గొడుగు పట్టాడు. తరువాత చిన్న పిల్లవాడు, రొట్టెల బుట్టతో ఒక ఆవిడ కూడా చేరారు. గొడుగు అందరినీ పూర్తిగా కప్పలేదు, కానీ అందరూ దగ్గరగా నడిచి నవ్వుకున్నారు. ధైర్యం పెద్దగా ఉండడమే కాదు, ఇతరులకు చోటివ్వడమని కవి తెలుసుకున్నాడు."
+    },
+    {
+        id: "cloud-quilt", title: "The Cloud Quilt", desc: "Laya stitches family stories into a quilt for a chilly village morning.", age: "6-8 Years",
+        image: "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?w=1200&auto=format&fit=crop&q=80",
+        story: "Laya's grandmother saved squares of cloth from old shirts, festival dresses, and baby blankets. 'They are only scraps,' Laya said. Grandma smiled and showed her how to stitch them into a quilt shaped like a cloud. As they worked, each square told a story: Dad's first school shirt, Auntie's dancing skirt, and the blue pocket from Laya's baby coat. When a cold morning surprised the village breakfast club, Laya carried the finished quilt there for the children who were waiting outside. Beneath its patchwork warmth, everyone traded stories. Laya saw that memories become warmer when they are shared.",
+        telugu: "లయ అమ్మమ్మ పాత చొక్కాలు, పండుగ దుస్తులు, చిన్న దుప్పట్ల ముక్కలను దాచేది. వాటితో మేఘంలా ఒక క్విల్ట్ కుట్టారు. ప్రతి ముక్కకు ఒక జ్ఞాపకం ఉంది: నాన్న తొలి పాఠశాల చొక్కా, అత్త నృత్య దుస్తులు, లయ చిన్నప్పటి జేబు. చల్లని ఉదయం గ్రామ పిల్లలకు ఆ క్విల్ట్ కప్పగా అందరూ కథలు చెప్పుకున్నారు. పంచుకున్న జ్ఞాపకాలు మరింత వెచ్చగా ఉంటాయని లయ నేర్చుకుంది."
+    },
+    {
+        id: "tide-pool-telescope", title: "The Tide Pool Telescope", desc: "Ishan learns that close-up wonders deserve protection too.", age: "5-7 Years",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&auto=format&fit=crop&q=80",
+        story: "Ishan wanted to use his new telescope to find distant islands, but a foggy morning hid the horizon. Disappointed, he pointed it down at a tide pool and saw a world of tiny wonders: a crab waving one claw, seaweed swaying like green ribbons, and a starfish tucked between rocks. A tourist reached down to take the starfish home. Ishan politely explained that the pool was its home, then asked the ranger for a 'look, don't touch' sign. All day, he showed visitors how to crouch quietly and watch. His telescope had taught him that wonder is not always far away, and it is never ours to take.",
+        telugu: "ఇషాన్ తన కొత్త టెలిస్కోప్‌తో దూర దీవులు చూడాలనుకున్నాడు, కానీ పొగమంచు ఉంది. అతను అలల గుంటవైపు చూస్తే పీత, సముద్రపు పాచి, నక్షత్ర చేప కనిపించాయి. ఒక సందర్శకుడు నక్షత్ర చేపను తీసుకెళ్లబోతే, అది దాని ఇల్లని ఇషాన్ వినయంగా చెప్పాడు. రేంజర్‌తో కలిసి ‘చూడండి, తాకవద్దు’ అనే బోర్డు పెట్టించాడు. అద్భుతాలు దగ్గరలోనే ఉంటాయి; వాటిని తీసుకోవడం కాదు కాపాడడం మన పని అని ఇషాన్ నేర్చుకున్నాడు."
+    },
+    {
+        id: "tomorrows-seed", title: "Tomorrow's Seed", desc: "A mystery seed teaches Veer that hope needs patient care.", age: "4-6 Years",
+        image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&auto=format&fit=crop&q=80",
+        story: "In a packet marked 'Tomorrow,' Veer found one small seed. He planted it after lunch and checked the soil before dinner. Nothing happened. The next day, nothing happened again. Veer's sister suggested they make a care calendar: water on Monday, loosen the soil on Wednesday, and wait every day. Weeks later, a green shoot appeared, followed by a vine that climbed the fence. At the end of summer, it grew round orange pumpkins. Veer gave the first one to the soup kitchen. The packet had been right, he decided. Tomorrow is built by the kind work we do today.",
+        telugu: "‘రేపు’ అని రాసిన ప్యాకెట్‌లో వీర్‌కు ఒక విత్తనం దొరికింది. నాటిన వెంటనే మొలక రాలేదు. అక్కతో కలిసి నీరు పోయే, నేల సడలించే పట్టిక తయారు చేశాడు. కొన్ని వారాల తర్వాత పచ్చి మొలక వచ్చింది; వేసవి చివరికి గుమ్మడికాయలు పండాయి. వీర్ మొదటి గుమ్మడికాయను భోజన కేంద్రానికి ఇచ్చాడు. రేపు అనేది ఈరోజు చేసే మంచి పనులతో తయారవుతుందని అతను నేర్చుకున్నాడు."
+    },
+    {
+        id: "yellow-door", title: "The Yellow Door at Number Seven", desc: "A curious door leads Priya to a room full of neighbours' talents.", age: "6-8 Years",
+        image: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=1200&auto=format&fit=crop&q=80",
+        story: "Priya had passed the yellow door at Number Seven a hundred times, but one Saturday it stood open. Inside was a room with no furniture, only tables where neighbours were teaching what they loved. Mr. Ali repaired a toy truck, Mrs. Das showed children how to fold dumplings, and a teenager taught Priya three guitar chords. Priya could not think of a talent to offer until she noticed a little boy crying over a loose shoelace. She knelt down and showed him how to tie it. The next week, a sign appeared on the door: Everyone knows something worth sharing. Priya smiled whenever she walked past.",
+        telugu: "ప్రియా నంబర్ ఏడు పసుపు తలుపు పక్కన ఎన్నోసార్లు నడిచింది. ఒక శనివారం అది తెరిచి ఉంది. లోపల పొరుగువారు తమకు వచ్చినవి నేర్పుతున్నారు: బొమ్మ బాగుచేయడం, కుడుములు మడవడం, గిటార్ వాయించడం. ప్రియకు నేర్పడానికి ఏమీ లేదనిపించింది. కానీ షూ లేస్ కట్టలేక ఏడుస్తున్న పిల్లవాడికి ఆమె సహాయం చేసింది. తరువాత తలుపుపై ‘ప్రతి ఒక్కరికీ పంచదగిన నైపుణ్యం ఉంది’ అనే బోర్డు పెట్టారు."
+    },
+    {
+        id: "constellation-cookies", title: "The Constellation Cookies", desc: "A batch of star-shaped cookies helps friends find their way home.", age: "4-6 Years",
+        image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1200&auto=format&fit=crop&q=80",
+        story: "For the school fair, Savi baked cookies shaped like stars. She arranged raisins on each one to copy a constellation from her sky book. On the walk home, fog rolled over the park and Savi's friends could not see the path signs. Savi remembered the bright star patterns above the fog. She found the Big Dipper, then used it to work out which way was north. The group soon reached the park gate, where their worried families were waiting. At home, Savi shared the last cookies and explained the constellations. Learning, she decided, tastes even sweeter when it can help someone.",
+        telugu: "పాఠశాల జాతరకు సావి నక్షత్రాల ఆకారంలో కుకీలు చేసింది. వాటిపై ఎండుద్రాక్షలతో నక్షత్ర సమూహాలు పెట్టింది. ఇంటికి వస్తుండగా పార్కులో పొగమంచు వచ్చి దారి కనిపించలేదు. సావికి ఆకాశ పుస్తకంలోని పెద్ద ఎలుగుబంటి నక్షత్ర సమూహం గుర్తొచ్చింది. దాని సహాయంతో ఉత్తరం వైపు గుర్తించి గేటుకు చేరుకున్నారు. నేర్చుకున్నది ఇతరులకు ఉపయోగపడితే ఇంకా మధురంగా ఉంటుందని సావి అనుకుంది."
+    },
+    {
+        id: "whispering-wind-chimes", title: "The Whispering Wind Chimes", desc: "A restless child learns to turn worry into a gentle plan.", age: "5-7 Years",
+        image: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=1200&auto=format&fit=crop&q=80",
+        story: "Before her first day at a new school, Zoya could not stop worrying. The wind chimes outside her window clinked softly, almost like they were saying, 'One thing at a time.' Zoya wrote each worry on a paper strip: finding the classroom, speaking to the teacher, and sitting at lunch. Then she made a small plan for each one. In the morning, she followed the map, asked her teacher a question, and invited another new child to share her table. By afternoon, the chimes sounded like a happy song. Zoya learned that worries grow quieter when we name them, make a plan, and take one brave step.",
+        telugu: "కొత్త పాఠశాలలో మొదటి రోజు ముందు జోయాకు చాలా భయం వేసింది. కిటికీ బయట గాలి గంటలు ‘ఒక్కో పని ఒక్కసారిగా’ అని చెప్పినట్లు మోగాయి. ఆమె తన భయాలను కాగితాలపై రాసి, ప్రతి దానికి చిన్న ప్రణాళిక వేసుకుంది. ఉదయం మ్యాప్ చూసి తరగతికి వెళ్లింది, టీచర్‌ను అడిగింది, ఇంకో కొత్త పిల్లను భోజనానికి పిలిచింది. భయాన్ని పేరు పెట్టి, ప్రణాళిక వేసి, ఒక ధైర్యమైన అడుగు వేస్తే అది చిన్నదవుతుందని జోయా నేర్చుకుంది."
+    }
+);
