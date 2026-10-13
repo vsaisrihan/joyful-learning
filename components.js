@@ -329,7 +329,6 @@ function addStoryToPage(story) {
     const card = document.createElement("div");
     card.className = "card";
     card.dataset.storyId = story.id;
-    const storyLink = story.link || `story.html?story=${encodeURIComponent(story.id)}`;
 
     card.innerHTML = `
         <img src="${story.image}" alt="${story.title}">
@@ -337,7 +336,7 @@ function addStoryToPage(story) {
             <h3>${story.title}</h3>
             <p>${story.desc}</p>
             <p>${story.age}</p>
-            <button class="read-btn" onclick="window.location.href='${storyLink}'">
+            <button class="read-btn" type="button" onclick="openStory('${story.id}')">
                 Read Story
             </button>
         </div>
