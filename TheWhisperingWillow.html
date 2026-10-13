@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyful Learn Story Reader</title>
+
+    <script src="components.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FP3E6RRYEH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FP3E6RRYEH');
+    </script>
+</head>
+
+<body>
+
+    <main-header></main-header>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">📚 Joyful Learn</div>
+
+            <div class="right">
+                <span>🌍 English</span>
+                <span>⚙️</span>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div class="story-image-card">
+
+                <div class="tag">Nature Adventure</div>
+
+                <img src="https://images.unsplash.com/photo-1648503653373-ee748b4858b9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+                    alt="">
+            </div>
+
+            <div>
+
+                <div class="story-card">
+
+                    <h1 id="title">The Whispering Willow</h1>
+
+                    <p id="story">
+                        The old hollow willow tree in the park had always been surrounded by a short wooden fence, but
+                        seven-year-old Sam knew there was a secret inside. When his little sister’s red toy boat rolled
+                        under the fence during their afternoon walk, Sam didn't hesitate to help. As the golden sun
+                        began to sink below the tree line, Sam and his six-year-old sister, Mia, squeezed through the
+                        soft green bushes. The air inside the grove felt magical—cool, gentle, and smelling like sweet
+                        flower blossoms and damp earth. "It rolled near the giant root," Mia whispered, holding Sam's
+                        hand tightly. As Sam reached deep into the soft moss beneath the trunk, his fingers touched
+                        something hard and shiny—but it wasn't the toy boat. It was a smooth golden key attached to a
+                        sparkling blue ribbon. Right beside it lay a small wooden treasure chest covered in carved leaf
+                        patterns. Before Mia could ask a question, a soft click-clack sounded from inside the willow's
+                        trunk. A small wooden door hidden behind the thick bark swung wide open, revealing a miniature
+                        winding staircase made of smooth river stones leading downward. "Is it dark down there?" Mia
+                        asked, stepping back just a little. "Don't worry, I have my favorite flashlight," Sam said
+                        proudly. He pulled a yellow flashlight from his pocket, turned it on, and stepped onto the first
+                        cozy stone step. As they climbed down, the air felt pleasant and warm, lit by tiny glowing
+                        fireflies resting in the wooden walls. At the bottom of the stairs was a colorful underground
+                        room filled with friendly wind-chimes, tiny water fountains, and shelves filled with bright
+                        picture storybooks. In the middle of the room, on a low wooden table, sat a sleeping music box
+                        with a tiny keyhole shaped like a leaf on top. Sam looked at the golden key in his hand, then
+                        smiled at Mia. "I think the tree was waiting for someone to wake it up." Carefully, he put the
+                        key into the music box and turned it. Instantly, sweet musical notes filled the air, and small
+                        glowing butterflies made of light danced gently around the room, making Mia laugh with joy.
+                        Resting right next to the music box on a soft velvet cushion was Mia's red toy boat, shiny and
+                        clean. Sam picked it up and handed it back to his sister with a big smile. "See? We found your
+                        boat, and a magic secret too!"
+                    </p>
+
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn read-btn" onclick="readStory()">
+                        🔊 Read Aloud
+                    </button>
+
+                    <button class="btn translate-btn" onclick="translateStory()">
+                        🌐 Translate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main-footer></main-footer>
+
+    <script>
+
+        let translated = false;
+
+        const englishStory = ` The old hollow willow tree in the park had always been surrounded by a short wooden fence, but seven-year-old Sam knew there was a secret inside. When his little sister’s red toy boat rolled under the fence during their afternoon walk, Sam didn't hesitate to help. As the golden sun began to sink below the tree line, Sam and his six-year-old sister, Mia, squeezed through the soft green bushes. The air inside the grove felt magical—cool, gentle, and smelling like sweet flower blossoms and damp earth. "It rolled near the giant root," Mia whispered, holding Sam's hand tightly. As Sam reached deep into the soft moss beneath the trunk, his fingers touched something hard and shiny—but it wasn't the toy boat. It was a smooth golden key attached to a sparkling blue ribbon. Right beside it lay a small wooden treasure chest covered in carved leaf patterns. Before Mia could ask a question, a soft click-clack sounded from inside the willow's trunk. A small wooden door hidden behind the thick bark swung wide open, revealing a miniature winding staircase made of smooth river stones leading downward. "Is it dark down there?" Mia asked, stepping back just a little. "Don't worry, I have my favorite flashlight," Sam said proudly. He pulled a yellow flashlight from his pocket, turned it on, and stepped onto the first cozy stone step. As they climbed down, the air felt pleasant and warm, lit by tiny glowing fireflies resting in the wooden walls. At the bottom of the stairs was a colorful underground room filled with friendly wind-chimes, tiny water fountains, and shelves filled with bright picture storybooks. In the middle of the room, on a low wooden table, sat a sleeping music box with a tiny keyhole shaped like a leaf on top. Sam looked at the golden key in his hand, then smiled at Mia. "I think the tree was waiting for someone to wake it up." Carefully, he put the key into the music box and turned it. Instantly, sweet musical notes filled the air, and small glowing butterflies made of light danced gently around the room, making Mia laugh with joy. Resting right next to the music box on a soft velvet cushion was Mia's red toy boat, shiny and clean. Sam picked it up and handed it back to his sister with a big smile. "See? We found your boat, and a magic secret too!""`;
+
+        const teluguStory = `అదే కథను 7 ఏళ్ల పిల్లల కోసం తేలికైన, అందమైన తెలుగు భాషలో ఇక్కడ ఇస్తున్నాను:
+
+పార్క్ చివర ఉన్న పెద్ద తొర్ర విల్లో (మర్రి/రావి వంటి) చెట్టు చుట్టూ ఎప్పుడూ ఒక చిన్న చెక్క కంచె ఉండేది. కానీ ఏడేళ్ల రాముకి ఆ చెట్టు లోపల ఏదో రహస్యం ఉందని తెలుసు. ఒకరోజు సాయంత్రం ఆడుకుంటున్నప్పుడు, తన చెల్లెలు చిన్నూ ఎరుపు రంగు ఆటా పడవ కంచె అవతలికి దొర్లిపోయింది. చిన్నూ ఏడవడం చూసి రాము వెంటనే సహాయం చేయడానికి ముందుకు వచ్చాడు.
+
+సూర్యుడు అస్తమిస్తూ ఆకాశం బంగారం రంగులో మెరిసిపోతున్న సమయంలో, రాము తన ఆరేళ్ల చెల్లెలితో కలిసి కంచె సందులోంచి లోపలికి వెళ్లాడు. అక్కడ గాలి చాలా ప్రశాంతంగా, తీపి పూల వాసనతో ఎంతో హాయిగా ఉంది.
+
+"పడవ ఆ పెద్ద వేరు పక్కనే ఉంది అన్నయ్యా," అని చిన్నూ రాము చెయ్యి గట్టిగా పట్టుకుని మెల్లగా చెప్పింది.
+
+రాము చెట్టు మొదట్లో ఉన్న మెత్తటి ఆకుల కిందకి చెయ్యి పెట్టి వెతికాడు. అతనికి ఏదో గట్టిగా, మెరుస్తూ తగిలింది—కానీ అది ఆటా పడవ కాదు! అది ఒక మెరిసే బంగారు తాళంచెవి, దానికి నీలం రంగు రిబ్బన్ కట్టి ఉంది. దాని పక్కనే ఆకుల ఆకారంలో అందమైన చెక్కడాలు ఉన్న ఒక చిన్న చెక్క పెట్టె ఉంది.
+
+చిన్నూ ఏదైనా అడిగేలోపే, చెట్టు తొర్ర లోపలి నుంచి ఒక చిన్న క్లిక్-క్లాక్ అనే శబ్దం వచ్చింది. దట్టమైన తొర్ర వెనుక ఉన్న ఒక చిన్న చెక్క తలుపు తెరుచుకుని, కిందకి వెళ్లే గుండ్రటి రాతి మెట్లు కనిపించాయి.
+
+"లోపల చీకటిగా ఉందా అన్నయ్యా?" అని చిన్నూ కొంచెం భయపడుతూ వెనక్కి తగ్గింది.
+
+"భయపడకు, నా దగ్గర టార్చ్ లైట్ ఉందిగా!" అని రాము ధైర్యంగా చెప్పాడు. తన జేబులోంచి పసుపు రంగు లైట్ తీసి, ఆన్ చేసి, మొదటి రాతి మెట్టు మీద అడుగు పెట్టాడు. వాళ్లు కిందకి వెళ్తుంటే, గోడల మీద ఉన్న మిణుగురు పురుగులు వెలుగునిస్తూ ఆ దారిని ప్రశాంతంగా మార్చాయి.
+
+కిందకి వెళ్లేసరికి ఒక అందమైన భూగర్భ గది కనిపించింది. అక్కడ చిన్న చిన్న నీటి బుగ్గలు, తీయటి నాదం చేసే గంటలు, రంగుల కథల పుస్తకాలు ఉన్నాయి. ఆ గది మధ్యలో ఉన్న ఒక చిన్న బల్లపై ఒక సంగీత పెట్టె (Music Box) ఉంది. దానికి పైన ఆకు ఆకారంలో చిన్న తాళం రంధ్రం ఉంది.
+
+రాము తన చేతిలో ఉన్న బంగారు తాళంచెవిని, ఆపై చిన్నూని చూసి చిరునవ్వు నవ్వి, "ఈ చెట్టు తనని ఎవరో నిద్రలేపుతారని వేచి చూస్తున్నట్లుంది," అన్నాడు.
+
+రాము మెల్లగా ఆ తాళంచెవిని సంగీత పెట్టెలో పెట్టి తిప్పాడు. అంతే! మంత్రముగ్ధం చేసే తీయటి సంగీతం గది నిండా వినపడింది. వెలుగుతో చేసిన చిన్న చిన్న సీతాకోకచిలుకలు గాలిలో ఎగురుతూ నాట్యం చేయడం చూసి చిన్నూ సంతోషంతో చప్పట్లు కొట్టింది.
+
+ఆ సంగీత పెట్టె పక్కనే ఉన్న ఒక మెత్తటి పట్టు దిండు మీద చిన్నూ ఎరుపు రంగు ఆటా పడవ భద్రంగా, శుభ్రంగా ఉంది. రాము దాన్ని తీసి తన చెల్లెలికి అందిస్తూ, "చూసావా? నీ పడవ దొరికింది, దాంతో పాటు ఒక మంత్ర లోకం కూడా దొరికింది!" అని నవ్వాడు."`;
+
+        function readStory() {
+
+            speechSynthesis.cancel();
+
+            const speech = new SpeechSynthesisUtterance(
+                document.getElementById("story").textContent
+            );
+
+            speech.lang = translated ? "te-IN" : "en-US";
+
+            speechSynthesis.speak(speech);
+        }
+
+        function translateStory() {
+
+            const story = document.getElementById("story");
+
+            if (!translated) {
+                story.textContent = teluguStory;
+                translated = true;
+            } else {
+                story.textContent = englishStory;
+                translated = false;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
